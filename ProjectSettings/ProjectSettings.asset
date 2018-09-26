@@ -602,7 +602,7 @@ PlayerSettings:
   cloudServicesEnabled:
     UNet: 1
   facebookSdkVersion: 7.9.4
-  apiCompatibilityLevel: 2
+  apiCompatibilityLevel: 3
   cloudProjectId: 98dd0d03-b2e5-43e7-ae3c-eb0d86440b9a
   projectName: FluxusPulse
   organizationId: cresspresso-entertainment

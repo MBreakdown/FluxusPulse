@@ -4,4 +4,7 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/FluxusPulse/Scenes/MainScene.unity
+    guid: c11c5d649458efb4f96b92dee88a8b27
