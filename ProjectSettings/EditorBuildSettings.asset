@@ -6,5 +6,26 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/FluxusPulse/Scenes/MainScene.unity
+    path: Assets/FluxusPulse/Scenes/Menus/MenuScene.unity
+    guid: 141354d53b69dc741812cee1c4314291
+  - enabled: 1
+    path: Assets/FluxusPulse/Scenes/Levels/MainScene.unity
     guid: c11c5d649458efb4f96b92dee88a8b27
+  - enabled: 1
+    path: Assets/FluxusPulse/Scenes/Menus/InstructionsMenu.unity
+    guid: 21f47011bd7097f41b29eb2760f4848b
+  - enabled: 1
+    path: Assets/FluxusPulse/Scenes/Menus/OptionsMenu.unity
+    guid: e670011c543038b44b3ee3e4c0b0c165
+  - enabled: 1
+    path: Assets/FluxusPulse/Scenes/Menus/HighscoresMenu.unity
+    guid: ac7ef6d2f50f6f44d8a80e6b45ce21dd
+  - enabled: 1
+    path: Assets/FluxusPulse/Scenes/Menus/CreditsMenu.unity
+    guid: ff874840b8a72814aa3bf58f1389a391
+  - enabled: 1
+    path: Assets/FluxusPulse/Scenes/Menus/QuitMenu.unity
+    guid: fb12ecf169e79ec4491d11f1370fc64a
+  - enabled: 1
+    path: Assets/FluxusPulse/Scenes/Menus/CharacterMenu.unity
+    guid: 40f61f69aeac0d348be64421793db2ae
