@@ -2,86 +2,120 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Polarity
+{
+    Positive,
+    Negative,
+}
+
 [RequireComponent(typeof(Rigidbody2D))]
+[DisallowMultipleComponent]
 public class PlayerController : MonoBehaviour
 {
-	// Inspector Fields
+    // Inspector Fields
 
-	public float speed = 10.0f;
-	public string inputHorizontal = "Horizontal";
-	public string inputVertical = "Vertical";
-	public GameObject gun;
+    public Polarity polarity = Polarity.Positive;
+
+    [Tooltip("Metres per second.")]
+    public float maxSpeed = 10f;
+
+    [Tooltip("Degrees per second.")]
+    public float maxAngularSpeed = 180f;
+
+    [Tooltip("Metres per second per second.")]
+    public float acceleration = 10f;
+
+    [Tooltip("Metres per second per second.")]
+    public float deceleration = 20f;
+
+    [Tooltip("Degrees per second per second.")]
+    public float angularAcceleration = 100f;
+
+    [Tooltip("Degrees per second per second.")]
+    public float angularDeceleration = 200f;
+    
+    public string inputHorizontal = "Horizontal";
+
+    public string inputVertical = "Vertical";
 
 
-	// Private Fields
+    // Private Fields
 
-	private Rigidbody2D rb;
+    private Rigidbody2D rb;
 
 
-	// Methods
+    // Methods
+    
+    void Awake()
+    {
+        // Get the Rigidbody2D component of this GameObject.
+        rb = this.GetComponent<Rigidbody2D>();
+    }
 
-	// Use this for initialization.
-	void Awake()
-	{
-		// Get the Rigidbody2D component of this GameObject.
-		rb = this.GetComponent<Rigidbody2D> ();
 
-		// Check for invalid inspector references.
-		if (!gun)
-			Debug.LogError("Gun is not assigned.", this);
-	}
+    void FixedUpdate()
+    {
+        if (!rb)
+            return;
 
-	// Use this for initialization before the first Update.
-	void Start()
-	{
-		
-	}
-	
-	// Update is called once per frame.
-	void Update()
-	{
-		// If the gun GameObject exists and is not destroyed,
-		if (gun)
-		{
-			// Get mouse position in screen space.
-			Vector2 mousePos = Input.mousePosition;
-			// Convert to world space.
-			Vector2 worldMousePos = Camera.main.ScreenToWorldPoint(mousePos);
+        RotationUpdate();
+        MovementUpdate();
+    }
 
-			// Get current position in world space.
-			Vector2 playerPos = this.transform.position;
+    void MovementUpdate()
+    {
+        float vert = Input.GetAxisRaw(inputVertical);
+        bool tryingToMove = (Mathf.Abs(vert) > 0.01f);
 
-			// Get vector looking from the player to the mouse.
-			Vector2 lookDirection = worldMousePos - playerPos;
+        // desired Y (forwards) velocity in local space
+        float desiredRelVelY = (tryingToMove ?
+            maxSpeed * Mathf.Sign(vert) :
+            0f);
 
-			// Set rotation so the player so their local Y axis points towards the mouse.
-			gun.transform.rotation = Quaternion.LookRotation (Vector3.forward, lookDirection);
+        Vector2 currentRelVel = transform.InverseTransformDirection(rb.velocity);
 
-			// Rotate by 90 degrees so their local X axis points towards the mouse.
-			gun.transform.Rotate (0, 0, 90f);
-		}
-	}
+        float accelY = ((tryingToMove && Mathf.Sign(desiredRelVelY) == Mathf.Sign(currentRelVel.y)) ?
+            acceleration :
+            deceleration);
 
-	// FixedUpdate is called once per physics cycle.
-	void FixedUpdate()
-	{
-		// If the Rigidbody2D component exists and is not destroyed,
-		if (rb)
-		{
-			// Get horizontal input in the range [-1..1]
-			float x = Input.GetAxis (inputHorizontal);
+        float newRelVelY = Mathf.MoveTowards(
+            currentRelVel.y,
+            desiredRelVelY,
+            accelY * Time.fixedDeltaTime);
 
-			// Get vertical input in the range [-1..1]
-			float y = Input.GetAxis (inputVertical);
+        // desired X velocity in local space
+        float desiredRelVelX = 0f;
+        float accelX = deceleration;
 
-			// Get the direction of desired movement.
-			Vector2 dir = new Vector2(x, y);
+        float newRelVelX = Mathf.MoveTowards(
+            currentRelVel.x,
+            desiredRelVelX,
+            accelX * Time.fixedDeltaTime);
 
-			// Limit it so you cannot forward strafe faster.
-			dir = Vector2.ClampMagnitude(dir, 1f);
+        rb.velocity = transform.TransformDirection(new Vector2(newRelVelX, newRelVelY));
+    }
 
-			// Set the player's velocity manually.
-			rb.velocity = dir * speed;
-		}
-	}
+    void RotationUpdate()
+    {
+        float horz = -Input.GetAxisRaw(inputHorizontal);
+        bool tryingToRotate = Mathf.Abs(horz) > 0.01f;
+
+        // desired angular velocity
+        float desiredAngVel = (tryingToRotate ?
+            maxAngularSpeed * Mathf.Sign(horz) :
+            0f);
+
+        float currentAngVel = rb.angularVelocity;
+        
+        float accel = ((tryingToRotate && Mathf.Sign(desiredAngVel) == Mathf.Sign(currentAngVel)) ?
+            angularAcceleration :
+            angularDeceleration);
+
+        float newAngVel = Mathf.MoveTowards(
+            currentAngVel,
+            desiredAngVel,
+            accel * Time.fixedDeltaTime);
+
+        rb.angularVelocity = newAngVel;
+    }
 }

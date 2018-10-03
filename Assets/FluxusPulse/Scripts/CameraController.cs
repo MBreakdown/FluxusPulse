@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class CameraController : MonoBehaviour
 {
 	public enum FollowMode
@@ -16,18 +17,23 @@ public class CameraController : MonoBehaviour
 
 	[Tooltip("Camera to zoom.")]
 	public Camera cam;
+
 	[Tooltip("This script will follow the positions of these targets.")]
 	public List<Transform> targetsToFollow;
+
 	[Tooltip("How to calculate the position.")]
 	public FollowMode followMode = FollowMode.CentreBounds;
+
 	[Tooltip("If true, the position and zoom changes will be smoothed.")]
 	public bool smoothZoom = true;
 
 	[Tooltip("Smaller value means slower/smoother change.")]
 	[Range(0f, 1f)]
 	public float smoothZoomLerp = 0.3f;
+
 	[Tooltip("Minimum world units between any target and the screen edge.")]
 	public float padding = 3f;
+
 	[Tooltip("Scale factor of the calculated zoom. A value of 1 means the targets "
 		+ "will be at the edge of the screen (before padding).")]
 	public float zoomScale = 1f;
