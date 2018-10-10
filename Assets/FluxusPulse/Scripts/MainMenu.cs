@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
-    
+
+    public void Menu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     public void Play()
     {
         SceneManager.LoadScene(1);
-    }
-
-    public void LevelMenu()
-    {
-        SceneManager.LoadScene(7);
     }
 
     public void InstructionsMenu()
@@ -39,10 +39,19 @@ public class MainMenu : MonoBehaviour {
     {
         SceneManager.LoadScene(6);
     }
-
-    public void Menu()
+    public void LevelMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(7);
+    }
+
+    public void CharacterMenu()
+    {
+        SceneManager.LoadScene(8);
+    }
+
+    public void ConfirmationMenu()
+    {
+        SceneManager.LoadScene(9);
     }
 
     public void Quit()

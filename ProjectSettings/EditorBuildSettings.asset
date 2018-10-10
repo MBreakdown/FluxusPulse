@@ -32,3 +32,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/FluxusPulse/Scenes/Menus/CharacterMenu.unity
     guid: 40f61f69aeac0d348be64421793db2ae
+  - enabled: 1
+    path: Assets/FluxusPulse/Scenes/Menus/GameConfirm.unity
+    guid: 6ad8d3b36742fab4f950b8e03581f2d4
