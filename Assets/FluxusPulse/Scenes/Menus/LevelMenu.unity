@@ -607,7 +607,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1354539141}
-        m_MethodName: LevelMenu
+        m_MethodName: Menu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -734,8 +734,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1104324481}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 566, y: 270.5, z: 0}
-  m_LocalScale: {x: 0.58958334, y: 0.58958334, z: 0.58958334}
+  m_LocalPosition: {x: 574, y: 307, z: 0}
+  m_LocalScale: {x: 0.59791666, y: 0.59791666, z: 0.59791666}
   m_Children:
   - {fileID: 1807134251}
   - {fileID: 1354539140}
@@ -973,7 +973,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1807134250}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.000061035156, y: 0.000030517578, z: 0}
+  m_LocalPosition: {x: 0.000061035156, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1104324485}
