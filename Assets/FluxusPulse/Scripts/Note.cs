@@ -10,6 +10,6 @@ public class Note : MonoBehaviour
 
 	void Awake()
 	{
-		Destroy (this);
+		Destroy(this);
 	}
 }

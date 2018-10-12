@@ -4,118 +4,234 @@ using UnityEngine;
 
 public enum Polarity
 {
-    Positive,
-    Negative,
+	Positive,
+	Negative,
 }
 
 [RequireComponent(typeof(Rigidbody2D))]
 [DisallowMultipleComponent]
 public class PlayerController : MonoBehaviour
 {
-    // Inspector Fields
+	// Inspector Fields
 
-    public Polarity polarity = Polarity.Positive;
+	[Header("Polarity")]
 
-    [Tooltip("Metres per second.")]
-    public float maxSpeed = 10f;
+	public Polarity polarity = Polarity.Positive;
 
-    [Tooltip("Degrees per second.")]
-    public float maxAngularSpeed = 180f;
+	[Tooltip("Sprite renderer. Child of this GameObject.")]
+	public SpriteRenderer spriteRenderer;
 
-    [Tooltip("Metres per second per second.")]
-    public float acceleration = 10f;
+	[Tooltip("Sprite asset to use for positive polarity.")]
+	public Sprite spritePositive;
 
-    [Tooltip("Metres per second per second.")]
-    public float deceleration = 20f;
+	[Tooltip("Sprite asset to use for negative polarity.")]
+	public Sprite spriteNegative;
 
-    [Tooltip("Degrees per second per second.")]
-    public float angularAcceleration = 100f;
+	[Tooltip("Layers that can be attracted when positive.")]
+	public LayerMask magnetMaskPositive = int.MaxValue;
 
-    [Tooltip("Degrees per second per second.")]
-    public float angularDeceleration = 200f;
-    
-    public string inputHorizontal = "Horizontal";
-
-    public string inputVertical = "Vertical";
+	[Tooltip("Layers that can be attracted when negative.")]
+	public LayerMask magnetMaskNegative = int.MaxValue;
 
 
-    // Private Fields
+	[Header("Movement")]
 
-    private Rigidbody2D rb;
+	[Tooltip("Metres per second.")]
+	public float maxSpeed = 10f;
+
+	// TODO maxSpeedWhenInRangeOfWall
+
+	[Tooltip("Degrees per second.")]
+	public float maxAngularSpeed = 180f;
+
+	[Tooltip("Metres per second per second.")]
+	public float acceleration = 10f;
+
+	[Tooltip("Metres per second per second.")]
+	public float deceleration = 20f;
+
+	[Tooltip("Degrees per second per second.")]
+	public float angularAcceleration = 100f;
+
+	[Tooltip("Degrees per second per second.")]
+	public float angularDeceleration = 200f;
 
 
-    // Methods
-    
-    void Awake()
-    {
-        // Get the Rigidbody2D component of this GameObject.
-        rb = this.GetComponent<Rigidbody2D>();
-    }
+	[Header("Input Axes")]
+
+	public string inputHorizontal = "Horizontal";
+
+	public string inputVertical = "Vertical";
+
+	public string inputSwitchPolarity = "Fire1";
 
 
-    void FixedUpdate()
-    {
-        if (!rb)
-            return;
+	// Private Fields
 
-        RotationUpdate();
-        MovementUpdate();
-    }
+	private Rigidbody2D rb;
 
-    void MovementUpdate()
-    {
-        float vert = Input.GetAxisRaw(inputVertical);
-        bool tryingToMove = (Mathf.Abs(vert) > 0.01f);
 
-        // desired Y (forwards) velocity in local space
-        float desiredRelVelY = (tryingToMove ?
-            maxSpeed * Mathf.Sign(vert) :
-            0f);
+	// Properties
 
-        Vector2 currentRelVel = transform.InverseTransformDirection(rb.velocity);
+	public void SetPolarity(Polarity newPolarity)
+	{
+		this.polarity = newPolarity;
 
-        float accelY = ((tryingToMove && Mathf.Sign(desiredRelVelY) == Mathf.Sign(currentRelVel.y)) ?
-            acceleration :
-            deceleration);
+		if (spriteRenderer)
+		{
+			Sprite newSprite = newPolarity == Polarity.Positive ?
+				spritePositive :
+				spriteNegative;
 
-        float newRelVelY = Mathf.MoveTowards(
-            currentRelVel.y,
-            desiredRelVelY,
-            accelY * Time.fixedDeltaTime);
+			if (newSprite)
+			{
+				spriteRenderer.sprite = newSprite;
+			}
+		}
+	}
 
-        // desired X velocity in local space
-        float desiredRelVelX = 0f;
-        float accelX = deceleration;
 
-        float newRelVelX = Mathf.MoveTowards(
-            currentRelVel.x,
-            desiredRelVelX,
-            accelX * Time.fixedDeltaTime);
+	// Unity Event Methods
 
-        rb.velocity = transform.TransformDirection(new Vector2(newRelVelX, newRelVelY));
-    }
+	void Awake()
+	{
+		// Get the Rigidbody2D component of this GameObject.
+		rb = this.GetComponent<Rigidbody2D>();
 
-    void RotationUpdate()
-    {
-        float horz = -Input.GetAxisRaw(inputHorizontal);
-        bool tryingToRotate = Mathf.Abs(horz) > 0.01f;
 
-        // desired angular velocity
-        float desiredAngVel = (tryingToRotate ?
-            maxAngularSpeed * Mathf.Sign(horz) :
-            0f);
+		// Check that resource references are not null.
 
-        float currentAngVel = rb.angularVelocity;
-        
-        float accel = ((tryingToRotate && Mathf.Sign(desiredAngVel) == Mathf.Sign(currentAngVel)) ?
-            angularAcceleration :
-            angularDeceleration);
+		if (!spriteRenderer)
+		{
+			Debug.LogError("Sprite Renderer not assigned.", this);
+		}
 
-        float newAngVel = Mathf.MoveTowards(
-            currentAngVel,
-            desiredAngVel,
-            accel * Time.fixedDeltaTime);
+		if (!spritePositive)
+		{
+			Debug.LogError("Sprite Positive not assigned.", this);
+		}
 
-        rb.angularVelocity = newAngVel;
-    }
+		if (!spriteNegative)
+		{
+			Debug.LogError("Sprite Negative not assigned.", this);
+		}
+	}
+
+
+	void Start()
+	{
+		// Initialize property.
+		SetPolarity(this.polarity);
+	}
+
+
+	void Update()
+	{
+		// If player pressed the button this frame,
+		if (Input.GetButtonDown(inputSwitchPolarity))
+		{
+			SwitchPolarity();
+		}
+	}
+
+
+	void FixedUpdate()
+	{
+		if (!rb)
+			return;
+
+		RotationUpdate(-Input.GetAxisRaw(inputHorizontal));
+		
+		if (Physics2D.Raycast(
+			transform.position,
+			transform.up,
+			1000,
+			(polarity == Polarity.Negative ? magnetMaskNegative : magnetMaskPositive)
+			))
+		{
+			MovementUpdate(Input.GetAxisRaw(inputVertical));
+		}
+		else
+		{
+			MovementUpdate(Input.GetAxisRaw(inputVertical) * 0.1f);
+		}
+	}
+
+
+	// Methods
+
+	private void MovementUpdate(float input)
+	{
+		bool tryingToMove = Mathf.Abs(input) > 0.01f;
+
+		// desired Y (forwards) velocity in local space
+		float desiredRelVelY = (tryingToMove ?
+			maxSpeed * Mathf.Sign(input) :
+			0f);
+
+		Vector2 currentRelVel = transform.InverseTransformDirection(rb.velocity);
+
+		float accelY = ((tryingToMove && Mathf.Sign(desiredRelVelY) == Mathf.Sign(currentRelVel.y)) ?
+			acceleration :
+			deceleration);
+
+		float newRelVelY = Mathf.MoveTowards(
+			currentRelVel.y,
+			desiredRelVelY,
+			accelY * Time.fixedDeltaTime);
+
+		// desired X velocity in local space
+		float desiredRelVelX = 0f;
+		float accelX = deceleration;
+
+		float newRelVelX = Mathf.MoveTowards(
+			currentRelVel.x,
+			desiredRelVelX,
+			accelX * Time.fixedDeltaTime);
+
+		rb.velocity = transform.TransformDirection(new Vector2(newRelVelX, newRelVelY));
+	}
+
+
+	private void RotationUpdate(float input)
+	{
+		bool tryingToRotate = Mathf.Abs(input) > 0.01f;
+
+		// desired angular velocity
+		float desiredAngVel = (tryingToRotate ?
+			maxAngularSpeed * Mathf.Sign(input) :
+			0f);
+
+		float currentAngVel = rb.angularVelocity;
+
+		float accel = ((tryingToRotate && Mathf.Sign(desiredAngVel) == Mathf.Sign(currentAngVel)) ?
+			angularAcceleration :
+			angularDeceleration);
+
+		float newAngVel = Mathf.MoveTowards(
+			currentAngVel,
+			desiredAngVel,
+			accel * Time.fixedDeltaTime);
+
+		rb.angularVelocity = newAngVel;
+	}
+
+
+	private void SwitchPolarity()
+	{
+		// Toggle the polarity.
+		switch (polarity)
+		{
+			case Polarity.Positive:
+				{
+					SetPolarity(Polarity.Negative);
+				}
+				break;
+			case Polarity.Negative:
+				{
+					SetPolarity(Polarity.Positive);
+				}
+				break;
+		}
+	}
 }

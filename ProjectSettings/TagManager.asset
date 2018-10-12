@@ -13,16 +13,16 @@ TagManager:
   - UI
   - 
   - 
+  - Player1
+  - Player2
   - 
   - 
+  - Enemies1
+  - Enemies2
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - PositiveWalls
+  - NegativeWalls
   - 
   - 
   - 
