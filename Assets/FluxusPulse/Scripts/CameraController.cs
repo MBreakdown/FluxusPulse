@@ -25,7 +25,7 @@ public class CameraController : MonoBehaviour
 	public FollowMode followMode = FollowMode.CentreBounds;
 
 	[Tooltip("If true, the position and zoom changes will be smoothed.")]
-	public bool smoothZoom = true;
+	public bool smoothZoom = false;
 
 	[Tooltip("Smaller value means slower/smoother change.")]
 	[Range(0f, 1f)]
@@ -89,7 +89,7 @@ public class CameraController : MonoBehaviour
 				centre = (min + max) / 2;
 			}
 			centre.z = initialZ;
-
+			
 			if (smoothZoom) {
 				transform.position = Vector3.Lerp(transform.position, centre, smoothZoomLerp);
 			} else {
@@ -100,6 +100,7 @@ public class CameraController : MonoBehaviour
 			float height = Mathf.Abs (min.y - max.y);
 			float width = Mathf.Abs (min.x - max.x);
 			float targetSize = Mathf.Max (height, width / cam.aspect) * (zoomScale / 2f) + padding;
+			
 			if (smoothZoom) {
 				cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, targetSize, smoothZoomLerp);
 			} else {
