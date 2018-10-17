@@ -73,5 +73,5 @@ public class PlayerController : MonoBehaviour
 		{
 			rb.angularVelocity = maxAngularSpeed * input;
 		}
-	}
+    }
 }
