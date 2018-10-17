@@ -148,8 +148,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e5669b7b646ac45b5d0b95578bb2b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerToFollow: {fileID: 0}
-  playerToAvoid: {fileID: 0}
+  playerToFollow: {fileID: 4032078282298210, guid: 72451d8fc7214a64d99610a3d8ec2cc4,
+    type: 2}
+  playerToAvoid: {fileID: 4435114087704106, guid: a547cd402fc6d3841a5d2ce662c27843,
+    type: 2}
   speed: 3
   maxSpeed: 10
   health: 100
