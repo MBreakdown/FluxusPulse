@@ -20,7 +20,11 @@ public class EnemyScript : MonoBehaviour
     // Use Rigidbody stuff here.
     void FixedUpdate()
     {
-
+        // Check if the player exists
+        if (!playerToFollow)
+        {
+            return;
+        }
         // Fly towards the player
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (!rb)
@@ -36,10 +40,7 @@ public class EnemyScript : MonoBehaviour
         }
 
         // Rotate towards the correct direction
-        rb.rotation = Mathf.Rad2Deg * Mathf.Atan2(vectorToPlayer.y, vectorToPlayer.x) - 90;
-
-        // Collisions with players
-
+        rb.rotation = Mathf.Rad2Deg * Mathf.Atan2(vectorToPlayer.y, vectorToPlayer.x) + 90;
     }
 
     // Update is called once per frame.
@@ -48,5 +49,14 @@ public class EnemyScript : MonoBehaviour
     void Update()
     {
 
-	}
+    }
+
+    // Run collisions
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.name == playerToFollow.name)
+        {
+            Destroy(col.gameObject);
+        }
+    }
 }
