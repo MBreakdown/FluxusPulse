@@ -14,7 +14,7 @@ public class EnemyScript : MonoBehaviour
 	// Use this for initialization
 	void Start()
     {
-        Debug.Log(playerToFollow.name);
+
 	}
 
     // Runs once every physics frame.
@@ -56,6 +56,11 @@ public class EnemyScript : MonoBehaviour
     // Run collisions
     void OnCollisionEnter2D(Collision2D col)
     {
+        // Check player's existance to avoid errors
+        if (!playerToFollow)
+        {
+            return;
+        }
         // Run collision with player to follow
         if (col.gameObject.name == playerToFollow.name)
         {
@@ -65,7 +70,12 @@ public class EnemyScript : MonoBehaviour
             // Self destruct
             Destroy(this.gameObject);
         }
+        
         // Placeholder TODO remove
+        if (!playerToAvoid)
+        {
+            return;
+        }
         if (col.gameObject.name == playerToAvoid.name)
         {
             Destroy(this.gameObject);
