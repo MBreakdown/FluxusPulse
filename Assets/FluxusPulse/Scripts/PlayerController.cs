@@ -8,14 +8,14 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class PlayerController : MonoBehaviour
 {
-	// Inspector Fields
+    // Inspector Fields
 
-	[Header("Movement")]
+    [Header("Movement")]
 
-	//[Tooltip("Metres per second.")]
-	//public float maxSpeed = 10f;
-
-	[Tooltip("Degrees per second.")]
+    public float speed = 3f;
+    public float angularSpeed = 20f;
+    
+    public float maxSpeed = 10f;
 	public float maxAngularSpeed = 180f;
 
 
@@ -55,23 +55,36 @@ public class PlayerController : MonoBehaviour
 			chargedEntity.InvertCharge();
 		}
 
-		// If player is holding button down, activate polarity.
-		chargedEntity.enabled = Input.GetAxisRaw(inputVertical) > 0.01f;
+        // If player is holding button down, activate polarity.
+        float input = Input.GetAxisRaw(inputVertical);
+        bool tryingToMove = Mathf.Abs(input) > 0.01f;
+        chargedEntity.enabled = tryingToMove;
 	}
 
 
 	void FixedUpdate()
 	{
+        MovementUpdate(Input.GetAxisRaw(inputVertical));
 		RotationUpdate(-Input.GetAxisRaw(inputHorizontal));
 	}
 
+    private void MovementUpdate(float input)
+    {
+        bool tryingToMove = Mathf.Abs(input) > 0.01f;
+        if (tryingToMove)
+        {
+            rb.AddForce(transform.up * speed * input);
+        }
+        rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
+    }
 
 	private void RotationUpdate(float input)
 	{
 		bool tryingToRotate = Mathf.Abs(input) > 0.01f;
 		if (tryingToRotate)
 		{
-			rb.angularVelocity = maxAngularSpeed * input;
-		}
-	}
+            rb.AddTorque(angularSpeed * input);
+        }
+        rb.angularVelocity = Mathf.Clamp(rb.angularVelocity, -maxAngularSpeed, maxAngularSpeed);
+    }
 }
