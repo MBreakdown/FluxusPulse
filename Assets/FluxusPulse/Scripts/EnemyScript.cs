@@ -64,5 +64,10 @@ public class EnemyScript : MonoBehaviour
             // Self destruct
             Destroy(this.gameObject);
         }
+        // Placeholder TODO remove
+        if (col.gameObject.name != playerToFollow.name)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
