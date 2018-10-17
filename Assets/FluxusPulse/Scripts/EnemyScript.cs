@@ -6,6 +6,7 @@ public class EnemyScript : MonoBehaviour
 {
     // Reference variable, assignable in the inspector.
     public Transform playerToFollow;
+    public Transform playerToAvoid;
     public float speed = 10;
     public float maxSpeed = 20;
     public float health = 100;
@@ -65,7 +66,7 @@ public class EnemyScript : MonoBehaviour
             Destroy(this.gameObject);
         }
         // Placeholder TODO remove
-        if (col.gameObject.name != playerToFollow.name)
+        if (col.gameObject.name == playerToAvoid.name)
         {
             Destroy(this.gameObject);
         }
