@@ -8,6 +8,7 @@ public class EnemyScript : MonoBehaviour
     public Transform playerToFollow;
     public float speed = 10;
     public float maxSpeed = 20;
+    public float health = 100;
 
 	// Use this for initialization
 	void Start()
@@ -54,9 +55,14 @@ public class EnemyScript : MonoBehaviour
     // Run collisions
     void OnCollisionEnter2D(Collision2D col)
     {
+        // Run collision with player to follow
         if (col.gameObject.name == playerToFollow.name)
         {
+            // Damage player
             Destroy(col.gameObject);
+
+            // Self destruct
+            Destroy(this.gameObject);
         }
     }
 }
