@@ -58,54 +58,66 @@ public class CameraController : MonoBehaviour
 		initialZ = transform.position.z;
 	}
 
-	void Update()
-	{
-		if (targetsToFollow != null && targetsToFollow.Count > 0) {
-			// Aggregate all the target positions.
-			Vector3 sum = Vector3.zero;
-			Vector3 min = targetsToFollow[0].position;
-			Vector3 max = min;
-			int count = 0;
-			foreach (Transform target in targetsToFollow) {
-				if (!target)
-					continue;
-				
-				Vector3 pos = target.position;
-				sum += pos;
-				count++;
-				min.x = Mathf.Min (min.x, pos.x);
-				min.y = Mathf.Min (min.y, pos.y);
-				min.z = Mathf.Min (min.z, pos.z);
-				max.x = Mathf.Max (max.x, pos.x);
-				max.y = Mathf.Max (max.y, pos.y);
-				max.z = Mathf.Max (max.z, pos.z);
-			}
+    void Update()
+    {
+        if (targetsToFollow == null)
+            return;
 
-			// Calculate position in the centre of all the targets.
-			Vector3 centre;
-			if (followMode == FollowMode.CentreAverage) {
-				centre = sum / count;
-			} else {
-				centre = (min + max) / 2;
-			}
-			centre.z = initialZ;
-			
-			if (smoothZoom) {
-				transform.position = Vector3.Lerp(transform.position, centre, smoothZoomLerp);
-			} else {
-				transform.position = centre;
-			}
+        IEnumerable<Transform> targets = targetsToFollow.Where(target => (target));
+        if (targets.Count() <= 0)
+            return;
 
-			// Calculate camera scale.
-			float height = Mathf.Abs (min.y - max.y);
-			float width = Mathf.Abs (min.x - max.x);
-			float targetSize = Mathf.Max (height, width / cam.aspect) * (zoomScale / 2f) + padding;
-			
-			if (smoothZoom) {
-				cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, targetSize, smoothZoomLerp);
-			} else {
-				cam.orthographicSize = targetSize;
-			}
-		}
-	}
+        // Aggregate all the target positions.
+        Vector3 sum = Vector3.zero;
+        Vector3 min = targets.First().position;
+        Vector3 max = min;
+        int count = 0;
+        foreach (Transform target in targets)
+        {
+            Vector3 pos = target.position;
+            sum += pos;
+            count++;
+            min.x = Mathf.Min(min.x, pos.x);
+            min.y = Mathf.Min(min.y, pos.y);
+            min.z = Mathf.Min(min.z, pos.z);
+            max.x = Mathf.Max(max.x, pos.x);
+            max.y = Mathf.Max(max.y, pos.y);
+            max.z = Mathf.Max(max.z, pos.z);
+        }
+
+        // Calculate position in the centre of all the targets.
+        Vector3 centre;
+        if (followMode == FollowMode.CentreAverage)
+        {
+            centre = sum / count;
+        }
+        else
+        {
+            centre = (min + max) / 2;
+        }
+        centre.z = initialZ;
+
+        if (smoothZoom)
+        {
+            transform.position = Vector3.Lerp(transform.position, centre, smoothZoomLerp);
+        }
+        else
+        {
+            transform.position = centre;
+        }
+
+        // Calculate camera scale.
+        float height = Mathf.Abs(min.y - max.y);
+        float width = Mathf.Abs(min.x - max.x);
+        float targetSize = Mathf.Max(height, width / cam.aspect) * (zoomScale / 2f) + padding;
+
+        if (smoothZoom)
+        {
+            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, targetSize, smoothZoomLerp);
+        }
+        else
+        {
+            cam.orthographicSize = targetSize;
+        }
+    }
 }
