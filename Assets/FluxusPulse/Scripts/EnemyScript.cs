@@ -78,6 +78,7 @@ public class EnemyScript : MonoBehaviour
         }
         if (col.gameObject.name == playerToAvoid.name)
         {
+            // Destroy self
             Destroy(this.gameObject);
         }
     }
