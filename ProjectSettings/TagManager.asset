@@ -13,16 +13,16 @@ TagManager:
   - UI
   - 
   - 
-  - Player1
-  - Player2
+  - Players
+  - Enemies
+  - Player Bounds
+  - Player Gravity Aoe
   - 
   - 
-  - Enemies1
-  - Enemies2
   - 
   - 
-  - PositiveWalls
-  - NegativeWalls
+  - 
+  - 
   - 
   - 
   - 

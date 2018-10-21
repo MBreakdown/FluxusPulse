@@ -1,0 +1,26 @@
+﻿
+Health
+	float health;
+	void TakeDamage(float damage)
+
+
+Damager
+	float damage;
+	float GetDamage()
+	
+	OnCollisionEnter2D(Collision2D col)
+		// if col is an enemy/player/entity we can damage:
+			Health otherHealth = col.gameObject.GetComponent<Health>();
+			float damage = GetComponent<Damager>().GetDamage();
+			otherHealth.TakeDamage(damage);
+
+
+Player GameObject components:
+	Health
+	PlayerController
+	Damager (against enemies)
+
+Enemy GameObject componets:
+	Health
+	EnemyScript
+	Damager (against players)

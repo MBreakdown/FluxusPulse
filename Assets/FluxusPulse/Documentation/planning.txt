@@ -1,0 +1,43 @@
+
+Object Classes:
+	Player
+	Enemy
+	Environment
+		Walls
+
+Walls:
+	Wooden		- Not magnetic.
+	Metallic	- Attractable by both polarities.
+	Polarised	- Attractable by a specific polarity.
+
+
+Player Subclasses:
+	Pulse			- Jack of all trades.
+	Graviton		- Shoots bombs that pull enemies together.
+	Gravity Assist	- Flings other players around them for added momentum.
+	Slingshot		- Creates a temporary slingshot where the player must use their
+						polarity to stretch it out and then fling themselves.
+	Needles			- Launches lots of metallic shards that can be launched
+						towards enemies by using polarity.
+	Phaser			- Switches its phase with another player (i.e. which enemies can attack it).
+
+
+Enemy Subclasses:
+	Bomb		- Rams into players to blow up.
+	Fighter		- Shoots at players from a distance.
+	Grouper		- Pulls nearby ships towards itself.
+	Swarm		- Many tiny ships stay close together to attack en masse.
+	Energy EMP	- Disable player abilities for a while.
+	Power EMP	- Force player to stay on one polarity for a while.
+	Mass Relay	- Launch nearby ships towards player,
+					but launches itself backwards in the process.
+
+
+Basic Actions
+
+Player:
+	Switch Polarity	- Positive/negative.
+	Move			- They get attracted to opposite polarity and repelled by similar polarity.
+						Strongest force is in line with the ship's forwards/backwards directions.
+	Rotate			- Rotate the ship at a constant speed.
+	Ability			- Character-specific ability.
