@@ -71,16 +71,5 @@ public class EnemyScript : MonoBehaviour
             // Damage self
             this.gameObject.GetComponent<HealthEntity>().Hurt(damage);
         }
-        
-        // Placeholder TODO remove
-        if (!playerToAvoid)
-        {
-            return;
-        }
-        if (col.gameObject.name == playerToAvoid.name)
-        {
-            // Damage self
-            this.gameObject.GetComponent<HealthEntity>().Hurt(damage);
-        }
     }
 }

@@ -1,11 +1,21 @@
 fileFormatVersion: 2
 guid: 8e58098a572817a43aa572f0c2f89b40
-timeCreated: 1539751970
+timeCreated: 1540345699
 licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - bomberNeg1: {fileID: 1719705609157870, guid: 23d5adf72612225458cbcc9af5114421,
+      type: 2}
+  - bomberNeg2: {fileID: 1129414406463482, guid: 6a2d6de20e7320446b94dca6422cb4d4,
+      type: 2}
+  - bomberPos1: {fileID: 1767593517679382, guid: e6ee293f2f0a24141aeaae212bc5e0e3,
+      type: 2}
+  - bomberPos2: {fileID: 1736166029429182, guid: ad967ec7f727ab147913272d82df1779,
+      type: 2}
+  - PlayerA: {instanceID: 0}
+  - PlayerB: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

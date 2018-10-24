@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour {
-
-    public GameObject bomberNeg1;
-    public GameObject bomberNeg2;
-    public GameObject bomberPos1;
-    public GameObject bomberPos2;
+    
+    public GameObject[] enemiesA;
+    public GameObject[] enemiesB;
+    public Transform PlayerA;
+    public Transform PlayerB;
     public int wave = 0;
     public int enemyCount = 0;
 
@@ -40,14 +40,22 @@ public class EnemyManager : MonoBehaviour {
     {
         for (int i = 0; i < bomber; i++)
         {
-            Instantiate(bomberNeg1, new Vector2(xLocation, yLocation), Quaternion.identity);
-            Instantiate(bomberNeg2, new Vector2(xLocation, yLocation), Quaternion.identity);
-            Instantiate(bomberPos1, new Vector2(xLocation, yLocation), Quaternion.identity);
-            Instantiate(bomberPos2, new Vector2(xLocation, yLocation), Quaternion.identity);
+            for (int j = 0; j < enemiesA.Length; j++)
+            {
+                Instantiate(enemiesA[j], new Vector2(xLocation, yLocation), Quaternion.identity);
+                enemiesA[j].gameObject.GetComponent<EnemyScript>().playerToAvoid = PlayerA;
+                enemiesA[j].gameObject.GetComponent<EnemyScript>().playerToFollow = PlayerB;
+            }
+            for (int j = 0; j < enemiesB.Length; j++)
+            {
+                Instantiate(enemiesB[j], new Vector2(xLocation, yLocation), Quaternion.identity);
+                enemiesB[j].gameObject.GetComponent<EnemyScript>().playerToAvoid = PlayerB;
+                enemiesB[j].gameObject.GetComponent<EnemyScript>().playerToFollow = PlayerA;
+            }
             xLocation += 0.5f;
             yLocation += 0.5f;
 
-            Debug.Log("Confirmed bomber spawn");
+            Debug.Log("Confirmed bombers spawned");
         }
     }
 }
