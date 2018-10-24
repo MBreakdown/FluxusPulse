@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114120416094964796}
   - component: {fileID: 114243372351197932}
   - component: {fileID: 114630387238301858}
+  - component: {fileID: 114379090731272884}
   m_Layer: 0
   m_Name: Player B
   m_TagString: Untagged
@@ -224,6 +225,36 @@ MonoBehaviour:
   spritePositive: {fileID: 21300000, guid: ee1dbfb91ee9fd9449bc85a2721d7024, type: 3}
   spriteNegative: {fileID: 21300002, guid: ee1dbfb91ee9fd9449bc85a2721d7024, type: 3}
   spriteZero: {fileID: 21300000, guid: ee1dbfb91ee9fd9449bc85a2721d7024, type: 3}
+--- !u!114 &114379090731272884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1007211651105730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c59620db0cf37346b7f803a09927758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_health: 100
+  m_maxHealth: 100
+  onHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: HealthEntity+UnityEventFloat, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onHealthFractionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: HealthEntity+UnityEventFloat, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  callDestroyOnDeath: 0
+  destroyTime: 0
 --- !u!114 &114519751879408854
 MonoBehaviour:
   m_ObjectHideFlags: 1

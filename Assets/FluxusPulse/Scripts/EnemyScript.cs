@@ -7,9 +7,10 @@ public class EnemyScript : MonoBehaviour
     // Reference variable, assignable in the inspector.
     public Transform playerToFollow;
     public Transform playerToAvoid;
-    public float speed = 10;
+    public float speed = 15;
     public float maxSpeed = 20;
     public float health = 100;
+    public float damage;
 
 	// Use this for initialization
 	void Start()
@@ -65,10 +66,10 @@ public class EnemyScript : MonoBehaviour
         if (col.gameObject.name == playerToFollow.name)
         {
             // Damage player
-            Destroy(col.gameObject);
+            col.gameObject.GetComponent<HealthEntity>().Hurt(damage);
 
-            // Self destruct
-            Destroy(this.gameObject);
+            // Damage self
+            this.gameObject.GetComponent<HealthEntity>().Hurt(damage);
         }
         
         // Placeholder TODO remove
@@ -78,8 +79,8 @@ public class EnemyScript : MonoBehaviour
         }
         if (col.gameObject.name == playerToAvoid.name)
         {
-            // Destroy self
-            Destroy(this.gameObject);
+            // Damage self
+            this.gameObject.GetComponent<HealthEntity>().Hurt(damage);
         }
     }
 }
