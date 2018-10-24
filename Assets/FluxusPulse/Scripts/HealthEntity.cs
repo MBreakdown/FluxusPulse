@@ -77,6 +77,7 @@ public class HealthEntity : MonoBehaviour
     /// </summary>
     public void Hurt(float damage)
     {
+        Debug.Log("Hurt() has been called");
         Health -= damage;
     }
 

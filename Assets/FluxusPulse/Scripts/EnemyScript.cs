@@ -10,6 +10,7 @@ public class EnemyScript : MonoBehaviour
     public float speed = 15;
     public float maxSpeed = 20;
     public float health = 100;
+    public float damage;
 
 	// Use this for initialization
 	void Start()
@@ -65,10 +66,10 @@ public class EnemyScript : MonoBehaviour
         if (col.gameObject.name == playerToFollow.name)
         {
             // Damage player
-            col.gameObject.GetComponent<HealthEntity>().Hurt(100);
+            col.gameObject.GetComponent<HealthEntity>().Hurt(damage);
 
             // Damage self
-            this.gameObject.GetComponent<HealthEntity>().Hurt(100);
+            this.gameObject.GetComponent<HealthEntity>().Hurt(damage);
         }
         
         // Placeholder TODO remove
@@ -79,7 +80,7 @@ public class EnemyScript : MonoBehaviour
         if (col.gameObject.name == playerToAvoid.name)
         {
             // Damage self
-            this.gameObject.GetComponent<HealthEntity>().Hurt(100);
+            this.gameObject.GetComponent<HealthEntity>().Hurt(damage);
         }
     }
 }
