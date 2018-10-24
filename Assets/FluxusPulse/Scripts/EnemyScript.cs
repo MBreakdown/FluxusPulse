@@ -72,4 +72,11 @@ public class EnemyScript : MonoBehaviour
             this.gameObject.GetComponent<HealthEntity>().Hurt(damage);
         }
     }
+
+    // Detect an enemy death
+    void OnDestroy()
+    {
+        // Decrease the number of enemies
+        FindObjectOfType<EnemyManager>().enemyCount -= 1;
+    }
 }
