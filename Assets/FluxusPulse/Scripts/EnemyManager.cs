@@ -28,12 +28,11 @@ public class EnemyManager : MonoBehaviour {
             Spawn(1);
             wave++;
         }
-        // Get the enemy count
-        /*else if (wave == 1)
+        else if (wave == 1 && FindObjectOfType<EnemyManager>().enemyCount == 0)
         {
             Spawn(2);
             wave++;
-        }*/
+        }
 	}
 
     void Spawn(int bomber)
@@ -42,19 +41,26 @@ public class EnemyManager : MonoBehaviour {
         {
             for (int j = 0; j < enemiesA.Length; j++)
             {
+                // Initialise an enemy
                 GameObject go = Instantiate(enemiesA[j], new Vector2(xLocation, yLocation), Quaternion.identity);
                 go.gameObject.GetComponent<EnemyScript>().playerToAvoid = PlayerA;
                 go.gameObject.GetComponent<EnemyScript>().playerToFollow = PlayerB;
+
+                // Increase the enemy count
+                enemyCount += 1;
             }
             for (int j = 0; j < enemiesB.Length; j++)
             {
+                // Initialise an enemy
                 GameObject go = Instantiate(enemiesB[j], new Vector2(xLocation, yLocation), Quaternion.identity);
                 go.gameObject.GetComponent<EnemyScript>().playerToAvoid = PlayerB;
                 go.gameObject.GetComponent<EnemyScript>().playerToFollow = PlayerA;
-            }
-            xLocation += 0.5f;
-            yLocation += 0.5f;
 
+                // Increase the enemy count
+                enemyCount += 1;
+            }
+
+            // Send console message
             Debug.Log("Confirmed bombers spawned");
         }
     }

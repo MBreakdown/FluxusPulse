@@ -921,11 +921,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesA:
-  - {fileID: 1719705609157870, guid: 23d5adf72612225458cbcc9af5114421, type: 2}
-  - {fileID: 1767593517679382, guid: e6ee293f2f0a24141aeaae212bc5e0e3, type: 2}
+  - {fileID: 1276991973067674, guid: 23d5adf72612225458cbcc9af5114421, type: 2}
+  - {fileID: 1916002382217688, guid: e6ee293f2f0a24141aeaae212bc5e0e3, type: 2}
   enemiesB:
-  - {fileID: 1129414406463482, guid: 6a2d6de20e7320446b94dca6422cb4d4, type: 2}
-  - {fileID: 1736166029429182, guid: ad967ec7f727ab147913272d82df1779, type: 2}
+  - {fileID: 1404990653823398, guid: 6a2d6de20e7320446b94dca6422cb4d4, type: 2}
+  - {fileID: 1964859663796502, guid: ad967ec7f727ab147913272d82df1779, type: 2}
   PlayerA: {fileID: 1398116079}
   PlayerB: {fileID: 743098792}
   wave: 0
@@ -1466,6 +1466,11 @@ Prefab:
     - target: {fileID: 4032078282298210, guid: 72451d8fc7214a64d99610a3d8ec2cc4, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114774685566108110, guid: 72451d8fc7214a64d99610a3d8ec2cc4,
+        type: 2}
+      propertyPath: damage
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 72451d8fc7214a64d99610a3d8ec2cc4, type: 2}
@@ -2182,6 +2187,11 @@ Prefab:
     - target: {fileID: 4435114087704106, guid: a547cd402fc6d3841a5d2ce662c27843, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114519751879408854, guid: a547cd402fc6d3841a5d2ce662c27843,
+        type: 2}
+      propertyPath: damage
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a547cd402fc6d3841a5d2ce662c27843, type: 2}
