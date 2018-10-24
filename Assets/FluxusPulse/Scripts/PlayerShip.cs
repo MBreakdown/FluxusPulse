@@ -69,6 +69,9 @@ public class PlayerShip : MonoBehaviour
     public bool IsFlinging => FlingState == FlingState.Flinging;
     public bool IsFlung => FlingState == FlingState.Flung;
 
+    [Header("Stats")]
+
+    public float damage;
 
     // Unity Events
 
@@ -205,5 +208,15 @@ public class PlayerShip : MonoBehaviour
 
         yield return new WaitForSeconds(flingingCooldown);
         FlingState = FlingState.None;
+    }
+
+    // Run collisions
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        // Damage enemy
+        if (col.gameObject.GetComponent<EnemyScript>().playerToAvoid.name == name)
+        {
+            col.gameObject.GetComponent<HealthEntity>().Hurt(damage);
+        }
     }
 }
