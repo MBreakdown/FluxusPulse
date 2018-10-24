@@ -253,7 +253,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  callDestroyOnDeath: 0
+  callDestroyOnDeath: 1
   destroyTime: 0
 --- !u!114 &114519751879408854
 MonoBehaviour:
@@ -273,6 +273,7 @@ MonoBehaviour:
   inputHorizontal: Horizontal Player2
   inputVertical: Vertical Player2
   inputSwitchPolarity: Fire2 Player2
+  damage: 40
 --- !u!114 &114630387238301858
 MonoBehaviour:
   m_ObjectHideFlags: 1

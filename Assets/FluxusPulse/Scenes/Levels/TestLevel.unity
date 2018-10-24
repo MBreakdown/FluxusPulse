@@ -845,7 +845,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 834003401}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 890, y: 755, z: 0}
+  m_LocalPosition: {x: 1284, y: 485.5, z: 0}
   m_LocalScale: {x: -6, y: 6, z: 1}
   m_Children:
   - {fileID: 1276402287}
@@ -920,10 +920,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e58098a572817a43aa572f0c2f89b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bomberNeg1: {fileID: 1719705609157870, guid: 23d5adf72612225458cbcc9af5114421, type: 2}
-  bomberNeg2: {fileID: 1129414406463482, guid: 6a2d6de20e7320446b94dca6422cb4d4, type: 2}
-  bomberPos1: {fileID: 1767593517679382, guid: e6ee293f2f0a24141aeaae212bc5e0e3, type: 2}
-  bomberPos2: {fileID: 1736166029429182, guid: ad967ec7f727ab147913272d82df1779, type: 2}
+  enemiesA:
+  - {fileID: 1719705609157870, guid: 23d5adf72612225458cbcc9af5114421, type: 2}
+  - {fileID: 1767593517679382, guid: e6ee293f2f0a24141aeaae212bc5e0e3, type: 2}
+  enemiesB:
+  - {fileID: 1129414406463482, guid: 6a2d6de20e7320446b94dca6422cb4d4, type: 2}
+  - {fileID: 1736166029429182, guid: ad967ec7f727ab147913272d82df1779, type: 2}
+  PlayerA: {fileID: 1398116079}
+  PlayerB: {fileID: 743098792}
   wave: 0
   enemyCount: 0
 --- !u!4 &878568509
@@ -1065,7 +1069,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1179208009}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalPosition: {x: 566, y: 270.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1977148357}
@@ -1777,7 +1781,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1977148356}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -897, y: 755, z: 0}
+  m_LocalPosition: {x: -503, y: 485.5, z: 0}
   m_LocalScale: {x: 6, y: 6, z: 1}
   m_Children:
   - {fileID: 1779754694}

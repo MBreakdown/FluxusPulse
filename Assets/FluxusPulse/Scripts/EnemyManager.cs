@@ -42,15 +42,15 @@ public class EnemyManager : MonoBehaviour {
         {
             for (int j = 0; j < enemiesA.Length; j++)
             {
-                Instantiate(enemiesA[j], new Vector2(xLocation, yLocation), Quaternion.identity);
-                enemiesA[j].gameObject.GetComponent<EnemyScript>().playerToAvoid = PlayerA;
-                enemiesA[j].gameObject.GetComponent<EnemyScript>().playerToFollow = PlayerB;
+                GameObject go = Instantiate(enemiesA[j], new Vector2(xLocation, yLocation), Quaternion.identity);
+                go.gameObject.GetComponent<EnemyScript>().playerToAvoid = PlayerA;
+                go.gameObject.GetComponent<EnemyScript>().playerToFollow = PlayerB;
             }
             for (int j = 0; j < enemiesB.Length; j++)
             {
-                Instantiate(enemiesB[j], new Vector2(xLocation, yLocation), Quaternion.identity);
-                enemiesB[j].gameObject.GetComponent<EnemyScript>().playerToAvoid = PlayerB;
-                enemiesB[j].gameObject.GetComponent<EnemyScript>().playerToFollow = PlayerA;
+                GameObject go = Instantiate(enemiesB[j], new Vector2(xLocation, yLocation), Quaternion.identity);
+                go.gameObject.GetComponent<EnemyScript>().playerToAvoid = PlayerB;
+                go.gameObject.GetComponent<EnemyScript>().playerToFollow = PlayerA;
             }
             xLocation += 0.5f;
             yLocation += 0.5f;
