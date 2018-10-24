@@ -8,9 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/FluxusPulse/Scenes/Menus/MenuScene.unity
     guid: 141354d53b69dc741812cee1c4314291
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/FluxusPulse/Scenes/Levels/TestLevel.unity
+    guid: ba74d3c3da443944bb04ef8a81abdff1
   - enabled: 1
     path: Assets/FluxusPulse/Scenes/Menus/InstructionsMenu.unity
     guid: 21f47011bd7097f41b29eb2760f4848b

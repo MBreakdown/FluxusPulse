@@ -33,6 +33,11 @@ public class EnemyManager : MonoBehaviour {
             Spawn(2);
             wave++;
         }
+        else if (wave > 1 && FindObjectOfType<EnemyManager>().enemyCount == 0)
+        {
+            Spawn(3);
+            wave++;
+        }
 	}
 
     void Spawn(int bomber)

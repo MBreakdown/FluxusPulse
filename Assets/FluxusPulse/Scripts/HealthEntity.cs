@@ -103,11 +103,18 @@ public class HealthEntity : MonoBehaviour
 
     private void InvokeDeathEvents()
     {
+        // Check if a player has died
+        if (this.gameObject.GetComponent<PlayerShip>() != null)
+        {
+            Debug.Log("A player has died!");
+            FindObjectOfType<GameController>().game = false;
+        }
+        // Invoke the death
         if (onDeath != null)
         {
             onDeath.Invoke();
         }
-
+        // Check to destroy the game object
         if (callDestroyOnDeath)
         {
             Destroy(gameObject, destroyTime);
