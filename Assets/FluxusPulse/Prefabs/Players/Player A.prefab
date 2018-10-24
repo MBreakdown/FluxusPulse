@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 114035528732950406}
   - component: {fileID: 114830766110181056}
   - component: {fileID: 114077511395232244}
+  - component: {fileID: 114075586891375522}
   m_Layer: 0
   m_Name: Player A
   m_TagString: Untagged
@@ -198,6 +199,36 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114075586891375522
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1760156751147612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c59620db0cf37346b7f803a09927758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_health: 100
+  m_maxHealth: 100
+  onHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: HealthEntity+UnityEventFloat, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onHealthFractionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: HealthEntity+UnityEventFloat, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  callDestroyOnDeath: 0
+  destroyTime: 0
 --- !u!114 &114077511395232244
 MonoBehaviour:
   m_ObjectHideFlags: 1
