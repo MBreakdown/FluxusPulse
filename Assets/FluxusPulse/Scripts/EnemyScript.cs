@@ -11,6 +11,7 @@ public class EnemyScript : MonoBehaviour
     public float maxSpeed = 20;
     public float health = 100;
     public float damage;
+    public float reward;
 
 	// Use this for initialization
 	void Start()

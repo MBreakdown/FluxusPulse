@@ -144,6 +144,7 @@ MonoBehaviour:
   maxSpeed: 10
   health: 100
   damage: 5
+  reward: 10
 --- !u!114 &114528330641409914
 MonoBehaviour:
   m_ObjectHideFlags: 1
