@@ -135,9 +135,11 @@ MonoBehaviour:
   playerToAvoid: {fileID: 0}
   speed: 8
   maxSpeed: 8
+  maxSpeedStorage: 8
   health: 100
   damage: 5
   reward: 10
+  ranged: 0
 --- !u!114 &114797736180453926
 MonoBehaviour:
   m_ObjectHideFlags: 1
