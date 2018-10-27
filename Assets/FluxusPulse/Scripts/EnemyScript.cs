@@ -7,9 +7,9 @@ public class EnemyScript : MonoBehaviour
     // Reference variable, assignable in the inspector.
     public Transform playerToFollow;
     public Transform playerToAvoid;
-    public float speed = 15;
-    public float maxSpeed = 20;
-    public float health = 100;
+    public float speed;
+    public float maxSpeed;
+    public float health;
     public float damage;
     public float reward;
 

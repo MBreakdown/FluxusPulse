@@ -25,26 +25,27 @@ public class EnemyManager : MonoBehaviour {
     {
 		if (wave == 0)
         {
-            Spawn(1);
+            Spawn(1, 0);
             wave++;
         }
         else if (wave == 1 && FindObjectOfType<EnemyManager>().enemyCount == 0)
         {
-            Spawn(2);
+            Spawn(0, 1);
             wave++;
         }
         else if (wave > 1 && FindObjectOfType<EnemyManager>().enemyCount == 0)
         {
-            Spawn(3);
+            Spawn(0, 2);
             wave++;
         }
 	}
 
-    void Spawn(int bomber)
+    void Spawn(int bomber, int swift)
     {
+        // Bomber spawning
         for (int i = 0; i < bomber; i++)
         {
-            for (int j = 0; j < enemiesA.Length; j++)
+            for (int j = 0; j < 2; j++)
             {
                 // Initialise an enemy
                 GameObject go = Instantiate(enemiesA[j], new Vector2(xLocation, yLocation), Quaternion.identity);
@@ -54,7 +55,7 @@ public class EnemyManager : MonoBehaviour {
                 // Increase the enemy count
                 enemyCount += 1;
             }
-            for (int j = 0; j < enemiesB.Length; j++)
+            for (int j = 0; j < 2; j++)
             {
                 // Initialise an enemy
                 GameObject go = Instantiate(enemiesB[j], new Vector2(xLocation, yLocation), Quaternion.identity);
@@ -67,6 +68,34 @@ public class EnemyManager : MonoBehaviour {
 
             // Send console message
             Debug.Log("Confirmed bombers spawned");
+        }
+
+        // Swift ships spawning
+        for (int i = 0; i < swift; i++)
+        {
+            for (int j = 0; j < 2; j++)
+            {
+                // Initialise an enemy
+                GameObject go = Instantiate(enemiesA[j + 2], new Vector2(xLocation, yLocation), Quaternion.identity);
+                go.gameObject.GetComponent<EnemyScript>().playerToAvoid = PlayerA;
+                go.gameObject.GetComponent<EnemyScript>().playerToFollow = PlayerB;
+
+                // Increase the enemy count
+                enemyCount += 1;
+            }
+            for (int j = 0; j < 2; j++)
+            {
+                // Initialise an enemy
+                GameObject go = Instantiate(enemiesB[j + 2], new Vector2(xLocation, yLocation), Quaternion.identity);
+                go.gameObject.GetComponent<EnemyScript>().playerToAvoid = PlayerB;
+                go.gameObject.GetComponent<EnemyScript>().playerToFollow = PlayerA;
+
+                // Increase the enemy count
+                enemyCount += 1;
+            }
+
+            // Send console message
+            Debug.Log("Confirmed swift ships spawned");
         }
     }
 }
