@@ -44,7 +44,7 @@ public class EnemyScript : MonoBehaviour
         }
 
         // Rotate towards the correct direction
-        rb.rotation = Mathf.Rad2Deg * Mathf.Atan2(vectorToPlayer.y, vectorToPlayer.x) + 90;
+        rb.rotation = Mathf.Rad2Deg * Mathf.Atan2(vectorToPlayer.y, vectorToPlayer.x) - 90;
     }
 
     // Update is called once per frame.
