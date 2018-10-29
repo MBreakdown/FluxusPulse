@@ -9,7 +9,6 @@ public class EnemyScript : MonoBehaviour
     public Transform playerToAvoid;
     public float speed;
     public float maxSpeed;
-    public float maxSpeedStorage;
     public float health;
     public float damage;
     public float reward;
@@ -40,18 +39,14 @@ public class EnemyScript : MonoBehaviour
         Vector2 vectorToPlayer = playerToFollow.transform.position - this.transform.position;
 
         // Figure out if the enemy needs to stay away from the player
-        if (Vector2.Distance(this.transform.position, playerToFollow.transform.position) < 2 && ranged == true)
+        if (Vector2.Distance(this.transform.position, playerToFollow.transform.position) < 15 && ranged == true)
         {
-            // Don't move
-            maxSpeed = 0;
+            rb.velocity = Vector2.zero;
         }
         else
         {
             // Fly towards the player
             rb.AddForce(vectorToPlayer.normalized * speed);
-
-            // Reset max speeds
-            maxSpeed = maxSpeedStorage;
         }
         
         // Ensure max speed
