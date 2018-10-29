@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour {
 		if (game == false)
         {
             // Save the score
+			PlayerPrefs.SetFloat("Highscore", score);
             
             // Go to the menu
             SceneManager.LoadScene(10);
