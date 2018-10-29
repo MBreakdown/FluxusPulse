@@ -7,10 +7,13 @@ public class EnemyScript : MonoBehaviour
     // Reference variable, assignable in the inspector.
     public Transform playerToFollow;
     public Transform playerToAvoid;
-    public float speed = 15;
-    public float maxSpeed = 20;
-    public float health = 100;
+    public float speed;
+    public float maxSpeed;
+    public float maxSpeedStorage;
+    public float health;
     public float damage;
+    public float reward;
+    public bool ranged;
 
 	// Use this for initialization
 	void Start()
@@ -33,9 +36,24 @@ public class EnemyScript : MonoBehaviour
         if (!rb)
             Debug.LogError("Rigidbody missing!", this);
 
+        // Set the vector to the player that they're attacking
         Vector2 vectorToPlayer = playerToFollow.transform.position - this.transform.position;
-        rb.AddForce(vectorToPlayer.normalized * speed);
 
+        // Figure out if the enemy needs to stay away from the player
+        if (Vector2.Distance(this.transform.position, playerToFollow.transform.position) < 2 && ranged == true)
+        {
+            // Don't move
+            maxSpeed = 0;
+        }
+        else
+        {
+            // Fly towards the player
+            rb.AddForce(vectorToPlayer.normalized * speed);
+
+            // Reset max speeds
+            maxSpeed = maxSpeedStorage;
+        }
+        
         // Ensure max speed
         if (rb.velocity.sqrMagnitude > (maxSpeed * maxSpeed))
         {
@@ -43,7 +61,7 @@ public class EnemyScript : MonoBehaviour
         }
 
         // Rotate towards the correct direction
-        rb.rotation = Mathf.Rad2Deg * Mathf.Atan2(vectorToPlayer.y, vectorToPlayer.x) + 90;
+        rb.rotation = Mathf.Rad2Deg * Mathf.Atan2(vectorToPlayer.y, vectorToPlayer.x) - 90;
     }
 
     // Update is called once per frame.

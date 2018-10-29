@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4240051575018046}
   - component: {fileID: 212438545359878320}
-  - component: {fileID: 95951692194689222}
   m_Layer: 0
   m_Name: BombPositivePrincess
   m_TagString: Untagged
@@ -42,7 +41,7 @@ GameObject:
   - component: {fileID: 114433281430502768}
   - component: {fileID: 114492732731356838}
   m_Layer: 0
-  m_Name: EnemyAPositive
+  m_Name: EnemyAPositiveBomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,23 +109,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
---- !u!95 &95951692194689222
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1116037566436664}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 85a52d79958ba924c97002da487dd62a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114124274212110850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,10 +122,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerToFollow: {fileID: 0}
   playerToAvoid: {fileID: 0}
-  speed: 3
-  maxSpeed: 10
+  speed: 8
+  maxSpeed: 8
+  maxSpeedStorage: 8
   health: 100
   damage: 5
+  reward: 10
+  ranged: 0
 --- !u!114 &114433281430502768
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -219,7 +204,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300008, guid: bf231f052968ff74b885ee5bf65e102c, type: 3}
+  m_Sprite: {fileID: 21300002, guid: df7256a04c08e7d46ac94db45fb0b86a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

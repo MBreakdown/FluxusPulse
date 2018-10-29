@@ -36,7 +36,7 @@ public class PlayerShip : MonoBehaviour
 
     [Header("Core Movement")]
 
-    public float speed = 10f;
+    public float speed = 12f;
     public float rotateSpeed = 300f;
 
     public Rigidbody2D rb { get; private set; }

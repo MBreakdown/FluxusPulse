@@ -20,8 +20,10 @@ public class GameController : MonoBehaviour {
         // Check if the game is over
 		if (game == false)
         {
+            // Save the score
+            
             // Go to the menu
             SceneManager.LoadScene(10);
         }
-	}
+    }
 }

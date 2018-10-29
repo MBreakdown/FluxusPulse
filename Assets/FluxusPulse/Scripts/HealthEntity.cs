@@ -109,6 +109,12 @@ public class HealthEntity : MonoBehaviour
             Debug.Log("A player has died!");
             FindObjectOfType<GameController>().game = false;
         }
+        // Increase the players' score
+        else
+        {
+            FindObjectOfType<GameController>().score += this.gameObject.GetComponent<EnemyScript>().reward;
+            Debug.Log(FindObjectOfType<GameController>().score);
+        }
         // Invoke the death
         if (onDeath != null)
         {
