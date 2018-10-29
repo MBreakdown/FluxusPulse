@@ -30,12 +30,17 @@ public class EnemyManager : MonoBehaviour {
         }
         else if (wave == 1 && FindObjectOfType<EnemyManager>().enemyCount == 0)
         {
-            Spawn(0, 0, 1);
+            Spawn(0, 1, 0);
             wave++;
         }
-        else if (wave > 1 && FindObjectOfType<EnemyManager>().enemyCount == 0)
+        else if (wave == 2 && FindObjectOfType<EnemyManager>().enemyCount == 0)
         {
-            Spawn(0, 0, 2);
+            Spawn(1, 0, 1);
+            wave++;
+        }
+        else if (wave > 2 && FindObjectOfType<EnemyManager>().enemyCount == 0)
+        {
+            Spawn(1, 1, 1);
             wave++;
         }
 	}
