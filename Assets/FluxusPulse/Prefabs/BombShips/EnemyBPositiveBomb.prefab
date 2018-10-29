@@ -133,9 +133,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerToFollow: {fileID: 0}
   playerToAvoid: {fileID: 0}
-  speed: 8
+  speed: 24
   maxSpeed: 8
-  maxSpeedStorage: 8
   health: 100
   damage: 5
   reward: 10

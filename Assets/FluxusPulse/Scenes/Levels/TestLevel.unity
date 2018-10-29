@@ -7162,7 +7162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 294724426}
   speed: 10
-  rotateSpeed: 400
+  rotateSpeed: 300
   boostSpeed: 20
   boostRotateSpeed: 300
   boostTime: 2
@@ -14984,7 +14984,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 543861356
+  randomSeed: 613634280
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -18579,7 +18579,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 1289107109}
   speed: 10
-  rotateSpeed: 400
+  rotateSpeed: 300
   boostSpeed: 20
   boostRotateSpeed: 300
   boostTime: 2
