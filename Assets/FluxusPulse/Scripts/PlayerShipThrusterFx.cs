@@ -1,19 +1,26 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerShipThrusterFx : MonoBehaviour
 {
+    // Types
+
+    [Serializable]
+    public class SpeedFx
+    {
+        public float speedThresholdMin = 10;
+        public float speedThresholdMax = 1000;
+        public ParticleSystem fx;
+    }
+
     // Inspector Fields
 
-    public InputScheme input;
     public PlayerShip player;
-    public ParticleSystem thrusterFx;
+    public InputScheme input;
+    public SpeedFx[] speedFxGroups;
     public ParticleSystem boostFx;
-    public ParticleSystem highSpeedFx;
-
-    [Tooltip("Minimum speed to show high speed fx.")]
-    public float highSpeedThreshold = 5f;
+    public ParticleSystem flingFx;
 
 
 
@@ -22,60 +29,32 @@ public class PlayerShipThrusterFx : MonoBehaviour
     private void Update()
     {
         // Decide which effects should be active.
-
-        bool enableThruster;
-        bool enableBoost;
-        bool enableHighSpeed;
-
-
-        if (Mathf.Abs(input.VerticalAxis) > 0.01f)
-        {
-            enableThruster = true;
-
-            if (player.IsBoosting)
-            {
-                enableBoost = true;
-            }
-            else
-            {
-                enableBoost = false;
-            }
-        }
-        else
-        {
-            enableThruster = false;
-            enableBoost = false;
-        }
-
-
-        if (player.rb.velocity.magnitude >= highSpeedThreshold)
-        {
-            enableHighSpeed = true;
-        }
-        else
-        {
-            enableHighSpeed = false;
-        }
-
-
-        // Apply changes
-
-        var thrusterEmission = thrusterFx.emission;
-        if (thrusterEmission.enabled != enableThruster)
-        {
-            thrusterEmission.enabled = enableThruster;
-        }
-
+        bool enableBoost = player.IsBoosting;
         var boostEmission = boostFx.emission;
         if (boostEmission.enabled != enableBoost)
         {
             boostEmission.enabled = enableBoost;
         }
 
-        var highSpeedEmission = highSpeedFx.emission;
-        if (highSpeedEmission.enabled != enableHighSpeed)
+        bool enableFling = player.IsFlinging || player.IsFlung;
+        var flingEmission = flingFx.emission;
+        if (flingEmission.enabled != enableFling)
         {
-            highSpeedEmission.enabled = enableHighSpeed;
+            flingEmission.enabled = enableFling;
+        }
+
+        // Speed Fx Groups
+        float speed = player.rb.velocity.magnitude;
+        foreach (var speedFx in speedFxGroups)
+        {
+            bool enableFx = (speed >= speedFx.speedThresholdMin
+                && speed <= speedFx.speedThresholdMax);
+            
+            var emission = speedFx.fx.emission;
+            if (emission.enabled != enableFx)
+            {
+                emission.enabled = enableFx;
+            }
         }
     }
 }

@@ -60,6 +60,7 @@ public class PlayerShip : MonoBehaviour
     public float flungRotateSpeed = 100f;
     public float flungTime = 2f;
     public float flingingCooldown = 3f;
+
     public const string FlingPivotTag = "FlingPivot";
 
     public FlingState FlingState { get; private set; } = FlingState.None;
@@ -92,7 +93,7 @@ public class PlayerShip : MonoBehaviour
 
         // Flinging
 
-        if (IsFlinging)
+        if (FlingState == FlingState.Flinging)
         {
             if (!input.FlingButton)
             {
@@ -108,8 +109,7 @@ public class PlayerShip : MonoBehaviour
         {
             // Fling around the pivot at a fixed radius.
             Vector2 fromPivot = transform.position - FlingPivot.position;
-
-            // TODO fix flinging physics
+            
             float angle = Vector2Utilities.CalculateArcAngle(fromPivot.magnitude, flingingSpeed * Time.fixedDeltaTime);
             if (IsFlingDirectionClockwise)
                 angle = -angle;
@@ -120,12 +120,15 @@ public class PlayerShip : MonoBehaviour
 
             // Update rotation.
             Vector2 toPivot = (Vector2)FlingPivot.position - newPos;
+            Vector2 direction = Vector2Utilities.Perpendicular(toPivot);
+            if (IsFlingDirectionClockwise == false)
+                direction = -direction;
 
-            float newRotation = Vector2.Angle(toPivot, Vector2.up);
-            if (IsFlingDirectionClockwise)
-                newRotation = -newRotation;
-
+            float newRotation = Quaternion.LookRotation(Vector3.forward, direction).eulerAngles.z;
             rb.MoveRotation(newRotation);
+
+            rb.velocity = direction.normalized * flingingSpeed;
+            rb.angularVelocity = angle;
         }
         else
         {
@@ -135,7 +138,7 @@ public class PlayerShip : MonoBehaviour
 
             if (IsFlung)
             {
-                move = flungSpeed; // intentional set to flungSpeed
+                move *= flungSpeed;
                 rot *= flungRotateSpeed;
             }
             else if (IsBoosting)
@@ -154,22 +157,31 @@ public class PlayerShip : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        EnemyScript enemy = col.gameObject.GetComponent<EnemyScript>();
+        if (enemy && enemy.playerToAvoid == this)
+        {
+            enemy.GetComponent<HealthEntity>().Hurt(damage);
+        }
+    }
 
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag == FlingPivotTag)
         {
             if (input.FlingButton
-                && FlingState != FlingState.Flinging)
+                && FlingState == FlingState.None)
             {
                 // Start flinging around pivot.
                 FlingState = FlingState.Flinging;
+                rb.isKinematic = true;
                 FlingPivot = other.transform;
 
                 Vector2 toPivot = transform.position - FlingPivot.position;
                 Vector2 clockwiseForwards = Vector2Utilities.Rotate(toPivot, 90);
 
-                IsFlingDirectionClockwise = (Vector2.Dot(transform.up, clockwiseForwards) > 0);
+                IsFlingDirectionClockwise = (Vector2.Dot(transform.up, clockwiseForwards) < 0);
             }
         }
     }
@@ -185,6 +197,7 @@ public class PlayerShip : MonoBehaviour
     void FinishFlinging()
     {
         FlingState = FlingState.Flung;
+        rb.isKinematic = false;
         FlingPivot = null;
         StartCoroutine(FlungCoroutine());
     }
@@ -208,15 +221,5 @@ public class PlayerShip : MonoBehaviour
 
         yield return new WaitForSeconds(flingingCooldown);
         FlingState = FlingState.None;
-    }
-
-    // Run collisions
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        // Damage enemy
-        if (col.gameObject.GetComponent<EnemyScript>().playerToAvoid.name == name)
-        {
-            col.gameObject.GetComponent<HealthEntity>().Hurt(damage);
-        }
     }
 }
