@@ -162,6 +162,7 @@ public class PlayerShip : MonoBehaviour
         EnemyScript enemy = col.gameObject.GetComponent<EnemyScript>();
         if (enemy && enemy.playerToAvoid == this)
         {
+            Debug.Log("Hurt() has been called");
             enemy.GetComponent<HealthEntity>().Hurt(damage);
         }
     }

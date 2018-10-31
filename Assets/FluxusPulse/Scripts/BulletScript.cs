@@ -6,20 +6,20 @@ public class bulletScript : MonoBehaviour {
 
     public float speed;
     public float damage;
+    public GameObject playerFired;
 
-	// Use this for initialization
-	void Start()
+    // Use this for initialization
+    void Start()
     {
-        
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+
+        rb.velocity = transform.up * speed;
     }
 	
     // Fixed update is called once every physics frame
     void FixedUpate()
     {
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
 
-        // Set velocity
-        rb.velocity = transform.up * speed;
     }
 
 	// Update is called once per frame
@@ -38,7 +38,7 @@ public class bulletScript : MonoBehaviour {
             // Self destruct
             Destroy(this.gameObject);
         }
-        else if (col.gameObject.GetComponent<EnemyScript>() != null || col.gameObject.GetComponent<bulletScript>() != null)
+        else if (col.gameObject.GetComponent<EnemyScript>().gameObject == playerFired)
         {
             // Do nothing if collision with an enemy or bullet
         }

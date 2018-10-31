@@ -272,7 +272,7 @@ MonoBehaviour:
   inputHorizontal: Horizontal
   inputVertical: Vertical
   inputSwitchPolarity: Fire2
-  damage: 40
+  damage: 100
 --- !u!114 &114830766110181056
 MonoBehaviour:
   m_ObjectHideFlags: 1
