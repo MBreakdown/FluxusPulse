@@ -11719,17 +11719,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemiesA:
   - {fileID: 1276991973067674, guid: 23d5adf72612225458cbcc9af5114421, type: 2}
-  - {fileID: 1916002382217688, guid: e6ee293f2f0a24141aeaae212bc5e0e3, type: 2}
   - {fileID: 1457107989840852, guid: eeb0f0300d5a7b342b65e68d28bebdec, type: 2}
-  - {fileID: 1897437045055412, guid: ff16bce19445b2d46bf3f8eb79802889, type: 2}
   - {fileID: 1292447557607120, guid: 760feb1ef10c8fc4d8d37fe16a3e51c1, type: 2}
-  - {fileID: 1863484443255634, guid: 88a2d455946e7f94aa47157e55169343, type: 2}
   enemiesB:
-  - {fileID: 1404990653823398, guid: 6a2d6de20e7320446b94dca6422cb4d4, type: 2}
   - {fileID: 1964859663796502, guid: ad967ec7f727ab147913272d82df1779, type: 2}
-  - {fileID: 1454891276153942, guid: 93ac0da647793a24193de42e820be646, type: 2}
   - {fileID: 1077372876728730, guid: 541b127ef6bb94744bf766a467cc4443, type: 2}
-  - {fileID: 1910553390289076, guid: 4677a594ac87aac48a1a685e2620fd2b, type: 2}
   - {fileID: 1522796336035482, guid: 8e206ec60bee42545866ad002323a2ee, type: 2}
   PlayerA: {fileID: 1912010689}
   PlayerB: {fileID: 777143852}
@@ -15469,7 +15463,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1079797653}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1035, y: 50, z: 0}
+  m_LocalPosition: {x: 899, y: 78.5, z: 0}
   m_LocalScale: {x: -3, y: -3, z: 1}
   m_Children:
   - {fileID: 559552047}
@@ -30453,7 +30447,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1804235739}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -388, y: 357, z: 0}
+  m_LocalPosition: {x: -524, y: 385.5, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 1221182873}
@@ -30721,7 +30715,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2113114770}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 430, y: 242, z: 0}
+  m_LocalPosition: {x: 566, y: 270.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1804235740}
