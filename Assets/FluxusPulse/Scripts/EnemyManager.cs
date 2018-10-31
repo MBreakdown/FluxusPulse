@@ -11,8 +11,8 @@ public class EnemyManager : MonoBehaviour {
     public int wave = 0;
     public int enemyCount = 0;
 
-    private float xLocation = 0;
-    private float yLocation = 0;
+    private float xLocation = 25;
+    private float yLocation = -12;
 
 	// Use this for initialization
 	void Start()

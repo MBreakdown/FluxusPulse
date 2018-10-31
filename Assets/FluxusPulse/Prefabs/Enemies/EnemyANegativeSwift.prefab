@@ -152,12 +152,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerToFollow: {fileID: 0}
   playerToAvoid: {fileID: 0}
+  referenceBullet: {fileID: 0}
   speed: 48
   maxSpeed: 12
-  health: 20
   damage: 5
   reward: 10
   ranged: 0
+  time: 0
 --- !u!114 &114617789823330236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -203,7 +204,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: df7256a04c08e7d46ac94db45fb0b86a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e07d06149bff5b2498dabd44c20b58b1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
