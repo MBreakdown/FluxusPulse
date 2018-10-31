@@ -160,7 +160,7 @@ public class PlayerShip : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         EnemyScript enemy = col.gameObject.GetComponent<EnemyScript>();
-        if (enemy && enemy.playerToAvoid == this)
+        if (enemy && enemy.playerToAvoid == this.transform)
         {
             Debug.Log("Hurt() has been called");
             enemy.GetComponent<HealthEntity>().Hurt(damage);
