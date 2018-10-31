@@ -126,10 +126,10 @@ MonoBehaviour:
     type: 2}
   speed: 24
   maxSpeed: 8
-  health: 50
   damage: 5
   reward: 10
   ranged: 1
+  time: 0
 --- !u!114 &114838886605964908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -205,7 +205,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300006, guid: df7256a04c08e7d46ac94db45fb0b86a, type: 3}
+  m_Sprite: {fileID: 21300002, guid: caaa4b5808e0c9d4dbcffaa82387b1f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
