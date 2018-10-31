@@ -77,7 +77,6 @@ public class HealthEntity : MonoBehaviour
     /// </summary>
     public void Hurt(float damage)
     {
-        Debug.Log("Hurt() has been called");
         Health -= damage;
     }
 
@@ -123,6 +122,7 @@ public class HealthEntity : MonoBehaviour
         // Check to destroy the game object
         if (callDestroyOnDeath)
         {
+            Debug.Log("Kill me");
             Destroy(gameObject, destroyTime);
         }
     }

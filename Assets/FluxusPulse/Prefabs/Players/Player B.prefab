@@ -273,7 +273,7 @@ MonoBehaviour:
   inputHorizontal: Horizontal Player2
   inputVertical: Vertical Player2
   inputSwitchPolarity: Fire2 Player2
-  damage: 40
+  damage: 100
 --- !u!114 &114630387238301858
 MonoBehaviour:
   m_ObjectHideFlags: 1

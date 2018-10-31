@@ -10,7 +10,6 @@ public class EnemyScript : MonoBehaviour
     public GameObject referenceBullet;
     public float speed;
     public float maxSpeed;
-    public float health;
     public float damage;
     public float reward;
     public bool ranged;
@@ -52,7 +51,8 @@ public class EnemyScript : MonoBehaviour
                 time = 0;
                 
                 // Fire bullet
-                GameObject instantiatedBullet = Instantiate(referenceBullet, new Vector2(transform.position.x, transform.position.y), Quaternion.LookRotation(Vector3.forward, vectorToPlayer));
+                GameObject bullet = Instantiate(referenceBullet, new Vector2(transform.position.x, transform.position.y), Quaternion.LookRotation(Vector3.forward, vectorToPlayer));
+                bullet.gameObject.GetComponent<bulletScript>().playerFired = gameObject;
             }
         }
         else
