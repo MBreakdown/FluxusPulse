@@ -5369,9 +5369,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerToFollow: {fileID: 1866882462}
   playerToAvoid: {fileID: 0}
+  referenceBullet: {fileID: 0}
   speed: 5
   maxSpeed: 20
   health: 100
+  damage: 0
+  reward: 0
+  ranged: 0
+  time: 0
 --- !u!212 &842516913
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8056,6 +8061,7 @@ MonoBehaviour:
   inputHorizontal: Horizontal Player2
   inputVertical: Vertical Player2
   inputSwitchPolarity: Fire2 Player2
+  damage: 0
 --- !u!1 &1343553456
 GameObject:
   m_ObjectHideFlags: 0
@@ -11736,6 +11742,7 @@ MonoBehaviour:
   inputHorizontal: Horizontal
   inputVertical: Vertical
   inputSwitchPolarity: Fire2
+  damage: 0
 --- !u!1 &1886468935
 GameObject:
   m_ObjectHideFlags: 0
