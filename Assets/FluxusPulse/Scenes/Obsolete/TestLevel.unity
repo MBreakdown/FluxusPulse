@@ -10936,12 +10936,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1235001d234e0364989e584923aa4d7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 1289107109}
   player: {fileID: 1289107108}
-  thrusterFx: {fileID: 290873813}
+  input: {fileID: 1289107109}
+  speedFxGroups: []
   boostFx: {fileID: 87442738}
-  highSpeedFx: {fileID: 703135799}
-  highSpeedThreshold: 16
+  flingFx: {fileID: 0}
 --- !u!1 &700441757
 GameObject:
   m_ObjectHideFlags: 0
@@ -14798,17 +14797,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemiesA:
   - {fileID: 1276991973067674, guid: 23d5adf72612225458cbcc9af5114421, type: 2}
-  - {fileID: 1916002382217688, guid: e6ee293f2f0a24141aeaae212bc5e0e3, type: 2}
   - {fileID: 1457107989840852, guid: eeb0f0300d5a7b342b65e68d28bebdec, type: 2}
-  - {fileID: 1897437045055412, guid: ff16bce19445b2d46bf3f8eb79802889, type: 2}
   - {fileID: 1292447557607120, guid: 760feb1ef10c8fc4d8d37fe16a3e51c1, type: 2}
-  - {fileID: 1863484443255634, guid: 88a2d455946e7f94aa47157e55169343, type: 2}
   enemiesB:
-  - {fileID: 1404990653823398, guid: 6a2d6de20e7320446b94dca6422cb4d4, type: 2}
   - {fileID: 1964859663796502, guid: ad967ec7f727ab147913272d82df1779, type: 2}
-  - {fileID: 1454891276153942, guid: 93ac0da647793a24193de42e820be646, type: 2}
   - {fileID: 1077372876728730, guid: 541b127ef6bb94744bf766a467cc4443, type: 2}
-  - {fileID: 1910553390289076, guid: 4677a594ac87aac48a1a685e2620fd2b, type: 2}
   - {fileID: 1522796336035482, guid: 8e206ec60bee42545866ad002323a2ee, type: 2}
   PlayerA: {fileID: 294724424}
   PlayerB: {fileID: 1289107107}
@@ -29441,12 +29434,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1235001d234e0364989e584923aa4d7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 294724426}
   player: {fileID: 294724425}
-  thrusterFx: {fileID: 1701230480}
+  input: {fileID: 294724426}
+  speedFxGroups: []
   boostFx: {fileID: 1320024144}
-  highSpeedFx: {fileID: 410579209}
-  highSpeedThreshold: 16
+  flingFx: {fileID: 0}
 --- !u!1 &1921204374
 GameObject:
   m_ObjectHideFlags: 0
