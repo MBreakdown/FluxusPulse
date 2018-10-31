@@ -6,23 +6,24 @@
 *
 *	(c) 2018 Media Design School
 *
-*	File Name	:	Music.cs
-*	Description	:	Persistent singleton for menu music GameObject.
+*	File Name	:	Note.cs
+*	Description	:	A developer's note in the scene.
 *	Project		:	FluxusPulse
 *	Team Name	:	M Breakdown Studios
+*	Author		:	Elijah Shadbolt
+*	Mail		:	elijah.sha7979@mediadesign.school.nz
 ***********************************************************************/
 using UnityEngine;
 
-public class Music : MonoBehaviour
+public class Note : MonoBehaviour
 {
-	void Awake() 
-	{
-		GameObject[] objs = GameObject.FindGameObjectsWithTag("Music");
-		if (objs.Length > 1)
-			Destroy(this.gameObject);
+	[TextArea(3,10)]
+	public string note;
 
-		DontDestroyOnLoad(this.gameObject);
+
+	void Awake()
+	{
+		Destroy(this);
 	}
-	//~ fn
 }
 //~ class

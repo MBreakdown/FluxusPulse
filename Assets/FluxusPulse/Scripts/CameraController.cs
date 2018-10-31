@@ -1,16 +1,40 @@
-﻿using System.Collections;
+﻿/***********************************************************************
+*	Bachelor of Software Engineering
+*	Media Design School
+*	Auckland
+*	New Zealand
+*
+*	(c) 2018 Media Design School
+*
+*	File Name	:	CameraController.cs
+*	Description	:	Follows one or more objects, keeping all of them in view by zooming in and out.
+*	Project		:	FluxusPulse
+*	Team Name	:	M Breakdown Studios
+*	Author		:	Elijah Shadbolt
+*	Mail		:	elijah.sha7979@mediadesign.school.nz
+***********************************************************************/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[Obsolete("Camera should be fixed position and size.")]
 [DisallowMultipleComponent]
 public class CameraController : MonoBehaviour
 {
+	#region Public
+
+
+
+	// Types
+
 	public enum FollowMode
 	{
 		CentreAverage,
 		CentreBounds,
 	}
+	//~ enum
+
 
 
 	// Inspector Fields
@@ -40,84 +64,94 @@ public class CameraController : MonoBehaviour
 
 
 
-	// Private Fields
+	#endregion Public
+	#region Private
 
-	private float initialZ;
 
 
-	// Methods
+	// Unity Event Methods
 
 	void Awake()
 	{
 		if (!cam)
 			Debug.LogError("Camera is not assigned.", this);
 	}
+	//~ fn
 
 	void Start()
 	{
-		initialZ = transform.position.z;
+		m_initialZ = transform.position.z;
 	}
+	//~ fn
 
-    void Update()
-    {
-        if (targetsToFollow == null)
-            return;
+	void Update()
+	{
+		if (targetsToFollow == null)
+			return;
 
-        IEnumerable<Transform> targets = targetsToFollow.Where(target => (target));
-        if (targets.Count() <= 0)
-            return;
+		IEnumerable<Transform> targets = targetsToFollow.Where(target => (target));
+		if (targets.Count() <= 0)
+			return;
 
-        // Aggregate all the target positions.
-        Vector3 sum = Vector3.zero;
-        Vector3 min = targets.First().position;
-        Vector3 max = min;
-        int count = 0;
-        foreach (Transform target in targets)
-        {
-            Vector3 pos = target.position;
-            sum += pos;
-            count++;
-            min.x = Mathf.Min(min.x, pos.x);
-            min.y = Mathf.Min(min.y, pos.y);
-            min.z = Mathf.Min(min.z, pos.z);
-            max.x = Mathf.Max(max.x, pos.x);
-            max.y = Mathf.Max(max.y, pos.y);
-            max.z = Mathf.Max(max.z, pos.z);
-        }
+		// Aggregate all the target positions.
+		Vector3 sum = Vector3.zero;
+		Vector3 min = targets.First().position;
+		Vector3 max = min;
+		int count = 0;
+		foreach (Transform target in targets)
+		{
+			Vector3 pos = target.position;
+			sum += pos;
+			count++;
+			min = Vector3.Min(min, pos);
+			max = Vector3.Max(max, pos);
+		}
 
-        // Calculate position in the centre of all the targets.
-        Vector3 centre;
-        if (followMode == FollowMode.CentreAverage)
-        {
-            centre = sum / count;
-        }
-        else
-        {
-            centre = (min + max) / 2;
-        }
-        centre.z = initialZ;
+		// Calculate position in the centre of all the targets.
+		Vector3 centre;
+		if (followMode == FollowMode.CentreAverage)
+		{
+			centre = sum / count;
+		}
+		else
+		{
+			centre = (min + max) / 2;
+		}
+		centre.z = m_initialZ;
 
-        if (smoothZoom)
-        {
-            transform.position = Vector3.Lerp(transform.position, centre, smoothZoomLerp);
-        }
-        else
-        {
-            transform.position = centre;
-        }
+		if (smoothZoom)
+		{
+			transform.position = Vector3.Lerp(transform.position, centre, smoothZoomLerp);
+		}
+		else
+		{
+			transform.position = centre;
+		}
 
-        // Calculate camera scale.
-        float height = Mathf.Abs(min.y - max.y);
-        float width = Mathf.Abs(min.x - max.x);
-        float targetSize = Mathf.Max(height, width / cam.aspect) * (zoomScale / 2f) + padding;
+		// Calculate camera scale.
+		float height = Mathf.Abs(min.y - max.y);
+		float width = Mathf.Abs(min.x - max.x);
+		float targetSize = Mathf.Max(height, width / cam.aspect) * (zoomScale / 2f) + padding;
 
-        if (smoothZoom)
-        {
-            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, targetSize, smoothZoomLerp);
-        }
-        else
-        {
-            cam.orthographicSize = targetSize;
-        }
-    }
+		if (smoothZoom)
+		{
+			cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, targetSize, smoothZoomLerp);
+		}
+		else
+		{
+			cam.orthographicSize = targetSize;
+		}
+	}
+	//~ fn
+
+
+
+	// Private Fields
+
+	private float m_initialZ;
+
+
+
+	#endregion Private
 }
+//~ class

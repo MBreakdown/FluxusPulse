@@ -1,30 +1,42 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿/***********************************************************************
+*	Bachelor of Software Engineering
+*	Media Design School
+*	Auckland
+*	New Zealand
+*
+*	(c) 2018 Media Design School
+*
+*	File Name	:	GameController.cs
+*	Description	:	Handles ending the level.
+*	Project		:	FluxusPulse
+*	Team Name	:	M Breakdown Studios
+***********************************************************************/
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameController : MonoBehaviour {
+public class GameController : MonoBehaviour
+{
+	// Inspector Fields
 
-    public float score = 0;
-    public bool game = true;
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
+	public float score = 0;
+	public bool game = true;
 	
-	// Update is called once per frame
+
+
+	// Unity Event Methods
+
 	void Update()
-    {
-        // Check if the game is over
+	{
+		// Check if the game is over
 		if (game == false)
-        {
-            // Save the score
+		{
+			// Save the score
 			PlayerPrefs.SetFloat("Highscore", score);
-            
-            // Go to the menu
-            SceneManager.LoadScene(10);
-        }
-    }
+			
+			// Go to the menu
+			SceneManager.LoadScene(10);
+		}
+	}
+	//~ fn
 }
+//~ class
