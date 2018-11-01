@@ -13,11 +13,9 @@
 ***********************************************************************/
 using UnityEngine;
 
-public class bulletScript : MonoBehaviour
+public class BulletScript : MonoBehaviour
 {
 	#region Public
-
-
 
 	// Inspector Fields
 
@@ -25,12 +23,8 @@ public class bulletScript : MonoBehaviour
 	public float damage;
 	public GameObject playerFired;
 
-
-
 	#endregion Public
 	#region Private
-
-	
 
 	// Unity Event Methods
 
@@ -78,9 +72,7 @@ public class bulletScript : MonoBehaviour
 		}
 	}
 	//~ fn
-
-
-
+    
 	#endregion Private
 }
 //~ class

@@ -125,10 +125,11 @@ MonoBehaviour:
   referenceBullet: {fileID: 0}
   speed: 24
   maxSpeed: 8
-  health: 100
   damage: 5
   reward: 10
   ranged: 0
+  time: 0
+  selfDestruct: 1
 --- !u!114 &114528330641409914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -145,12 +146,12 @@ MonoBehaviour:
   onHealthChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: HealthEntity+UnityEventFloat, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    m_TypeName: UnityEventFloat, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   onHealthFractionChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: HealthEntity+UnityEventFloat, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    m_TypeName: UnityEventFloat, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   onDeath:
     m_PersistentCalls:

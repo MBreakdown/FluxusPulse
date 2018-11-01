@@ -51,12 +51,12 @@ public class EnemyManager : MonoBehaviour
 		}
 		else if (wave == 2 && FindObjectOfType<EnemyManager>().enemyCount == 0)
 		{
-			Spawn(0, 1, 0);
+			Spawn(0, 0, 1);
 			wave++;
 		}
 		else if (wave == 3 && FindObjectOfType<EnemyManager>().enemyCount == 0)
 		{
-			Spawn(0, 0, 1);
+			Spawn(0, 1, 0);
 			wave++;
 		}
 		else if (wave == 4 && FindObjectOfType<EnemyManager>().enemyCount == 0)
@@ -91,7 +91,7 @@ public class EnemyManager : MonoBehaviour
 		}
 		else if (wave >= 10 && FindObjectOfType<EnemyManager>().enemyCount == 0)
 		{
-			Spawn(2, 1, 2);
+			Spawn(3, 1, 2);
 			wave++;
 		}
 	}

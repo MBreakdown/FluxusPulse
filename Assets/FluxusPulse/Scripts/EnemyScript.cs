@@ -31,6 +31,7 @@ public class EnemyScript : MonoBehaviour
 	public float reward;
 	public bool ranged;
 	public float time = 0;
+    public bool selfDestruct;
 
 
 
@@ -66,13 +67,13 @@ public class EnemyScript : MonoBehaviour
 			rb.velocity = Vector2.zero;
 
 			time += Time.fixedDeltaTime;
-			if (time >= 1)
+			if (time >= 0.5)
 			{
 				time = 0;
 				
 				// Fire bullet
 				GameObject bullet = Instantiate(referenceBullet, new Vector2(transform.position.x, transform.position.y), Quaternion.LookRotation(Vector3.forward, vectorToPlayer));
-				bullet.gameObject.GetComponent<bulletScript>().playerFired = gameObject;
+				bullet.gameObject.GetComponent<BulletScript>().playerFired = gameObject;
 			}
 		}
 		else
@@ -114,8 +115,11 @@ public class EnemyScript : MonoBehaviour
 			// Damage player
 			col.gameObject.GetComponent<HealthEntity>().Hurt(damage);
 
-			// Damage self
-			this.gameObject.GetComponent<HealthEntity>().Hurt(damage);
+            if (selfDestruct == true)
+            {
+                // Damage self
+                this.gameObject.GetComponent<HealthEntity>().Hurt(damage * 100);
+            }
 		}
 	}
 	//~ fn
