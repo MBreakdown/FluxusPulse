@@ -125,16 +125,14 @@ public class HealthEntity : MonoBehaviour
 	private void InvokeDeathEvents()
 	{
 		// Check if a player has died
-		if (this.gameObject.GetComponent<PlayerShip>() != null)
+		if (this.GetComponent<PlayerShip>() != null)
 		{
-			Debug.Log("A player has died!");
-			FindObjectOfType<GameController>().game = false;
+			GameController.Instance.EndGame(GameOutcome.Defeat);
 		}
 		// Increase the players' score
 		else
 		{
-			FindObjectOfType<GameController>().score += this.gameObject.GetComponent<EnemyScript>().reward;
-			Debug.Log(FindObjectOfType<GameController>().score);
+			GameController.Instance.score += this.GetComponent<EnemyScript>().reward;
 		}
 
 		// Invoke the death
@@ -146,7 +144,6 @@ public class HealthEntity : MonoBehaviour
 		// Check to destroy the game object
 		if (callDestroyOnDeath)
 		{
-			Debug.Log("Kill me");
 			Destroy(gameObject, destroyTime);
 		}
 	}

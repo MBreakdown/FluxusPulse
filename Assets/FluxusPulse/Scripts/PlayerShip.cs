@@ -84,6 +84,7 @@ public class PlayerShip : MonoBehaviour
 	// Inspector Fields
 
 	public InputScheme input;
+	public bool isPlayerOne = true;
 
 
 	[Header("Core Movement")]

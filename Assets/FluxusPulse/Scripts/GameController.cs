@@ -12,31 +12,69 @@
 *	Team Name	:	M Breakdown Studios
 ***********************************************************************/
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.Events;
+
+public enum GameOutcome
+{
+	Victory,
+	Defeat,
+}
+//~ enum
 
 public class GameController : MonoBehaviour
 {
 	// Inspector Fields
 
 	public float score = 0;
-	public bool game = true;
-	
+
+	public UnityEvent onVictory = new UnityEvent();
+	public UnityEvent onDefeat = new UnityEvent();
 
 
-	// Unity Event Methods
 
-	void Update()
+	// Public Static Properties
+
+	public static GameController Instance { get { return FindObjectOfType<GameController>(); } }
+
+
+
+	// Public Properties
+
+	public bool GameInProgress { get { return gameInProgress; } }
+	public GameOutcome Outcome { get { return outcome; } }
+
+
+
+	// Public Methods
+
+	public void EndGame(GameOutcome outcome)
 	{
-		// Check if the game is over
-		if (game == false)
+		gameInProgress = false;
+		this.outcome = outcome;
+
+		// Save the score
+		PlayerPrefs.SetFloat("Highscore", score);
+
+		switch (outcome)
 		{
-			// Save the score
-			PlayerPrefs.SetFloat("Highscore", score);
-			
-			// Go to the menu
-			SceneManager.LoadScene(10);
+			case GameOutcome.Victory:
+				onVictory.Invoke();
+				break;
+			case GameOutcome.Defeat:
+				onDefeat.Invoke();
+				break;
+			default:
+				Debug.LogError("Unknown GameOutcome.", this);
+				break;
 		}
 	}
 	//~ fn
+
+
+
+	// Private Fields
+	
+	private bool gameInProgress = true;
+	private GameOutcome outcome;
 }
 //~ class
