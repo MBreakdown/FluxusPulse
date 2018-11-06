@@ -29220,6 +29220,7 @@ GameObject:
   - component: {fileID: 743098798}
   - component: {fileID: 743098794}
   - component: {fileID: 743098796}
+  - component: {fileID: 743098797}
   m_Layer: 8
   m_Name: Player 1
   m_TagString: Player
@@ -29318,7 +29319,22 @@ MonoBehaviour:
   horizontal: Horizontal
   boost: Fire1
   fling: Fire2
+<<<<<<< HEAD
   bomb: Fire3
+=======
+--- !u!114 &743098797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 743098791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d310a25b1a9bb46ab2aa959bbff71e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outcome: 1
+>>>>>>> 96b26565665de19b91517c3168c935839b449814
 --- !u!114 &743098798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29344,7 +29360,18 @@ MonoBehaviour:
       PublicKeyToken=null
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 743098797}
+        m_MethodName: EndGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   callDestroyOnDeath: 0
@@ -30077,12 +30104,20 @@ Prefab:
     - target: {fileID: 224695684074145988, guid: fec112664c16b71439d4f8237a93fca0,
         type: 2}
       propertyPath: m_LocalPosition.x
+<<<<<<< HEAD
       value: 506.5
+=======
+      value: 575.5
+>>>>>>> 96b26565665de19b91517c3168c935839b449814
       objectReference: {fileID: 0}
     - target: {fileID: 224695684074145988, guid: fec112664c16b71439d4f8237a93fca0,
         type: 2}
       propertyPath: m_LocalPosition.y
+<<<<<<< HEAD
       value: 270.5
+=======
+      value: 313.5
+>>>>>>> 96b26565665de19b91517c3168c935839b449814
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fec112664c16b71439d4f8237a93fca0, type: 2}
@@ -33650,6 +33685,7 @@ GameObject:
   - component: {fileID: 1398116085}
   - component: {fileID: 1398116081}
   - component: {fileID: 1398116083}
+  - component: {fileID: 1398116084}
   m_Layer: 8
   m_Name: Player 2
   m_TagString: Player
@@ -33743,12 +33779,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d45805ce3f26a2f4b9563b91bfaf989e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   PlayerIndex: 2
   vertical: Drive
   horizontal: Horizontal
   boost: Fire1
   fling: Fire2
   bomb: Fire3
+=======
+  vertical: Vertical Player2
+  horizontal: Horizontal Player2
+  boost: Fire1 Player2
+  fling: Fire2 Player2
+--- !u!114 &1398116084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1398116078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d310a25b1a9bb46ab2aa959bbff71e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outcome: 1
+>>>>>>> 96b26565665de19b91517c3168c935839b449814
 --- !u!114 &1398116085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33774,7 +33829,18 @@ MonoBehaviour:
       PublicKeyToken=null
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1398116084}
+        m_MethodName: EndGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   callDestroyOnDeath: 0
