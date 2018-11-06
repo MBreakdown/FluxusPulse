@@ -11426,10 +11426,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d45805ce3f26a2f4b9563b91bfaf989e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerIndex: 0
   vertical: Vertical Player2
   horizontal: Horizontal Player2
   boost: Fire1 Player2
   fling: Fire2 Player2
+  bomb: Fire3
 --- !u!114 &777143854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11441,8 +11443,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b62ed955090eb874d8088162da061839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BombOffCooldown: 1
   input: {fileID: 777143853}
   isPlayerOne: 1
+  referenceBomb: {fileID: 0}
   speed: 10
   rotateSpeed: 300
   boostSpeed: 20
@@ -11455,6 +11459,7 @@ MonoBehaviour:
   flungTime: 2
   flingingCooldown: 3
   damage: 100
+  time: 0
 --- !u!114 &777143855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15473,7 +15478,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1079797653}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 899, y: 78.5, z: 0}
+  m_LocalPosition: {x: 906, y: 78.5, z: 0}
   m_LocalScale: {x: -3, y: -3, z: 1}
   m_Children:
   - {fileID: 559552047}
@@ -30457,7 +30462,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1804235739}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -524, y: 385.5, z: 0}
+  m_LocalPosition: {x: -517, y: 385.5, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 1221182873}
@@ -30550,10 +30555,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d45805ce3f26a2f4b9563b91bfaf989e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerIndex: 1
   vertical: Vertical
   horizontal: Horizontal
   boost: Fire1
   fling: Fire2
+  bomb: Fire3
 --- !u!114 &1912010691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30565,8 +30572,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b62ed955090eb874d8088162da061839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BombOffCooldown: 1
   input: {fileID: 1912010690}
   isPlayerOne: 1
+  referenceBomb: {fileID: 0}
   speed: 10
   rotateSpeed: 300
   boostSpeed: 20
@@ -30579,6 +30588,7 @@ MonoBehaviour:
   flungTime: 2
   flingingCooldown: 3
   damage: 100
+  time: 0
 --- !u!114 &1912010692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30726,7 +30736,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2113114770}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 566, y: 270.5, z: 0}
+  m_LocalPosition: {x: 559, y: 270.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1804235740}
