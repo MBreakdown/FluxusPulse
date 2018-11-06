@@ -29313,10 +29313,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d45805ce3f26a2f4b9563b91bfaf989e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vertical: Vertical
+  PlayerIndex: 1
+  vertical: Drive
   horizontal: Horizontal
   boost: Fire1
   fling: Fire2
+  bomb: Fire3
 --- !u!114 &743098798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30075,12 +30077,12 @@ Prefab:
     - target: {fileID: 224695684074145988, guid: fec112664c16b71439d4f8237a93fca0,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 202.5
+      value: 506.5
       objectReference: {fileID: 0}
     - target: {fileID: 224695684074145988, guid: fec112664c16b71439d4f8237a93fca0,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 114
+      value: 270.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fec112664c16b71439d4f8237a93fca0, type: 2}
@@ -33741,10 +33743,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d45805ce3f26a2f4b9563b91bfaf989e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vertical: Vertical Player2
-  horizontal: Horizontal Player2
-  boost: Fire1 Player2
-  fling: Fire2 Player2
+  PlayerIndex: 2
+  vertical: Drive
+  horizontal: Horizontal
+  boost: Fire1
+  fling: Fire2
+  bomb: Fire3
 --- !u!114 &1398116085
 MonoBehaviour:
   m_ObjectHideFlags: 0

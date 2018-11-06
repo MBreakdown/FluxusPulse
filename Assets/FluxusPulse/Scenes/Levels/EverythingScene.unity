@@ -11399,7 +11399,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &777143852
 Transform:
   m_ObjectHideFlags: 0
@@ -11442,6 +11442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 777143853}
+  isPlayerOne: 1
   speed: 10
   rotateSpeed: 300
   boostSpeed: 20
@@ -11705,7 +11706,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  game: 1
+  onVictory:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onDefeat:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &829346280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30556,6 +30566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 1912010690}
+  isPlayerOne: 1
   speed: 10
   rotateSpeed: 300
   boostSpeed: 20
