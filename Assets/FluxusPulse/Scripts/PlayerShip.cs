@@ -46,7 +46,6 @@ public enum FlingState
 //~ enum
 
 
-
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerShip : MonoBehaviour
 {
@@ -60,7 +59,7 @@ public class PlayerShip : MonoBehaviour
 
 	public bool IsFlinging => FlingState == FlingState.Flinging;
 	public bool IsFlung => FlingState == FlingState.Flung;
-
+    public bool BombOffCooldown = true;
 
 
 	// Public Auto Properties
@@ -85,9 +84,10 @@ public class PlayerShip : MonoBehaviour
 
 	public InputScheme input;
 	public bool isPlayerOne = true;
+    public GameObject referenceBomb;
 
 
-	[Header("Core Movement")]
+    [Header("Core Movement")]
 
 	public float speed = 12f;
 	public float rotateSpeed = 300f;
@@ -110,20 +110,21 @@ public class PlayerShip : MonoBehaviour
 	public float flingingCooldown = 3f;
 
 
-	[Header("Stats")]
+	[Header("Stuff")]
 
 	public float damage;
+    public float time = 0;
 
 
 
-	#endregion Public
-	#region Private
+    #endregion Public
+    #region Private
 
 
 
-	// Unity Event Methods
+    // Unity Event Methods
 
-	void Awake()
+    void Awake()
 	{
 		rb = GetComponent<Rigidbody2D>();
 	}
@@ -149,12 +150,42 @@ public class PlayerShip : MonoBehaviour
 				FinishFlinging();
 			}
 		}
+
+        // Gravity Bomb
+        if (input.BombButton && BombOffCooldown)
+        {
+            // Set the cooldown to be on
+            BombOffCooldown = false;
+
+            Debug.Log("YOOOO");
+            /*
+            // Run function
+            gravityBomb();
+            */
+        }
 	}
 	//~ fn
 
 	void FixedUpdate()
 	{
-		if (FlingState == FlingState.Flinging)
+        // Check the bomb's cooldown
+        if (!BombOffCooldown)
+        {
+            // Use time
+            time += Time.fixedDeltaTime;
+
+            // Reactivate after 5 seconds
+            if (time > 5)
+            {
+                // Set the bomb cooldown to active
+                BombOffCooldown = true;
+
+                // Reset the timer
+                time = 0;
+            }
+        }
+        
+        if (FlingState == FlingState.Flinging)
 		{
 			// Fling around the pivot at a fixed radius.
 			Vector2 fromPivot = transform.position - FlingPivot.position;
@@ -262,7 +293,11 @@ public class PlayerShip : MonoBehaviour
 	}
 	//~ fn
 
-
+    /*private void gravityBomb()
+    {
+        // Fire bullet
+        GameObject bomb = Instantiate(referenceBomb, new Vector2(transform.position.x, transform.position.y), Quaternion.LookRotation(Vector3.forward, Vector3.forward));
+    }*/
 
 	// Coroutines
 

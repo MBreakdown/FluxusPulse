@@ -23,19 +23,21 @@ public class InputScheme : MonoBehaviour
 
 	// Public Proprties
 
-	public float VerticalAxis => Input.GetAxis(vertical);
-	public float HorizontalAxis => Input.GetAxis(horizontal);
-	public bool BoostButton => Input.GetButton(boost);
-	public bool FlingButton => Input.GetButton(fling);
+	public float VerticalAxis => Input.GetAxis(vertical + PlayerIndex);
+	public float HorizontalAxis => Input.GetAxis(horizontal + PlayerIndex);
+	public bool BoostButton => Input.GetButton(boost + PlayerIndex);
+	public bool FlingButton => Input.GetButton(fling + PlayerIndex);
+    public bool BombButton => Input.GetButton(bomb + PlayerIndex);
 
-
-
+    [Range(1,2)]
+    public int PlayerIndex;
 	// Inspector Fields
 
-	public string vertical = "Vertical";
+	public string vertical = "Drive";
 	public string horizontal = "Horizontal";
 	public string boost = "Fire1";
 	public string fling = "Fire2";
+    public string bomb = "Fire3";
 
 
 
