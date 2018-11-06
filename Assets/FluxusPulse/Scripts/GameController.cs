@@ -23,25 +23,26 @@ public enum GameOutcome
 
 public class GameController : MonoBehaviour
 {
-	// Inspector Fields
+    // Public Static Properties
 
-	public float score = 0;
-
-	public UnityEvent onVictory = new UnityEvent();
-	public UnityEvent onDefeat = new UnityEvent();
-
-
-
-	// Public Static Properties
-
-	public static GameController Instance { get { return FindObjectOfType<GameController>(); } }
+	public static GameController Instance {
+        get {
+            if (!m_Instance)
+            {
+                m_Instance = FindObjectOfType<GameController>();
+                if (!m_Instance)
+                    Debug.LogError("No instance of " + nameof(GameController) + " in the scene.");
+            }
+            return m_Instance;
+        }
+    }
 
 
 
 	// Public Properties
 
-	public bool GameInProgress { get { return gameInProgress; } }
-	public GameOutcome Outcome { get { return outcome; } }
+	public bool GameInProgress { get; private set; }
+	public GameOutcome Outcome { get; private set; }
 
 
 
@@ -49,8 +50,8 @@ public class GameController : MonoBehaviour
 
 	public void EndGame(GameOutcome outcome)
 	{
-		gameInProgress = false;
-		this.outcome = outcome;
+		GameInProgress = false;
+		this.Outcome = outcome;
 
 		// Save the score
 		PlayerPrefs.SetFloat("Highscore", score);
@@ -68,13 +69,21 @@ public class GameController : MonoBehaviour
 				break;
 		}
 	}
-	//~ fn
+    //~ fn
 
 
 
-	// Private Fields
-	
-	private bool gameInProgress = true;
-	private GameOutcome outcome;
+    // Inspector Fields
+
+    public float score = 0;
+
+    public UnityEvent onVictory = new UnityEvent();
+    public UnityEvent onDefeat = new UnityEvent();
+
+
+
+    // Private Static Fields
+
+    private static GameController m_Instance = null;
 }
 //~ class

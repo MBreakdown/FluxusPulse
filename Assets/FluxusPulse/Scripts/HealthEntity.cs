@@ -56,6 +56,11 @@ public class HealthEntity : MonoBehaviour
 	}
 	//~ prop
 
+    /// <summary>
+    /// True if Health is zero.
+    /// </summary>
+    public bool IsDead { get { return Health <= 0; } }
+
 
 
 	// Public Methods
