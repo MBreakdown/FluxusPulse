@@ -4,6 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [DisallowMultipleComponent]
+[System.Obsolete("Obsolete.")]
 public class PlayerRenderer : MonoBehaviour
 {
 	// Inspector Fields

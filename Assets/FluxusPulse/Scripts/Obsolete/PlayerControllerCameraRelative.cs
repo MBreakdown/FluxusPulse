@@ -24,8 +24,8 @@ public class PlayerControllerCameraRelative : MonoBehaviour
 	// Use this for initialization.
 	void Awake()
 	{
-        // Get the Rigidbody2D component of this GameObject.
-        rb = this.GetComponent<Rigidbody2D>();
+		// Get the Rigidbody2D component of this GameObject.
+		rb = this.GetComponent<Rigidbody2D>();
 
 		// Check for invalid inspector references.
 		if (!gun)
@@ -55,8 +55,8 @@ public class PlayerControllerCameraRelative : MonoBehaviour
 			// Get vector looking from the player to the mouse.
 			Vector2 lookDirection = worldMousePos - playerPos;
 
-            // Set rotation so the player so their local Y axis points towards the mouse.
-            gun.transform.rotation = Quaternion.LookRotation(Vector3.forward, lookDirection);
+			// Set rotation so the player so their local Y axis points towards the mouse.
+			gun.transform.rotation = Quaternion.LookRotation(Vector3.forward, lookDirection);
 
 			// Rotate by 90 degrees so their local X axis points towards the mouse.
 			gun.transform.Rotate (0, 0, 90f);
@@ -69,11 +69,11 @@ public class PlayerControllerCameraRelative : MonoBehaviour
 		// If the Rigidbody2D component exists and is not destroyed,
 		if (rb)
 		{
-            // Get horizontal input in the range [-1..1]
-            float x = Input.GetAxis(inputHorizontal);
+			// Get horizontal input in the range [-1..1]
+			float x = Input.GetAxis(inputHorizontal);
 
-            // Get vertical input in the range [-1..1]
-            float y = Input.GetAxis(inputVertical);
+			// Get vertical input in the range [-1..1]
+			float y = Input.GetAxis(inputVertical);
 
 			// Get the direction of desired movement.
 			Vector2 dir = new Vector2(x, y);

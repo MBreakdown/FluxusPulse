@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(ChargedEntity))]
 [RequireComponent(typeof(GravityWell))]
 [DisallowMultipleComponent]
+[System.Obsolete("Obsolete: Use PlayerShip instead.")]
 public class PlayerController : MonoBehaviour
 {
     // Inspector Fields

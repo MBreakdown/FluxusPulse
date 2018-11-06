@@ -50,7 +50,7 @@ public class ShipButton : MonoBehaviour
 		if (collider.tag == "Player")
 		{
 			PlayerShip player = collider.GetComponent<PlayerShip>();
-			if (player.isPlayerOne)
+			if (player.PlayerIndex == 1)
 				IsTouchingPlayerOne = true;
 			else
 				IsTouchingPlayerTwo = true;
@@ -64,7 +64,7 @@ public class ShipButton : MonoBehaviour
 		if (collider.tag == "Player")
 		{
 			PlayerShip player = collider.GetComponent<PlayerShip>();
-			if (player.isPlayerOne)
+			if (player.PlayerIndex == 1)
 				IsTouchingPlayerOne = false;
 			else
 				IsTouchingPlayerTwo = false;

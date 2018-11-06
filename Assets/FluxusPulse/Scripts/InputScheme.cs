@@ -15,6 +15,7 @@
 ***********************************************************************/
 using UnityEngine;
 
+[System.Obsolete("Obsolete: Merged into PlayerShip.")]
 public class InputScheme : MonoBehaviour
 {
 	#region Public
@@ -27,17 +28,17 @@ public class InputScheme : MonoBehaviour
 	public float HorizontalAxis => Input.GetAxis(horizontal + PlayerIndex);
 	public bool BoostButton => Input.GetButton(boost + PlayerIndex);
 	public bool FlingButton => Input.GetButton(fling + PlayerIndex);
-    public bool BombButton => Input.GetButton(bomb + PlayerIndex);
+	public bool BombButton => Input.GetButton(bomb + PlayerIndex);
 
-    [Range(1,2)]
-    public int PlayerIndex;
+	[Range(1,2)]
+	public int PlayerIndex;
 	// Inspector Fields
 
 	public string vertical = "Drive";
 	public string horizontal = "Horizontal";
 	public string boost = "Fire1";
 	public string fling = "Fire2";
-    public string bomb = "Fire3";
+	public string bomb = "Fire3";
 
 
 

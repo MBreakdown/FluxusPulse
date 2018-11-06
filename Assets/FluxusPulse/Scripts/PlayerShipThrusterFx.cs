@@ -37,7 +37,6 @@ public class PlayerShipThrusterFx : MonoBehaviour
 	// Inspector Fields
 
 	public PlayerShip player;
-	public InputScheme input;
 	public SpeedFx[] speedFxGroups;
 	public ParticleSystem boostFx;
 	public ParticleSystem flingFx;

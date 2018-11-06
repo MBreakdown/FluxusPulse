@@ -52,14 +52,23 @@ public class PlayerShip : MonoBehaviour
 	#region Public
 
 
-	
+
 	// Public Properties
 
-	public bool IsBoosting => BoostState == BoostState.Boosting;
+	public string InputNameSuffix => PlayerIndex.ToString();
 
-	public bool IsFlinging => FlingState == FlingState.Flinging;
-	public bool IsFlung => FlingState == FlingState.Flung;
-    public bool BombOffCooldown = true;
+	public float GetVerticalAxis { get { return Input.GetAxis("Vertical" + InputNameSuffix); } }
+	public float GetHorizontalAxis { get { return Input.GetAxis("Horizontal" + InputNameSuffix); } }
+	public bool GetBoostButton { get { return Input.GetButton("Fire1" + InputNameSuffix); } }
+	public bool GetTetherButton { get { return Input.GetButton("Fire2" + InputNameSuffix); } }
+	public bool GetBombButton { get { return Input.GetButton("Fire3" + InputNameSuffix); } }
+
+
+	public bool IsBoosting { get { return BoostState == BoostState.Boosting; } }
+
+	public bool IsFlinging { get { return FlingState == FlingState.Flinging; } }
+	public bool IsFlung { get { return FlingState == FlingState.Flung; } }
+
 
 
 	// Public Auto Properties
@@ -82,12 +91,11 @@ public class PlayerShip : MonoBehaviour
 
 	// Inspector Fields
 
-	public InputScheme input;
-	public bool isPlayerOne = true;
-    public GameObject referenceBomb;
+	[Range(1, 2)]
+	public int PlayerIndex = 1;
 
 
-    [Header("Core Movement")]
+	[Header("Core Movement")]
 
 	public float speed = 12f;
 	public float rotateSpeed = 300f;
@@ -110,21 +118,27 @@ public class PlayerShip : MonoBehaviour
 	public float flingingCooldown = 3f;
 
 
+	[Header("Bomb")]
+
+	public GameObject referenceBomb;
+	public bool BombOffCooldown = true;
+
+
 	[Header("Stuff")]
 
 	public float damage;
-    public float time = 0;
+	public float time = 0;
 
 
 
-    #endregion Public
-    #region Private
+	#endregion Public
+	#region Private
 
 
 
-    // Unity Event Methods
+	// Unity Event Methods
 
-    void Awake()
+	void Awake()
 	{
 		rb = GetComponent<Rigidbody2D>();
 	}
@@ -132,8 +146,18 @@ public class PlayerShip : MonoBehaviour
 
 	void Update()
 	{
+		// DEBUG display input axes values
+		//Debug.LogFormat(this,
+		//	"P: {0}, H: {1}, V: {2}, F1: {3}, F2: {4}, F3: {5}",
+		//	PlayerIndex, GetHorizontalAxis,
+		//	GetVerticalAxis,
+		//	GetBoostButton,
+		//	GetTetherButton,
+		//	GetBombButton
+		//	);
+
 		// Boost Ability
-		if (input.BoostButton
+		if (GetBoostButton
 			&& BoostState == BoostState.None)
 		{
 			BoostState = BoostState.Boosting;
@@ -144,48 +168,48 @@ public class PlayerShip : MonoBehaviour
 
 		if (FlingState == FlingState.Flinging)
 		{
-			if (!input.FlingButton)
+			if (!GetTetherButton)
 			{
 				// Stop flinging around pivot and start flying forwards.
 				FinishFlinging();
 			}
 		}
 
-        // Gravity Bomb
-        if (input.BombButton && BombOffCooldown)
-        {
-            // Set the cooldown to be on
-            BombOffCooldown = false;
+		// Gravity Bomb
+		if (GetBombButton && BombOffCooldown)
+		{
+			// Set the cooldown to be on
+			BombOffCooldown = false;
 
-            Debug.Log("YOOOO");
-            /*
-            // Run function
-            gravityBomb();
-            */
-        }
+			Debug.Log("YOOOO");
+			/*
+			// Run function
+			gravityBomb();
+			*/
+		}
 	}
 	//~ fn
 
 	void FixedUpdate()
 	{
-        // Check the bomb's cooldown
-        if (!BombOffCooldown)
-        {
-            // Use time
-            time += Time.fixedDeltaTime;
+		// Check the bomb's cooldown
+		if (!BombOffCooldown)
+		{
+			// Use time
+			time += Time.fixedDeltaTime;
 
-            // Reactivate after 5 seconds
-            if (time > 5)
-            {
-                // Set the bomb cooldown to active
-                BombOffCooldown = true;
+			// Reactivate after 5 seconds
+			if (time > 5)
+			{
+				// Set the bomb cooldown to active
+				BombOffCooldown = true;
 
-                // Reset the timer
-                time = 0;
-            }
-        }
-        
-        if (FlingState == FlingState.Flinging)
+				// Reset the timer
+				time = 0;
+			}
+		}
+		
+		if (FlingState == FlingState.Flinging)
 		{
 			// Fling around the pivot at a fixed radius.
 			Vector2 fromPivot = transform.position - FlingPivot.position;
@@ -213,8 +237,8 @@ public class PlayerShip : MonoBehaviour
 		else
 		{
 			// Core Movement
-			float move = input.VerticalAxis;
-			float rot = -input.HorizontalAxis;
+			float move = GetVerticalAxis;
+			float rot = -GetHorizontalAxis;
 
 			if (IsFlung)
 			{
@@ -254,7 +278,7 @@ public class PlayerShip : MonoBehaviour
 	{
 		if (other.tag == FlingPivotTag)
 		{
-			if (input.FlingButton
+			if (GetTetherButton
 				&& FlingState == FlingState.None)
 			{
 				// Start flinging around pivot.
@@ -293,11 +317,11 @@ public class PlayerShip : MonoBehaviour
 	}
 	//~ fn
 
-    /*private void gravityBomb()
-    {
-        // Fire bullet
-        GameObject bomb = Instantiate(referenceBomb, new Vector2(transform.position.x, transform.position.y), Quaternion.LookRotation(Vector3.forward, Vector3.forward));
-    }*/
+	/*private void gravityBomb()
+	{
+		// Fire bullet
+		GameObject bomb = Instantiate(referenceBomb, new Vector2(transform.position.x, transform.position.y), Quaternion.LookRotation(Vector3.forward, Vector3.forward));
+	}*/
 
 	// Coroutines
 
