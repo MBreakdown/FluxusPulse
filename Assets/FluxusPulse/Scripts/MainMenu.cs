@@ -28,61 +28,71 @@ public class MainMenu : MonoBehaviour
 	}
 	//~ fn
 
-	public void Play()
+	public void InstructionsMenu()
 	{
 		SceneManager.LoadScene(1);
 	}
 	//~ fn
 
-	public void InstructionsMenu()
+	public void OptionsMenu()
 	{
 		SceneManager.LoadScene(2);
 	}
 	//~ fn
 
-	public void OptionsMenu()
+	public void HighscoresMenu()
 	{
 		SceneManager.LoadScene(3);
 	}
 	//~ fn
 
-	public void HighscoresMenu()
+	public void CreditsMenu()
 	{
 		SceneManager.LoadScene(4);
 	}
 	//~ fn
 
-	public void CreditsMenu()
+	public void QuitMenu()
 	{
 		SceneManager.LoadScene(5);
 	}
 	//~ fn
 
-	public void QuitMenu()
+	public void LevelMenu()
 	{
 		SceneManager.LoadScene(6);
 	}
-	//~ fn
+    //~ fn
 
-	public void LevelMenu()
+    /*public void CharacterMenu()
 	{
 		SceneManager.LoadScene(7);
 	}
 	//~ fn
 
-	public void CharacterMenu()
+	public void ConfirmationMenu()
 	{
 		SceneManager.LoadScene(8);
 	}
-	//~ fn
+	//~ fn*/
+    public void TheHole()
+    {
+        SceneManager.LoadScene(10);
+    }
+    public void Pentaholes()
+    {
+        SceneManager.LoadScene(11);
+    }
+    public void Debris()
+    {
+        SceneManager.LoadScene(12);
+    }
+    public void Minefield()
+    {
+        SceneManager.LoadScene(13);
+    }
 
-	public void ConfirmationMenu()
-	{
-		SceneManager.LoadScene(9);
-	}
-	//~ fn
-
-	public void Quit()
+    public void Quit()
 	{
 		Application.Quit();
 	}

@@ -122,8 +122,8 @@ MonoBehaviour:
   playerToFollow: {fileID: 0}
   playerToAvoid: {fileID: 0}
   referenceBullet: {fileID: 0}
-  speed: 24
-  maxSpeed: 8
+  speed: 70
+  maxSpeed: 7
   damage: 5
   reward: 10
   ranged: 0

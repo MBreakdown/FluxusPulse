@@ -262,9 +262,6 @@ public class EnemyManager : MonoBehaviour
 			goA.gameObject.GetComponent<EnemyScript>().playerToAvoid = PlayerA;
 			goA.gameObject.GetComponent<EnemyScript>().playerToFollow = PlayerB;
 
-            // Change the spawn position
-            SpawnChange();
-
             // Initialise an enemy
             GameObject goB = Instantiate(enemiesB[0], new Vector2(xLocation, yLocation), Quaternion.identity);
 			goB.gameObject.GetComponent<EnemyScript>().playerToAvoid = PlayerB;
@@ -289,9 +286,6 @@ public class EnemyManager : MonoBehaviour
 			goA.gameObject.GetComponent<EnemyScript>().playerToAvoid = PlayerA;
 			goA.gameObject.GetComponent<EnemyScript>().playerToFollow = PlayerB;
 
-            // Change the spawn position
-            SpawnChange();
-
 			// Initialise an enemy
 			GameObject goB = Instantiate(enemiesB[1], new Vector2(xLocation, yLocation), Quaternion.identity);
 			goB.gameObject.GetComponent<EnemyScript>().playerToAvoid = PlayerB;
@@ -315,9 +309,6 @@ public class EnemyManager : MonoBehaviour
 			GameObject goA = Instantiate(enemiesA[2], new Vector2(xLocation, yLocation), Quaternion.identity);
 			goA.gameObject.GetComponent<EnemyScript>().playerToAvoid = PlayerA;
 			goA.gameObject.GetComponent<EnemyScript>().playerToFollow = PlayerB;
-            
-            // Change the spawn position
-            SpawnChange();
 
             // Initialise an enemy
             GameObject goB = Instantiate(enemiesB[2], new Vector2(xLocation, yLocation), Quaternion.identity);
