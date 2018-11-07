@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4789965028868422}
   - component: {fileID: 212005855676152470}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: BombNegativePrincess
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,9 +38,8 @@ GameObject:
   - component: {fileID: 114224488864374708}
   - component: {fileID: 50119446876183938}
   - component: {fileID: 58859108625686198}
-  - component: {fileID: 114514406861827934}
   - component: {fileID: 114447685773028468}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: EnemyANegativeFighter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,17 +160,6 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   callDestroyOnDeath: 1
   destroyTime: 0
---- !u!114 &114514406861827934
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1292447557607120}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7e3a05cd43ff0349bc58753cd0b56ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &212005855676152470
 SpriteRenderer:
   m_ObjectHideFlags: 1

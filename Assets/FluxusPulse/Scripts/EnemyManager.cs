@@ -25,8 +25,6 @@ public class EnemyManager : MonoBehaviour
 	public GameObject[] enemiesB;
 	public Transform PlayerA;
 	public Transform PlayerB;
-    public GameObject Player1;
-    public GameObject Player2;
 	public int wave = 0;
 	public int enemyCount = 0;
 
@@ -48,8 +46,8 @@ public class EnemyManager : MonoBehaviour
         wave++;
 
         // Heal players by 5 HP
-        Player1.gameObject.GetComponent<HealthEntity>().Heal(5);
-        Player2.gameObject.GetComponent<HealthEntity>().Heal(5);
+        PlayerA.gameObject.GetComponent<HealthEntity>().Heal(5);
+        PlayerB.gameObject.GetComponent<HealthEntity>().Heal(5);
     }
 
 	void Update()

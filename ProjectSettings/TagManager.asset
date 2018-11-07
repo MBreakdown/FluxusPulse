@@ -15,20 +15,20 @@ TagManager:
   - UI
   - 
   - 
-  - Players
-  - Enemies
-  - Player Bounds
-  - Player Gravity Aoe
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - (Obsolete) Players
+  - (Obsolete) Enemies
+  - (Obsolete) Player Bounds
+  - (Obsolete) Player Gravity Aoe
+  - Player 1
+  - Player 2
+  - Barrier AllowPlayer1
+  - Barrier AllowPlayer2
+  - Enemies 1
+  - Enemies 2
+  - Barrier AllowEnemy1
+  - Barrier AllowEnemy2
+  - Barrier AllowEnemyAny
+  - Barrier AllowPlayerAny
   - 
   - 
   - 
