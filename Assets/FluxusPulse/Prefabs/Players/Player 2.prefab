@@ -199,7 +199,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1174560565353182}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.19, y: 0.07, z: 0}
+  m_LocalPosition: {x: -25.24, y: 0.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4942855749895184}
@@ -351,7 +351,7 @@ MonoBehaviour:
   flingingCooldown: 3
   referenceBomb: {fileID: 0}
   BombOffCooldown: 1
-  damage: 0
+  damage: 100
   time: 0
 --- !u!114 &114564279940165622
 MonoBehaviour:
@@ -20746,7 +20746,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300002, guid: ae6b453e62720184b86b878533ec66ba, type: 3}
+  m_Sprite: {fileID: 21300002, guid: 51f9d9f31999bbe4780f683e3b6eb9a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
