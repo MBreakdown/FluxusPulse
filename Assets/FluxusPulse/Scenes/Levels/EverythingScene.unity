@@ -168,23 +168,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64ae90d1cd68bd4095fb52854c9d587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_charge: -20
-  chargeWrtAngle:
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 180
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  <rb>k__BackingField: {fileID: 0}
 --- !u!50 &574383
 Rigidbody2D:
   serializedVersion: 4
@@ -216,7 +199,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc150be48c88fdf41b6ff47c9c5d0d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisEntity: {fileID: 574382}
 --- !u!212 &574385
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -479,23 +461,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64ae90d1cd68bd4095fb52854c9d587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_charge: -20
-  chargeWrtAngle:
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 180
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  <rb>k__BackingField: {fileID: 0}
 --- !u!50 &231975184
 Rigidbody2D:
   serializedVersion: 4
@@ -527,7 +492,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc150be48c88fdf41b6ff47c9c5d0d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisEntity: {fileID: 231975183}
 --- !u!212 &231975186
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -997,23 +961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64ae90d1cd68bd4095fb52854c9d587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_charge: -20
-  chargeWrtAngle:
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 180
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  <rb>k__BackingField: {fileID: 0}
 --- !u!50 &452270493
 Rigidbody2D:
   serializedVersion: 4
@@ -1045,7 +992,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc150be48c88fdf41b6ff47c9c5d0d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisEntity: {fileID: 452270492}
 --- !u!212 &452270495
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1174,6 +1120,11 @@ Prefab:
     - target: {fileID: 4600213343090922, guid: ab2874140e5fc4c44b9c621b970390a9, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114454092864436492, guid: ab2874140e5fc4c44b9c621b970390a9,
+        type: 2}
+      propertyPath: damage
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab2874140e5fc4c44b9c621b970390a9, type: 2}
@@ -5481,23 +5432,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64ae90d1cd68bd4095fb52854c9d587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_charge: 2
-  chargeWrtAngle:
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 180
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  <rb>k__BackingField: {fileID: 0}
 --- !u!50 &1376869427
 Rigidbody2D:
   serializedVersion: 4
@@ -5710,23 +5644,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64ae90d1cd68bd4095fb52854c9d587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_charge: -2
-  chargeWrtAngle:
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 180
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  <rb>k__BackingField: {fileID: 0}
 --- !u!50 &1602120360
 Rigidbody2D:
   serializedVersion: 4
@@ -5834,6 +5751,11 @@ Prefab:
     - target: {fileID: 4215064748718172, guid: d8830cd15695ebf4ba1898dc3f4b6036, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114725773506824180, guid: d8830cd15695ebf4ba1898dc3f4b6036,
+        type: 2}
+      propertyPath: damage
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d8830cd15695ebf4ba1898dc3f4b6036, type: 2}
@@ -6092,23 +6014,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64ae90d1cd68bd4095fb52854c9d587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_charge: -20
-  chargeWrtAngle:
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 180
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  <rb>k__BackingField: {fileID: 0}
 --- !u!50 &1705142979
 Rigidbody2D:
   serializedVersion: 4
@@ -6140,7 +6045,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc150be48c88fdf41b6ff47c9c5d0d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisEntity: {fileID: 1705142978}
 --- !u!212 &1705142981
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6372,23 +6276,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64ae90d1cd68bd4095fb52854c9d587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_charge: -20
-  chargeWrtAngle:
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 180
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  <rb>k__BackingField: {fileID: 0}
 --- !u!50 &1781032955
 Rigidbody2D:
   serializedVersion: 4
@@ -6420,7 +6307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc150be48c88fdf41b6ff47c9c5d0d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisEntity: {fileID: 1781032954}
 --- !u!212 &1781032957
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6606,23 +6492,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64ae90d1cd68bd4095fb52854c9d587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_charge: -20
-  chargeWrtAngle:
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 180
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  <rb>k__BackingField: {fileID: 0}
 --- !u!50 &1970215700
 Rigidbody2D:
   serializedVersion: 4
@@ -6654,7 +6523,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc150be48c88fdf41b6ff47c9c5d0d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisEntity: {fileID: 1970215699}
 --- !u!212 &1970215702
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6769,23 +6637,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64ae90d1cd68bd4095fb52854c9d587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_charge: -20
-  chargeWrtAngle:
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 180
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  <rb>k__BackingField: {fileID: 0}
 --- !u!50 &2028160673
 Rigidbody2D:
   serializedVersion: 4
@@ -6817,7 +6668,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc150be48c88fdf41b6ff47c9c5d0d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisEntity: {fileID: 2028160672}
 --- !u!212 &2028160675
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7071,23 +6921,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64ae90d1cd68bd4095fb52854c9d587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_charge: -20
-  chargeWrtAngle:
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 180
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  <rb>k__BackingField: {fileID: 0}
 --- !u!50 &2142082990
 Rigidbody2D:
   serializedVersion: 4
@@ -7119,7 +6952,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc150be48c88fdf41b6ff47c9c5d0d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisEntity: {fileID: 2142082989}
 --- !u!212 &2142082992
 SpriteRenderer:
   m_ObjectHideFlags: 0

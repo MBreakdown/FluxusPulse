@@ -104,7 +104,7 @@ public class EnemyScript : MonoBehaviour
 	// Run collisions
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		// Check player's existance to avoid errors
+        // Check player's existance to avoid errors
 		if (!playerToFollow)
 		{
 			return;
