@@ -11792,6 +11792,8 @@ MonoBehaviour:
   - {fileID: 1522796336035482, guid: 8e206ec60bee42545866ad002323a2ee, type: 2}
   PlayerA: {fileID: 25104699}
   PlayerB: {fileID: 1604562651}
+  Player1: {fileID: 1647459808}
+  Player2: {fileID: 1862132907}
   wave: 0
   enemyCount: 0
 --- !u!4 &829346281
@@ -18849,7 +18851,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1079797653}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 505, y: 348, z: 0}
+  m_LocalPosition: {x: 891, y: 78.5, z: 0}
   m_LocalScale: {x: -3, y: -3, z: 1}
   m_Children:
   - {fileID: 559552047}
@@ -25864,13 +25866,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1376869423}
-  m_LocalRotation: {x: -0, y: -0, z: 0.94609475, w: -0.32389006}
-  m_LocalPosition: {x: -2.31, y: 4.85, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.92201626, w: 0.38715127}
+  m_LocalPosition: {x: -4, y: 2.5, z: 0}
   m_LocalScale: {x: 1.876384, y: 0.78012764, z: 1}
   m_Children: []
   m_Father: {fileID: 346220217}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -142.203}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -225.555}
 --- !u!61 &1376869425
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -33132,7 +33134,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  callDestroyOnDeath: 0
+  callDestroyOnDeath: 1
   destroyTime: 0
 --- !u!58 &1647459812
 CircleCollider2D:
@@ -37174,7 +37176,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1804235739}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -918, y: 655, z: 0}
+  m_LocalPosition: {x: -532, y: 385.5, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 1221182873}
@@ -37323,7 +37325,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  callDestroyOnDeath: 0
+  callDestroyOnDeath: 1
   destroyTime: 0
 --- !u!58 &1862132911
 CircleCollider2D:
@@ -41335,7 +41337,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2113114770}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalPosition: {x: 574, y: 270.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1804235740}
