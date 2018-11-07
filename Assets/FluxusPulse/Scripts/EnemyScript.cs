@@ -67,7 +67,7 @@ public class EnemyScript : MonoBehaviour
 			rb.velocity = Vector2.zero;
 
 			time += Time.fixedDeltaTime;
-			if (time >= 0.5)
+			if (time >= 0.75)
 			{
 				time = 0;
 				
