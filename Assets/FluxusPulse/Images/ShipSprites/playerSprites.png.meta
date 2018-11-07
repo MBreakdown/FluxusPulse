@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: ee1dbfb91ee9fd9449bc85a2721d7024
-timeCreated: 1539136637
+guid: 51f9d9f31999bbe4780f683e3b6eb9a3
+timeCreated: 1541560802
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: paniczShipPositive
-    21300002: paniczShipNegative
+    21300000: player1_Purple
+    21300002: player2_Yellow
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -80,13 +80,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: paniczShipPositive
+      name: player1_Purple
       rect:
         serializedVersion: 2
-        x: 1
+        x: 16
         y: 1
-        width: 128
-        height: 128
+        width: 96
+        height: 126
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -94,13 +94,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: paniczShipNegative
+      name: player2_Yellow
       rect:
         serializedVersion: 2
-        x: 131
+        x: 138
         y: 1
-        width: 128
-        height: 128
+        width: 108
+        height: 126
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
