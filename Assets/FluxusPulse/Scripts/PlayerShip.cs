@@ -13,7 +13,9 @@
 *	Author		:	Elijah Shadbolt
 *	Mail		:	elijah.sha7979@mediadesign.school.nz
 ***********************************************************************/
+using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 // Types
@@ -49,13 +51,41 @@ public enum FlingState
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerShip : MonoBehaviour
 {
-	#region Public
+    #region Public
+
+
+    // Public Static Methods
+    
+    public static PlayerShip GetPlayer(int playerIndex)
+    {
+        if (playerIndex < 1 || playerIndex > s_Players.Length)
+            throw new ArgumentOutOfRangeException(nameof(playerIndex), playerIndex, "Player Index out of range.");
+
+        int i = playerIndex - 1;
+        if (s_Players[i] == null)
+        {
+            s_Players[i] = FindObjectsOfType<PlayerShip>().FirstOrDefault(x => x.PlayerIndex == playerIndex);
+            if (s_Players[i] == null)
+            {
+                Debug.LogError("There is not a Player " + playerIndex + " in the scene.");
+            }
+        }
+        return s_Players[i];
+    }
+    //~ fn
+
+
+    
+    // Public Static Properties
+
+    public static PlayerShip GetPlayer1 { get { return GetPlayer(1); } }
+    public static PlayerShip GetPlayer2 { get { return GetPlayer(2); } }
 
 
 
-	// Public Properties
+    // Public Properties
 
-	public string InputNameSuffix => PlayerIndex.ToString();
+    public string InputNameSuffix => PlayerIndex.ToString();
 
 	public float GetVerticalAxis { get { return Input.GetAxis("Vertical" + InputNameSuffix); } }
 	public float GetHorizontalAxis { get { return Input.GetAxis("Horizontal" + InputNameSuffix); } }
@@ -111,9 +141,10 @@ public class PlayerShip : MonoBehaviour
 
 	[Header("Flinging")]
 
-	public float flingingSpeed = 30f;
-	public float flungSpeed = 30f;
-	public float flungRotateSpeed = 100f;
+	public float flingSpeed = 30f;
+    public float flingAndBoostSpeed = 40f;
+    public float flungAndBoostRotateSpeed = 100f;
+    public float flungRotateSpeed = 100f;
 	public float flungTime = 2f;
 	public float flingingCooldown = 3f;
 
@@ -213,8 +244,12 @@ public class PlayerShip : MonoBehaviour
 		{
 			// Fling around the pivot at a fixed radius.
 			Vector2 fromPivot = transform.position - FlingPivot.position;
+
+            float speed = IsBoosting
+                ? flingAndBoostSpeed
+                : flingSpeed;
 			
-			float angle = Vector2Utilities.CalculateArcAngle(fromPivot.magnitude, flingingSpeed * Time.fixedDeltaTime);
+			float angle = Vector2Utilities.CalculateArcAngle(fromPivot.magnitude, speed * Time.fixedDeltaTime);
 			if (IsFlingDirectionClockwise)
 				angle = -angle;
 
@@ -231,7 +266,7 @@ public class PlayerShip : MonoBehaviour
 			float newRotation = Quaternion.LookRotation(Vector3.forward, direction).eulerAngles.z;
 			rb.MoveRotation(newRotation);
 
-			rb.velocity = direction.normalized * flingingSpeed;
+			rb.velocity = direction.normalized * speed;
 			rb.angularVelocity = angle;
 		}
 		else
@@ -242,8 +277,16 @@ public class PlayerShip : MonoBehaviour
 
 			if (IsFlung)
 			{
-				move *= flungSpeed;
-				rot *= flungRotateSpeed;
+                if (IsBoosting)
+                {
+                    move *= flingAndBoostSpeed;
+                    rot *= flungAndBoostRotateSpeed;
+                }
+                else
+                {
+                    move *= flingSpeed;
+                    rot *= flungRotateSpeed;
+                }
 			}
 			else if (IsBoosting)
 			{
@@ -323,6 +366,8 @@ public class PlayerShip : MonoBehaviour
 		GameObject bomb = Instantiate(referenceBomb, new Vector2(transform.position.x, transform.position.y), Quaternion.LookRotation(Vector3.forward, Vector3.forward));
 	}*/
 
+
+
 	// Coroutines
 
 	private IEnumerator BoostCoroutine()
@@ -343,10 +388,16 @@ public class PlayerShip : MonoBehaviour
 		yield return new WaitForSeconds(flingingCooldown);
 		FlingState = FlingState.None;
 	}
-	//~ fn
+    //~ fn
 
 
 
-	#endregion Private
+    // Private Static Fields
+
+    private static readonly PlayerShip[] s_Players = new PlayerShip[2];
+
+
+
+    #endregion Private
 }
 //~ class

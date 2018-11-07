@@ -22,9 +22,8 @@ GameObject:
   - component: {fileID: 114589145878633212}
   - component: {fileID: 50186267580191002}
   - component: {fileID: 58855567160534138}
-  - component: {fileID: 114617789823330236}
   - component: {fileID: 114334765300022254}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: EnemyANegativeSwift
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +39,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4990082940701694}
   - component: {fileID: 212977617458441742}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: BombNegativePrincess
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,17 +159,6 @@ MonoBehaviour:
   ranged: 0
   time: 0
   selfDestruct: 0
---- !u!114 &114617789823330236
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1457107989840852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7e3a05cd43ff0349bc58753cd0b56ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &212977617458441742
 SpriteRenderer:
   m_ObjectHideFlags: 1

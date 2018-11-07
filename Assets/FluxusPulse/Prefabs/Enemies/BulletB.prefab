@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4296738438712870}
   - component: {fileID: 212003550998204052}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: BombNegativePrincess
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,8 +38,8 @@ GameObject:
   - component: {fileID: 50268963536633740}
   - component: {fileID: 58479957808700786}
   - component: {fileID: 114331902955262588}
-  m_Layer: 0
-  m_Name: Bullet
+  m_Layer: 17
+  m_Name: BulletB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aec36574f8881a4a9ac0a7e86481a4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 20
   damage: 5
   playerFired: {fileID: 0}
 --- !u!212 &212003550998204052

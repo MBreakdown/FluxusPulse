@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4345692955030560}
   - component: {fileID: 198677966283106448}
   - component: {fileID: 199808114815010344}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Flung Fx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4723441959482568}
   - component: {fileID: 198871073400785358}
   - component: {fileID: 199450009837016550}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Passive Fx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4660417751157316}
   - component: {fileID: 198627912047254978}
   - component: {fileID: 199823509251708594}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Move Fx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4893456957363202}
   - component: {fileID: 114310046899217658}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Effects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 4111557389211622}
   - component: {fileID: 198280011226253902}
   - component: {fileID: 199083035760970182}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: High Speed Fx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 114752546594382222}
   - component: {fileID: 114725773506824180}
   - component: {fileID: 114809541161596690}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Player 1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 4544728576200302}
   - component: {fileID: 198205768006900508}
   - component: {fileID: 199543304688917394}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: High Speed Fx 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 4312660072957950}
   - component: {fileID: 198545215905333634}
   - component: {fileID: 199371009534116634}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Boost Fx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,8 +158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4565914291808906}
   - component: {fileID: 212918798134054914}
-  - component: {fileID: 114604808360183830}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,20 +349,6 @@ MonoBehaviour:
     fx: {fileID: 198627912047254978}
   boostFx: {fileID: 198545215905333634}
   flingFx: {fileID: 198677966283106448}
---- !u!114 &114604808360183830
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1985508099766408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e7ecb39188baa74abb0fe0f2cfe48e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spritePositive: {fileID: 21300002, guid: ae6b453e62720184b86b878533ec66ba, type: 3}
-  spriteNegative: {fileID: 21300000, guid: ae6b453e62720184b86b878533ec66ba, type: 3}
-  spriteZero: {fileID: 21300000, guid: ee1dbfb91ee9fd9449bc85a2721d7024, type: 3}
 --- !u!114 &114725773506824180
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -382,8 +367,9 @@ MonoBehaviour:
   boostRotateSpeed: 200
   boostTime: 2
   boostCooldown: 3
-  flingingSpeed: 30
-  flungSpeed: 30
+  flingSpeed: 30
+  flingAndBoostSpeed: 40
+  flungAndBoostRotateSpeed: 200
   flungRotateSpeed: 200
   flungTime: 2
   flingingCooldown: 3
@@ -430,7 +416,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  callDestroyOnDeath: 0
+  callDestroyOnDeath: 1
   destroyTime: 0
 --- !u!114 &114809541161596690
 MonoBehaviour:
@@ -504,7 +490,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -555224558
+  randomSeed: 17826511
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3821,7 +3807,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1972543976
+  randomSeed: -1411161142
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7138,7 +7124,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1671760974
+  randomSeed: -2025752045
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -10455,7 +10441,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1505465335
+  randomSeed: -610469383
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -13793,7 +13779,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1886083508
+  randomSeed: -1154611149
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -17110,7 +17096,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 79931175
+  randomSeed: -782255577
   InitialModule:
     serializedVersion: 3
     enabled: 1
