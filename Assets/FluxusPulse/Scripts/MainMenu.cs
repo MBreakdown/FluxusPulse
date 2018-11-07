@@ -83,7 +83,7 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(11);
     }
-    public void Walls()
+    public void Debris()
     {
         SceneManager.LoadScene(12);
     }
