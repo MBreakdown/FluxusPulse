@@ -1,12 +1,13 @@
 fileFormatVersion: 2
-guid: 74ed3c5e9eb9a7a4dae7694bfee48c5b
-timeCreated: 1541642356
+guid: 02a587b56d373fc41b2c3bb5a7ac1a22
+timeCreated: 1541642697
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: wall_Big
-    21300002: wall_Mid
-    21300004: wall_Small
+    21300002: wall_Standard
+    21300004: wall_Mid
+    21300006: wall_Small
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -86,6 +87,20 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
+        width: 89
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: wall_Standard
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
         width: 64
         height: 256
       alignment: 0
@@ -98,7 +113,7 @@ TextureImporter:
       name: wall_Mid
       rect:
         serializedVersion: 2
-        x: 65
+        x: 161
         y: 121
         width: 64
         height: 135
@@ -112,7 +127,7 @@ TextureImporter:
       name: wall_Small
       rect:
         serializedVersion: 2
-        x: 65
+        x: 161
         y: 0
         width: 64
         height: 90
