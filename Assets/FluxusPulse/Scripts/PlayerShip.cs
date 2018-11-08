@@ -138,7 +138,7 @@ public class PlayerShip : MonoBehaviour
 	public float boostSpeed = 20f;
 	public float boostRotateSpeed = 200f;
 	public float boostTime = 2f;
-	public float boostCooldown = 3f;
+	public float boostCooldown = 5f;
 
 
 	[Header("Flinging")]
@@ -148,7 +148,7 @@ public class PlayerShip : MonoBehaviour
     public float flungAndBoostRotateSpeed = 100f;
     public float flungRotateSpeed = 100f;
 	public float flungTime = 2f;
-	public float flingingCooldown = 3f;
+	public float flingingCooldown = 0.2f;
 
 
 	[Header("Bomb")]
