@@ -75,23 +75,36 @@ public class MainMenu : MonoBehaviour
 		SceneManager.LoadScene(8);
 	}
 	//~ fn*/
+
     public void TheHole()
     {
         SceneManager.LoadScene(10);
     }
+
     public void Pentaholes()
     {
         SceneManager.LoadScene(11);
     }
+
     public void Debris()
     {
         SceneManager.LoadScene(12);
     }
+
     public void Infinity()
     {
         SceneManager.LoadScene(13);
     }
 
+    public void TheVoid()
+    {
+        SceneManager.LoadScene(14);
+    }
+
+    public void Chaos()
+    {
+        SceneManager.LoadScene(15);
+    }
     public void Quit()
 	{
 		Application.Quit();
