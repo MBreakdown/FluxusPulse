@@ -138,7 +138,7 @@ public class PlayerShip : MonoBehaviour
 	public float boostSpeed = 20f;
 	public float boostRotateSpeed = 200f;
 	public float boostTime = 2f;
-	public float boostCooldown = 5f;
+	public float boostCooldown = 4f;
 
 
 	[Header("Flinging")]
