@@ -53,8 +53,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/FluxusPulse/Scenes/Levels/Chaos.unity
     guid: 62daf258a98c1d3419eac6028a421e53
-  - enabled: 1
-    path: Assets/FluxusPulse/Scenes/Tutorials/Mechanics/TutorialMovement.unity
+  - enabled: 0
+    path: Assets/__DELETED_GUID_Trash/135b2c8a6ef86af4297e3a8bc54905af
     guid: 135b2c8a6ef86af4297e3a8bc54905af
   - enabled: 1
     path: Assets/FluxusPulse/Scenes/Tutorials/Mechanics/TutorialBarriers.unity
@@ -71,3 +71,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/FluxusPulse/Scenes/Tutorials/Enemy Levels/TutorialEnemyRocketSwift.unity
     guid: 29ca41e21eb290042ac087568efd7683
+  - enabled: 1
+    path: Assets/FluxusPulse/Scenes/Menus/OpeningScreen.unity
+    guid: aefa01a3d6bd57d4eb37aaf3f339cea0

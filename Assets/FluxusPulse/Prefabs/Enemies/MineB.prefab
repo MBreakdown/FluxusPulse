@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4296738438712870}
   - component: {fileID: 212003550998204052}
-  m_Layer: 16
+  m_Layer: 17
   m_Name: BombNegativePrincess
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,9 +37,9 @@ GameObject:
   - component: {fileID: 4419781676763972}
   - component: {fileID: 50268963536633740}
   - component: {fileID: 58479957808700786}
-  - component: {fileID: 114331902955262588}
-  m_Layer: 16
-  m_Name: BulletA
+  - component: {fileID: 114714907448464670}
+  m_Layer: 17
+  m_Name: MineB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,8 +106,8 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.1
---- !u!114 &114331902955262588
+  m_Radius: 0.6
+--- !u!114 &114714907448464670
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -115,12 +115,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1618975404847926}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aec36574f8881a4a9ac0a7e86481a4a, type: 3}
+  m_Script: {fileID: 11500000, guid: e5f7b2ab06a780f4c9292efe503394e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
   damage: 5
-  playerFired: {fileID: 0}
+  playerToHurt: {fileID: 1296729166736134, guid: d8830cd15695ebf4ba1898dc3f4b6036,
+    type: 2}
 --- !u!212 &212003550998204052
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -155,7 +155,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 64476b346fad8b943802e74a3433ae5b, type: 3}
+  m_Sprite: {fileID: 21300004, guid: ebb6f4043aacf894793ffe813087a5ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
