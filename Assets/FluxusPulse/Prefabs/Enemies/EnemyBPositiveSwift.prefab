@@ -66,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1077372876728730}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.235355, y: -8.453854, z: 0.16985053}
+  m_LocalPosition: {x: 8.235355, y: -8.453854, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4707219909747332}
@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c59620db0cf37346b7f803a09927758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Invincible: 0
   m_health: 3
   m_maxHealth: 3
   onHealthChanged:
@@ -150,14 +151,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIndexToFollow: 1
-  referenceBullet: {fileID: 0}
+  bulletPrefab: {fileID: 0}
+  minePrefab: {fileID: 0}
   speed: 30
   maxSpeed: 15
   damage: 5
   reward: 30
   ranged: 0
-  time: 0
   selfDestruct: 1
+  bomb: 0
+  maxBulletTime: 0.75
 --- !u!212 &212537975777380636
 SpriteRenderer:
   m_ObjectHideFlags: 1
