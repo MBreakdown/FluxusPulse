@@ -13,6 +13,7 @@
 ***********************************************************************/
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
@@ -65,9 +66,16 @@ public class EnemyManager : MonoBehaviour
     public int WaveIndex
     {
         get { return m_waveIndex; }
-        private set { m_waveIndex = Mathf.Clamp(value, 0, waves.Length); }
+        private set {
+            m_waveIndex = Mathf.Clamp(value, 0, waves.Length);
+            if (onWaveIndexChanged != null) { onWaveIndexChanged.Invoke(m_waveIndex); }
+        }
     }
     //~ prop
+
+    public int AliveEnemiesCount { get { return m_aliveEnemies.Count; } }
+
+    public IReadOnlyCollection<EnemyScript> AliveEnemiesSet { get { return m_aliveEnemies; } }
 
 
 
@@ -75,13 +83,29 @@ public class EnemyManager : MonoBehaviour
 
     public void OnEnemySpanwed(EnemyScript enemy)
     {
-        AliveEnemiesCount++;
+        m_aliveEnemies.Add(enemy);
     }
+    //~ fn
 
     public void OnEnemyDestroyed(EnemyScript enemy)
     {
-        AliveEnemiesCount--;
+        m_aliveEnemies.Remove(enemy);
+        
+        // If no more enemies alive, invoke the event.
+        if (AliveEnemiesCount <= 0)
+        {
+            if (useWaves)
+            {
+                StartNextWave();
+            }
+
+            if (onNoEnemiesLeft != null)
+            {
+                onNoEnemiesLeft.Invoke();
+            }
+        }
     }
+    //~ fn
 
 
 
@@ -94,6 +118,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField]
     private int m_waveIndex = 0;
 
+    public UnityEventInt onWaveIndexChanged = new UnityEventInt();
     public UnityEvent onNoEnemiesLeft = new UnityEvent();
 
 
@@ -265,35 +290,6 @@ public class EnemyManager : MonoBehaviour
 
 
 
-    // Private Properties
-
-    private int AliveEnemiesCount
-    {
-        get { return m_aliveEnemiesCount; }
-        set
-        {
-            // Clamp value to at least 0
-            m_aliveEnemiesCount = value < 0 ? 0 : value;
-
-            // If no more enemies alive, invoke the event.
-            if (m_aliveEnemiesCount <= 0)
-            {
-                if (useWaves)
-                {
-                    StartNextWave();
-                }
-
-                if (onNoEnemiesLeft != null)
-                {
-                    onNoEnemiesLeft.Invoke();
-                }
-            }
-        }
-    }
-    //~ prop
-
-
-
     // Private Static Fields
 
     private static EnemyManager m_Instance = null;
@@ -301,9 +297,10 @@ public class EnemyManager : MonoBehaviour
 
 
     // Private Fields
-    
+
     private Wave[] waves;
-    private int m_aliveEnemiesCount = 0;
+
+    private HashSet<EnemyScript> m_aliveEnemies = new HashSet<EnemyScript>();
 
     private Vector2 location = new Vector2(-44.5f, 22f);
     private bool xChange = true;
