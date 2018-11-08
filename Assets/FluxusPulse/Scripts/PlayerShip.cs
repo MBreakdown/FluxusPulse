@@ -66,10 +66,10 @@ public class PlayerShip : MonoBehaviour
         if (s_Players[i] == null)
         {
             s_Players[i] = FindObjectsOfType<PlayerShip>().FirstOrDefault(x => x.PlayerIndex == playerIndex);
-            if (s_Players[i] == null)
-            {
-                Debug.LogError("There is not a Player " + playerIndex + " in the scene.");
-            }
+            //if (s_Players[i] == null)
+            //{
+            //    Debug.LogError("There is not a Player " + playerIndex + " in the scene.");
+            //}
         }
         return s_Players[i];
     }

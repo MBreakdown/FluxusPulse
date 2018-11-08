@@ -43,9 +43,9 @@ public class GameController : MonoBehaviour
 
 
 
-	// Public Properties
-   
-	public bool GameInProgress { get; private set; }
+    // Public Properties
+
+    public bool GameInProgress { get; private set; } = true;
 	public GameOutcome Outcome { get; private set; }
 
 
@@ -54,6 +54,9 @@ public class GameController : MonoBehaviour
 
 	public void EndGame(GameOutcome outcome)
 	{
+        if (!GameInProgress)
+            return;
+
 		GameInProgress = false;
 		this.Outcome = outcome;
 

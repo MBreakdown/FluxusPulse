@@ -61,6 +61,9 @@ public class EnemyScript : MonoBehaviour
 	// Use Rigidbody stuff here.
 	void FixedUpdate()
 	{
+        if (GameController.Instance.GameInProgress == false)
+            return;
+
 		// Fly towards the player
 		Rigidbody2D rb = GetComponent<Rigidbody2D>();
 		if (!rb)
