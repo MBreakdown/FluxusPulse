@@ -11,11 +11,11 @@ public class WaveDisplayText : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		em = FindObjectOfType<EnemyManager> ();
+		em = EnemyManager.Instance;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		thisText.text = ("WAVE  " + em.wave);
+		thisText.text = ("WAVE  " + em.WaveIndex);
 	}
 }

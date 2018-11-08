@@ -60,6 +60,17 @@ public class EnemyManager : MonoBehaviour
 
 
 
+    // Properties
+    
+    public int WaveIndex
+    {
+        get { return m_waveIndex; }
+        private set { m_waveIndex = Mathf.Clamp(value, 0, waves.Length); }
+    }
+    //~ prop
+
+
+
     // Methods
 
     public void OnEnemySpanwed(EnemyScript enemy)
@@ -255,13 +266,6 @@ public class EnemyManager : MonoBehaviour
 
 
     // Private Properties
-
-    private int WaveIndex
-    {
-        get { return m_waveIndex; }
-        set { m_waveIndex = Mathf.Clamp(value, 0, waves.Length); }
-    }
-    //~ prop
 
     private int AliveEnemiesCount
     {
