@@ -283,23 +283,35 @@ public class PlayerShip : MonoBehaviour
                 {
                     move *= flingAndBoostSpeed;
                     rot *= flungAndBoostRotateSpeed;
+
+                    // Set invisiblity
+                    this.gameObject.GetComponent<HealthEntity>().Invincible = true;
                 }
                 else
                 {
                     move *= flingSpeed;
                     rot *= flungRotateSpeed;
+
+                    // Set invisiblity
+                    this.gameObject.GetComponent<HealthEntity>().Invincible = true;
                 }
 			}
 			else if (IsBoosting)
 			{
 				move *= boostSpeed;
 				rot *= boostRotateSpeed;
+
+                // Set invisiblity
+                this.gameObject.GetComponent<HealthEntity>().Invincible = true;
 			}
 			else
 			{
 				move *= speed;
 				rot *= rotateSpeed;
-			}
+
+                // Set invisiblity
+                this.gameObject.GetComponent<HealthEntity>().Invincible = false;
+            }
 			
 			rb.velocity = transform.up * move;
 			rb.angularVelocity = rot;

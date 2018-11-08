@@ -28,6 +28,7 @@ public class HealthEntity : MonoBehaviour
 	/// Maximum health of this entity.
 	/// </summary>
 	public float MaxHealth { get { return m_maxHealth; } }
+    public bool Invincible = false;
 
 	/// <summary>
 	/// The health of this entity.
@@ -70,7 +71,12 @@ public class HealthEntity : MonoBehaviour
 	/// </summary>
 	public void Hurt(float damage)
 	{
-		Health -= damage;
+        // Check invisiblity
+        if (!Invincible)
+        {
+            // Deal damage
+            Health -= damage;
+        }
 	}
 
 	/// <summary>

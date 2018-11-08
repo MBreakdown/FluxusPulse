@@ -122,6 +122,7 @@ public class EnemyScript : MonoBehaviour
 	// Run collisions
 	void OnCollisionEnter2D(Collision2D col)
 	{
+        // Don't let ranged enemies deal melee damage
         if (ranged)
             return;
 
@@ -132,7 +133,7 @@ public class EnemyScript : MonoBehaviour
             // Damage player
             player.healthEntity.Hurt(damage);
 
-            if (selfDestruct == true)
+            if (selfDestruct == true && !player.healthEntity.Invincible)
             {
                 // Damage self
                 this.healthEntity.Hurt(1);
