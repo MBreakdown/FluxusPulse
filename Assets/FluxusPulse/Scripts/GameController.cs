@@ -41,12 +41,35 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public static bool IsGameInProgress { get; private set; } = true;
+
 
 
     // Public Properties
 
-    public static bool IsGameInProgress { get; private set; } = true;
-	public GameOutcome Outcome { get; private set; }
+    public GameOutcome Outcome { get; private set; }
+
+    public bool IsPaused {
+        get { return m_isPaused; }
+        set
+        {
+            m_isPaused = value;
+            PauseMenu.SetActive(m_isPaused);
+            Time.timeScale = m_isPaused ? 0 : 1;
+        }
+    }
+    //~ prop
+
+    public float Score
+    {
+        get { return m_score; }
+        set
+        {
+            m_score = value;
+            if (onScoreChanged != null) { onScoreChanged.Invoke(m_score); }
+        }
+    }
+    //~ prop
 
 
 
@@ -61,7 +84,7 @@ public class GameController : MonoBehaviour
 		this.Outcome = outcome;
 
 		// Save the score
-		PlayerPrefs.SetFloat("Highscore", score);
+		PlayerPrefs.SetFloat("Highscore", m_score);
 
 		switch (outcome)
 		{
@@ -81,9 +104,10 @@ public class GameController : MonoBehaviour
 
 
     // Inspector Fields
+    
+    public GameObject PauseMenu;
 
-    public float score = 0;
-
+    public UnityEventFloat onScoreChanged = new UnityEventFloat();
     public UnityEvent onVictory = new UnityEvent();
     public UnityEvent onDefeat = new UnityEvent();
 
@@ -102,6 +126,21 @@ public class GameController : MonoBehaviour
     }
     //~ fn
 
+    void Start()
+    {
+        IsPaused = IsPaused;
+    }
+    //~ fn
+
+    void Update()
+    {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            IsPaused = !IsPaused;
+        }
+    }
+    //~ fn
+
     void OnDestroy()
     {
         // If this was the only instance and it was destroyed,
@@ -117,6 +156,14 @@ public class GameController : MonoBehaviour
     // Private Static Fields
 
     private static GameController m_Instance = null;
+
+
+
+    // Private Fields
+
+    private float m_score = 0;
+
+    private bool m_isPaused = false;
 
 
 

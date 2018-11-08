@@ -124,7 +124,7 @@ public class EnemyScript : MonoBehaviour
                     // Spawn mine
                     GameObject mine = Instantiate(
                         minePrefab,
-                        new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y),
+                        new Vector3(transform.position.x, transform.position.y, 10),
                         Quaternion.LookRotation(Vector3.forward, vectorToPlayer)
                     );
                     mine.gameObject.GetComponent<MineScript>().playerToHurt = PlayerShip.GetPlayer(playerIndexToFollow).gameObject;

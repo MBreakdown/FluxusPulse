@@ -52,6 +52,12 @@ public class MineScript : MonoBehaviour
             {
                 // Damage player
                 player.healthEntity.Hurt(damage);
+                
+                // Don't destroy mines if invincible
+                if (player.GetComponent<HealthEntity>().Invincible)
+                {
+                    return;
+                }
             }
 
             // Self destruct
