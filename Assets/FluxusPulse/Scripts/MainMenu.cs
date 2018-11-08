@@ -87,7 +87,7 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(12);
     }
-    public void Minefield()
+    public void Infinity()
     {
         SceneManager.LoadScene(13);
     }
