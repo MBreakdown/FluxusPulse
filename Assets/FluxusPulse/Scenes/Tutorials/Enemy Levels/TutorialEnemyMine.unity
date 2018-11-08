@@ -29085,11 +29085,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Enemy mines will damage you
+  m_Text: 'Mines will damage on impact.
 
-    only fly through mines that
+    Only fly through mines that
 
-    match your colour'
+    match your colour to disable
+
+    them'
 --- !u!222 &1519254736
 CanvasRenderer:
   m_ObjectHideFlags: 0

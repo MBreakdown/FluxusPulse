@@ -7236,8 +7236,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "rockets will chase you and\nself destruct. intercept your \ncolour rocket
-    to save your partner"
+  m_Text: 'Swift Enemies will surround and crash
+
+    into you! Deal with them quickly '
 --- !u!222 &246520090
 CanvasRenderer:
   m_ObjectHideFlags: 0

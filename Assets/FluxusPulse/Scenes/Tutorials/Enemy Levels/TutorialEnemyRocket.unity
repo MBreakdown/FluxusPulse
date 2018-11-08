@@ -25315,7 +25315,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1103687066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.41, y: 10.89, z: 21.168608}
+  m_LocalPosition: {x: 23.41, y: 15.48, z: 21.168608}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -32349,7 +32349,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "rockets will chase you and\nself destruct. intercept your \ncolour rocket
+  m_Text: "Rockets will chase you and\nself destruct. Intercept your \ncolour rocket
     to save your partner"
 --- !u!222 &1152234655
 CanvasRenderer:
@@ -36093,7 +36093,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1448715520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.36, y: -11.65, z: 21.168608}
+  m_LocalPosition: {x: -24.1, y: -16.91, z: 21.168608}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
