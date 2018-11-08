@@ -7,7 +7,7 @@ public class SingleSpawn : MonoBehaviour
 	[Range(1,2)]
 	public int playerIndexToFollow = 1;
 	public EnemyScript prefab; 
-	public int Count =1;
+	public int Count = 1;
 
 
 	// Use this for initialization

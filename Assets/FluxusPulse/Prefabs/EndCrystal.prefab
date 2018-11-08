@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4194439929084324}
   - component: {fileID: 198171254796175032}
   - component: {fileID: 199618611461237996}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: Burst 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4925742242211194}
   - component: {fileID: 198871129945845654}
   - component: {fileID: 199815956630097130}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: Burst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4567009162158686}
   - component: {fileID: 198094418799185514}
   - component: {fileID: 199219049294713136}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 114327231515430752}
   - component: {fileID: 58287478983159812}
   - component: {fileID: 114893252495712724}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: EndCrystal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1887417614895488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.5, y: 2.8, z: 30}
+  m_LocalPosition: {x: 0.33, y: 10.62, z: 30}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 4567009162158686}
@@ -252,6 +252,7 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
+  stayOn: 0
 --- !u!114 &114893252495712724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7006,7 +7007,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1363386109
+  randomSeed: -57721431
   InitialModule:
     serializedVersion: 3
     enabled: 1
