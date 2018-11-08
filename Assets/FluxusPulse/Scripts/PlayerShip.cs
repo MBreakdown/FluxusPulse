@@ -224,9 +224,9 @@ public class PlayerShip : MonoBehaviour
 	//~ fn
 
 	void FixedUpdate()
-	{
-		// Check the bomb's cooldown
-		if (!BombOffCooldown)
+    {
+        // Check the bomb's cooldown
+        if (!BombOffCooldown)
 		{
 			// Use time
 			time += Time.fixedDeltaTime;
@@ -321,8 +321,8 @@ public class PlayerShip : MonoBehaviour
 	//~ fn
 
 	void OnCollisionEnter2D(Collision2D col)
-	{
-		EnemyScript enemy = col.gameObject.GetComponent<EnemyScript>();
+    {
+        EnemyScript enemy = col.gameObject.GetComponent<EnemyScript>();
 		if (enemy && enemy.playerIndexToFollow != this.PlayerIndex)
 		{
 			enemy.GetComponent<HealthEntity>().Hurt(damage);
@@ -331,8 +331,8 @@ public class PlayerShip : MonoBehaviour
 	//~ fn
 
 	void OnTriggerStay2D(Collider2D other)
-	{
-		if (other.tag == FlingPivotTag)
+    {
+        if (other.tag == FlingPivotTag)
 		{
 			if (GetTetherButton
 				&& FlingState == FlingState.None)
@@ -352,8 +352,8 @@ public class PlayerShip : MonoBehaviour
 	//~ fn
 
 	void OnTriggerExit2D(Collider2D other)
-	{
-		if (FlingState == FlingState.Flinging)
+    {
+        if (FlingState == FlingState.Flinging)
 		{
 			FinishFlinging();
 		}
