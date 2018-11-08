@@ -66,10 +66,10 @@ public class PlayerShip : MonoBehaviour
         if (s_Players[i] == null)
         {
             s_Players[i] = FindObjectsOfType<PlayerShip>().FirstOrDefault(x => x.PlayerIndex == playerIndex);
-            //if (s_Players[i] == null)
-            //{
-            //    Debug.LogError("There is not a Player " + playerIndex + " in the scene.");
-            //}
+            if (!s_Players[i] && GameController.IsGameInProgress)
+            {
+                Debug.LogError("There is not a Player " + playerIndex + " in the scene.");
+            }
         }
         return s_Players[i];
     }
@@ -159,7 +159,7 @@ public class PlayerShip : MonoBehaviour
 
 	[Header("Stuff")]
 
-	public float damage;
+	public float damage = 1;
 	public float time = 0;
 
 
@@ -214,8 +214,7 @@ public class PlayerShip : MonoBehaviour
 		{
 			// Set the cooldown to be on
 			BombOffCooldown = false;
-
-			Debug.Log("YOOOO");
+            
 			/*
 			// Run function
 			gravityBomb();
@@ -314,7 +313,6 @@ public class PlayerShip : MonoBehaviour
 		EnemyScript enemy = col.gameObject.GetComponent<EnemyScript>();
 		if (enemy && enemy.playerIndexToFollow != this.PlayerIndex)
 		{
-			Debug.Log("Hurt() has been called");
 			enemy.GetComponent<HealthEntity>().Hurt(damage);
 		}
 	}

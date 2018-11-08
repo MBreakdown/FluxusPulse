@@ -14,6 +14,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(HealthEntity))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class EnemyScript : MonoBehaviour
 {
     #region Public
@@ -23,6 +24,7 @@ public class EnemyScript : MonoBehaviour
     // Properties
 
     public HealthEntity healthEntity { get; private set; }
+    public Rigidbody2D rb { get; private set; }
 
 
 
@@ -31,13 +33,14 @@ public class EnemyScript : MonoBehaviour
     // Reference variable, assignable in the inspector.
     [Range(1, 2)]
     public int playerIndexToFollow = 1;
-	public GameObject referenceBullet;
+	public BulletScript bulletPrefab;
 	public float speed;
 	public float maxSpeed;
 	public float damage;
 	public float reward;
 	public bool ranged;
-	public float time = 0;
+	private float time = 0;
+    public float maxTime = 0.75f;
     public bool selfDestruct;
 
 
@@ -51,7 +54,14 @@ public class EnemyScript : MonoBehaviour
 
     void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
         healthEntity = GetComponent<HealthEntity>();
+    }
+    //~ fn
+
+    void Start()
+    {
+        EnemyManager.Instance.OnEnemySpanwed(this);
     }
     //~ fn
 
@@ -60,33 +70,37 @@ public class EnemyScript : MonoBehaviour
 	// Use Time.fixedDeltaTime here
 	// Use Rigidbody stuff here.
 	void FixedUpdate()
-	{
-        if (GameController.Instance.GameInProgress == false)
+    {
+        time = Mathf.Clamp(time + Time.fixedDeltaTime, 0, maxTime);
+
+        if (GameController.IsGameInProgress == false)
             return;
 
 		// Fly towards the player
-		Rigidbody2D rb = GetComponent<Rigidbody2D>();
-		if (!rb)
-			Debug.LogError("Rigidbody missing!", this);
 
-		// Set the vector to the player that they're attacking
-		Vector2 vectorToPlayer = PlayerShip.GetPlayer(playerIndexToFollow).transform.position - this.transform.position;
+        PlayerShip player = PlayerShip.GetPlayer(playerIndexToFollow);
 
-		// Figure out if the enemy needs to stay away from the player
-		if (Vector2.Distance(this.transform.position, PlayerShip.GetPlayer(playerIndexToFollow).transform.position) < 15 && ranged == true)
+        // Set the vector to the player that they're attacking
+        Vector2 vectorToPlayer = player.transform.position - this.transform.position;
+
+        // Figure out if the enemy needs to stay away from the player
+        if (Vector2.Distance(this.transform.position, player.transform.position) < 15 && ranged == true)
 		{
 			// Stop movement
 			rb.velocity = Vector2.zero;
 
-			time += Time.fixedDeltaTime;
-			if (time >= 0.75)
-			{
-				time = 0;
-				
-				// Fire bullet
-				GameObject bullet = Instantiate(referenceBullet, new Vector2(transform.position.x, transform.position.y), Quaternion.LookRotation(Vector3.forward, vectorToPlayer));
-                bullet.name = referenceBullet.name;
-				bullet.GetComponent<BulletScript>().playerFired = gameObject;
+            if (time >= maxTime)
+            {
+                time = 0;
+
+                // Fire bullet
+                BulletScript bullet = Instantiate(
+                    bulletPrefab,
+                    new Vector2(transform.position.x, transform.position.y),
+                    Quaternion.LookRotation(Vector3.forward, vectorToPlayer)
+                );
+                bullet.name = bulletPrefab.name;
+				bullet.originEnemy = this;
 			}
 		}
 		else
@@ -108,9 +122,12 @@ public class EnemyScript : MonoBehaviour
 	// Run collisions
 	void OnCollisionEnter2D(Collision2D col)
 	{
+        if (ranged)
+            return;
+
         // Run collision with player to follow
         PlayerShip player = col.gameObject.GetComponent<PlayerShip>();
-        if (player == PlayerShip.GetPlayer(playerIndexToFollow))
+        if (player && player.PlayerIndex == playerIndexToFollow)
 		{
             // Damage player
             player.healthEntity.Hurt(damage);
@@ -127,8 +144,11 @@ public class EnemyScript : MonoBehaviour
 	// Detect an enemy death
 	void OnDestroy()
 	{
+        if (!GameController.IsGameInProgress)
+            return;
+
         // Decrease the number of enemies
-        EnemyManager.Instance.enemyCount -= 1;
+        EnemyManager.Instance.OnEnemyDestroyed(this);
 	}
 	//~ fn
 

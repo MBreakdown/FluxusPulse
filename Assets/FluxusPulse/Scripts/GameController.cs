@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour
             if (!m_Instance)
             {
                 m_Instance = FindObjectOfType<GameController>();
-                if (!m_Instance)
+                if (!m_Instance && IsGameInProgress)
                     Debug.LogError("No instance of " + nameof(GameController) + " in the scene.");
             }
             return m_Instance;
@@ -45,7 +45,7 @@ public class GameController : MonoBehaviour
 
     // Public Properties
 
-    public bool GameInProgress { get; private set; } = true;
+    public static bool IsGameInProgress { get; private set; } = true;
 	public GameOutcome Outcome { get; private set; }
 
 
@@ -54,10 +54,10 @@ public class GameController : MonoBehaviour
 
 	public void EndGame(GameOutcome outcome)
 	{
-        if (!GameInProgress)
+        if (!IsGameInProgress)
             return;
 
-		GameInProgress = false;
+		IsGameInProgress = false;
 		this.Outcome = outcome;
 
 		// Save the score
@@ -91,6 +91,26 @@ public class GameController : MonoBehaviour
 
     #endregion Public
     #region Private
+
+
+
+    // Unity Event Methods
+
+    void Awake()
+    {
+        IsGameInProgress = true;
+    }
+    //~ fn
+
+    void OnDestroy()
+    {
+        // If this was the only instance and it was destroyed,
+        if (FindObjectsOfType<GameController>().Length == 0)
+        {
+            IsGameInProgress = false;
+        }
+    }
+    //~ fn
 
 
 

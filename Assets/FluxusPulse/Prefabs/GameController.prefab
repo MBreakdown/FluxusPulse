@@ -716,18 +716,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e58098a572817a43aa572f0c2f89b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesA:
-  - {fileID: 1276991973067674, guid: 23d5adf72612225458cbcc9af5114421, type: 2}
-  - {fileID: 1457107989840852, guid: eeb0f0300d5a7b342b65e68d28bebdec, type: 2}
-  - {fileID: 1292447557607120, guid: 760feb1ef10c8fc4d8d37fe16a3e51c1, type: 2}
-  enemiesB:
-  - {fileID: 1964859663796502, guid: ad967ec7f727ab147913272d82df1779, type: 2}
-  - {fileID: 1077372876728730, guid: 541b127ef6bb94744bf766a467cc4443, type: 2}
-  - {fileID: 1522796336035482, guid: 8e206ec60bee42545866ad002323a2ee, type: 2}
-  PlayerA: {fileID: 0}
-  PlayerB: {fileID: 0}
-  wave: 0
-  enemyCount: 0
+  enemies1:
+    bombPrefab: {fileID: 114203629325045108, guid: 23d5adf72612225458cbcc9af5114421,
+      type: 2}
+    fighterPrefab: {fileID: 114224488864374708, guid: 760feb1ef10c8fc4d8d37fe16a3e51c1,
+      type: 2}
+    swiftPrefab: {fileID: 114589145878633212, guid: eeb0f0300d5a7b342b65e68d28bebdec,
+      type: 2}
+  enemies2:
+    bombPrefab: {fileID: 114137904744991840, guid: ad967ec7f727ab147913272d82df1779,
+      type: 2}
+    fighterPrefab: {fileID: 114798128515374906, guid: 8e206ec60bee42545866ad002323a2ee,
+      type: 2}
+    swiftPrefab: {fileID: 114207942641709792, guid: 541b127ef6bb94744bf766a467cc4443,
+      type: 2}
+  m_waveIndex: 0
+  onNoEnemiesLeft:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114755214178990226
 MonoBehaviour:
   m_ObjectHideFlags: 1
