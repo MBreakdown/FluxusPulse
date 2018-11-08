@@ -23,9 +23,13 @@ public enum GameOutcome
 
 public class GameController : MonoBehaviour
 {
+    #region Public
+
+
+
     // Public Static Properties
 
-	public static GameController Instance {
+    public static GameController Instance {
         get {
             if (!m_Instance)
             {
@@ -39,9 +43,9 @@ public class GameController : MonoBehaviour
 
 
 
-	// Public Properties
+    // Public Properties
 
-	public bool GameInProgress { get; private set; }
+    public bool GameInProgress { get; private set; } = true;
 	public GameOutcome Outcome { get; private set; }
 
 
@@ -50,6 +54,9 @@ public class GameController : MonoBehaviour
 
 	public void EndGame(GameOutcome outcome)
 	{
+        if (!GameInProgress)
+            return;
+
 		GameInProgress = false;
 		this.Outcome = outcome;
 
@@ -82,8 +89,17 @@ public class GameController : MonoBehaviour
 
 
 
+    #endregion Public
+    #region Private
+
+
+
     // Private Static Fields
 
     private static GameController m_Instance = null;
+
+
+
+    #endregion Private
 }
 //~ class

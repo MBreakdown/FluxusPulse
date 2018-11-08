@@ -13,17 +13,24 @@
 ***********************************************************************/
 using UnityEngine;
 
+[RequireComponent(typeof(HealthEntity))]
 public class EnemyScript : MonoBehaviour
 {
-	#region Public
+    #region Public
 
 
 
-	// Inspector Fields
+    // Properties
 
-	// Reference variable, assignable in the inspector.
-	public Transform playerToFollow;
-	public Transform playerToAvoid;
+    public HealthEntity healthEntity { get; private set; }
+
+
+
+    // Inspector Fields
+
+    // Reference variable, assignable in the inspector.
+    [Range(1, 2)]
+    public int playerIndexToFollow = 1;
 	public GameObject referenceBullet;
 	public float speed;
 	public float maxSpeed;
@@ -42,26 +49,31 @@ public class EnemyScript : MonoBehaviour
 
 	// Unity Event Methods
 
+    void Awake()
+    {
+        healthEntity = GetComponent<HealthEntity>();
+    }
+    //~ fn
+
+
 	// Runs once every physics frame.
 	// Use Time.fixedDeltaTime here
 	// Use Rigidbody stuff here.
 	void FixedUpdate()
 	{
-		// Check if the player exists
-		if (!playerToFollow)
-		{
-			return;
-		}
+        if (GameController.Instance.GameInProgress == false)
+            return;
+
 		// Fly towards the player
 		Rigidbody2D rb = GetComponent<Rigidbody2D>();
 		if (!rb)
 			Debug.LogError("Rigidbody missing!", this);
 
 		// Set the vector to the player that they're attacking
-		Vector2 vectorToPlayer = playerToFollow.transform.position - this.transform.position;
+		Vector2 vectorToPlayer = PlayerShip.GetPlayer(playerIndexToFollow).transform.position - this.transform.position;
 
 		// Figure out if the enemy needs to stay away from the player
-		if (Vector2.Distance(this.transform.position, playerToFollow.transform.position) < 15 && ranged == true)
+		if (Vector2.Distance(this.transform.position, PlayerShip.GetPlayer(playerIndexToFollow).transform.position) < 15 && ranged == true)
 		{
 			// Stop movement
 			rb.velocity = Vector2.zero;
@@ -73,7 +85,8 @@ public class EnemyScript : MonoBehaviour
 				
 				// Fire bullet
 				GameObject bullet = Instantiate(referenceBullet, new Vector2(transform.position.x, transform.position.y), Quaternion.LookRotation(Vector3.forward, vectorToPlayer));
-				bullet.gameObject.GetComponent<BulletScript>().playerFired = gameObject;
+                bullet.name = referenceBullet.name;
+				bullet.GetComponent<BulletScript>().playerFired = gameObject;
 			}
 		}
 		else
@@ -92,33 +105,20 @@ public class EnemyScript : MonoBehaviour
 		rb.rotation = Mathf.Rad2Deg * Mathf.Atan2(vectorToPlayer.y, vectorToPlayer.x) - 90;
 	}
 
-	// Update is called once per frame.
-	// Use Time.deltaTime here.
-	// Use game input here.
-	void Update()
-	{
-
-	}
-	//~ fn
-
 	// Run collisions
 	void OnCollisionEnter2D(Collision2D col)
 	{
-        // Check player's existance to avoid errors
-		if (!playerToFollow)
+        // Run collision with player to follow
+        PlayerShip player = col.gameObject.GetComponent<PlayerShip>();
+        if (player == PlayerShip.GetPlayer(playerIndexToFollow))
 		{
-			return;
-		}
-		// Run collision with player to follow
-		if (col.gameObject.name == playerToFollow.name)
-		{
-			// Damage player
-			col.gameObject.GetComponent<HealthEntity>().Hurt(damage);
+            // Damage player
+            player.healthEntity.Hurt(damage);
 
             if (selfDestruct == true)
             {
                 // Damage self
-                this.gameObject.GetComponent<HealthEntity>().Hurt(1);
+                this.healthEntity.Hurt(1);
             }
 		}
 	}
@@ -127,8 +127,8 @@ public class EnemyScript : MonoBehaviour
 	// Detect an enemy death
 	void OnDestroy()
 	{
-		// Decrease the number of enemies
-		FindObjectOfType<EnemyManager>().enemyCount -= 1;
+        // Decrease the number of enemies
+        EnemyManager.Instance.enemyCount -= 1;
 	}
 	//~ fn
 

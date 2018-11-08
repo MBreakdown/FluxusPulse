@@ -39,7 +39,7 @@ public class HealthEntity : MonoBehaviour
 			m_health = Mathf.Clamp(value, 0f, MaxHealth);
 			InvokeHealthChangedEvents();
 
-			if (m_health <= 0f)
+			if (IsDead)
 			{
 				InvokeDeathEvents();
 			}
@@ -80,6 +80,14 @@ public class HealthEntity : MonoBehaviour
 	{
 		Health += healthIncrease;
 	}
+
+    /// <summary>
+    /// Sets Health to zero and invokes death events.
+    /// </summary>
+    public void Kill()
+    {
+        Health = 0;
+    }
 
 
 

@@ -15,16 +15,32 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-	#region Public
+    #region Public
 
 
 
-	// Inspector Fields
+    // Static Properties
 
-	public GameObject[] enemiesA;
+    public static EnemyManager Instance
+    {
+        get
+        {
+            if (!m_Instance)
+            {
+                m_Instance = FindObjectOfType<EnemyManager>();
+                if (!m_Instance)
+                    Debug.LogError("No instance of " + nameof(EnemyManager) + " in the scene.");
+            }
+            return m_Instance;
+        }
+    }
+
+
+
+    // Inspector Fields
+
+    public GameObject[] enemiesA;
 	public GameObject[] enemiesB;
-	public Transform PlayerA;
-	public Transform PlayerB;
 	public int wave = 0;
 	public int enemyCount = 0;
 
@@ -46,8 +62,8 @@ public class EnemyManager : MonoBehaviour
         wave++;
 
         // Heal players by 5 HP
-        PlayerA.gameObject.GetComponent<HealthEntity>().Heal(5);
-        PlayerB.gameObject.GetComponent<HealthEntity>().Heal(5);
+        PlayerShip.GetPlayer1.healthEntity.Heal(5);
+        PlayerShip.GetPlayer2.healthEntity.Heal(5);
     }
 
 	void Update()
@@ -252,20 +268,22 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    EnemyScript SpawnSingleEnemy(GameObject prefab, Vector2 position, int playerIndexToFollow)
+    {
+        GameObject go = Instantiate(prefab, position, Quaternion.identity);
+        EnemyScript enemy = go.GetComponent<EnemyScript>();
+        enemy.playerIndexToFollow = playerIndexToFollow;
+        return enemy;
+    }
+
 	void Spawn(int bomber, int swift, int fighter)
 	{
 		// Bomber's spawning
 		for (int i = 0; i < bomber; i++)
 		{
-			// Initialise an enemy
-			GameObject goA = Instantiate(enemiesA[0], new Vector2(xLocation, yLocation), Quaternion.identity);
-			goA.gameObject.GetComponent<EnemyScript>().playerToAvoid = PlayerA;
-			goA.gameObject.GetComponent<EnemyScript>().playerToFollow = PlayerB;
-
             // Initialise an enemy
-            GameObject goB = Instantiate(enemiesB[0], new Vector2(xLocation, yLocation), Quaternion.identity);
-			goB.gameObject.GetComponent<EnemyScript>().playerToAvoid = PlayerB;
-			goB.gameObject.GetComponent<EnemyScript>().playerToFollow = PlayerA;
+            SpawnSingleEnemy(enemiesA[0], new Vector2(xLocation, yLocation), 2);
+            SpawnSingleEnemy(enemiesB[0], new Vector2(xLocation, yLocation), 1);
 
             // Change the spawn position
             SpawnChange();
@@ -281,15 +299,9 @@ public class EnemyManager : MonoBehaviour
 		// Swift ship's spawning
 		for (int i = 0; i < swift; i++)
 		{
-			// Initialise an enemy
-			GameObject goA = Instantiate(enemiesA[1], new Vector2(xLocation, yLocation), Quaternion.identity);
-			goA.gameObject.GetComponent<EnemyScript>().playerToAvoid = PlayerA;
-			goA.gameObject.GetComponent<EnemyScript>().playerToFollow = PlayerB;
-
-			// Initialise an enemy
-			GameObject goB = Instantiate(enemiesB[1], new Vector2(xLocation, yLocation), Quaternion.identity);
-			goB.gameObject.GetComponent<EnemyScript>().playerToAvoid = PlayerB;
-			goB.gameObject.GetComponent<EnemyScript>().playerToFollow = PlayerA;
+            // Initialise an enemy
+            SpawnSingleEnemy(enemiesA[1], new Vector2(xLocation, yLocation), 2);
+            SpawnSingleEnemy(enemiesB[1], new Vector2(xLocation, yLocation), 1);
 
             // Change the spawn position
             SpawnChange();
@@ -304,16 +316,10 @@ public class EnemyManager : MonoBehaviour
 
 		// Fighter's spawning
 		for (int i = 0; i < fighter; i++)
-		{
-			// Initialise an enemy
-			GameObject goA = Instantiate(enemiesA[2], new Vector2(xLocation, yLocation), Quaternion.identity);
-			goA.gameObject.GetComponent<EnemyScript>().playerToAvoid = PlayerA;
-			goA.gameObject.GetComponent<EnemyScript>().playerToFollow = PlayerB;
-
+        {
             // Initialise an enemy
-            GameObject goB = Instantiate(enemiesB[2], new Vector2(xLocation, yLocation), Quaternion.identity);
-			goB.gameObject.GetComponent<EnemyScript>().playerToAvoid = PlayerB;
-			goB.gameObject.GetComponent<EnemyScript>().playerToFollow = PlayerA;
+            SpawnSingleEnemy(enemiesA[2], new Vector2(xLocation, yLocation), 2);
+            SpawnSingleEnemy(enemiesB[2], new Vector2(xLocation, yLocation), 1);
 
             // Change the spawn position
             SpawnChange();
@@ -326,19 +332,25 @@ public class EnemyManager : MonoBehaviour
 		}
 		//~ for
 	}
-	//~ fn
+    //~ fn
+
+        
+
+    // Private Static Fields
+
+    private static EnemyManager m_Instance = null;
 
 
 
-	// Private Variables
+    // Private Fields
 
-	private float xLocation = -44.5f;
+    private float xLocation = -44.5f;
 	private float yLocation = 22f;
     private bool xChange = true;
     private int[] enemySpawnNum = new int[3];
+    
 
 
-
-	#endregion Private
+    #endregion Private
 }
 //~ class
