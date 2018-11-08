@@ -119,9 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e5669b7b646ac45b5d0b95578bb2b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerToFollow: {fileID: 0}
-  playerToAvoid: {fileID: 0}
-  referenceBullet: {fileID: 1618975404847926, guid: 3ec23d4ab4987ff42a947b91fa5a659c,
+  playerIndexToFollow: 2
+  bulletPrefab: {fileID: 114331902955262588, guid: 3ec23d4ab4987ff42a947b91fa5a659c,
     type: 2}
   speed: 24
   maxSpeed: 8

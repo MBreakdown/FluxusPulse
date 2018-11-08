@@ -25,7 +25,7 @@ public class BulletScript : MonoBehaviour
 	public float damage = 5;
 
     [HideInInspector]
-	public GameObject playerFired;
+	public EnemyScript originEnemy;
 
 
 
@@ -49,6 +49,9 @@ public class BulletScript : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
+        if (col.isTrigger)
+            return;
+
         PlayerShip player = col.GetComponent<PlayerShip>();
         if (player != null)
         {
@@ -61,9 +64,9 @@ public class BulletScript : MonoBehaviour
         else
         {
             EnemyScript enemy = col.GetComponent<EnemyScript>();
-            if (enemy == playerFired)
+            if (enemy == originEnemy)
             {
-                // Do nothing if collision with an enemy or bullet
+                // Do nothing if collision with the enemy that fired it
             }
             else
             {

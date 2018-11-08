@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIndexToFollow: 1
-  referenceBullet: {fileID: 1618975404847926, guid: a308a1192c0c3304681fd6824188e237,
+  bulletPrefab: {fileID: 114331902955262588, guid: a308a1192c0c3304681fd6824188e237,
     type: 2}
   speed: 24
   maxSpeed: 8

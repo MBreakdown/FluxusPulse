@@ -11,7 +11,30 @@
 *	Project		:	FluxusPulse
 *	Team Name	:	M Breakdown Studios
 ***********************************************************************/
+using System;
+using System.Collections;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
+using Random = UnityEngine.Random;
+
+[Serializable]
+public class EnemyPrefabCollection
+{
+    public EnemyScript bombPrefab;
+    public EnemyScript fighterPrefab;
+    public EnemyScript swiftPrefab;
+}
+//~ class
+
+[Serializable]
+public class Wave
+{
+    public int bombCount = 0;
+    public int fighterCount = 0;
+    public int swiftCount = 0;
+}
+//~ class
 
 public class EnemyManager : MonoBehaviour
 {
@@ -28,7 +51,7 @@ public class EnemyManager : MonoBehaviour
             if (!m_Instance)
             {
                 m_Instance = FindObjectOfType<EnemyManager>();
-                if (!m_Instance)
+                if (!m_Instance && GameController.IsGameInProgress)
                     Debug.LogError("No instance of " + nameof(EnemyManager) + " in the scene.");
             }
             return m_Instance;
@@ -37,223 +60,114 @@ public class EnemyManager : MonoBehaviour
 
 
 
-    // Inspector Fields
-
-    public GameObject[] enemiesA;
-	public GameObject[] enemiesB;
-	public int wave = 0;
-	public int enemyCount = 0;
-
-
-
-	#endregion Public
-	#region Private
-
-	
-
-	// Unity Event Methods
-	
-    void Waves()
+    // Properties
+    
+    public int WaveIndex
     {
-        // Spawn enemies
-        Spawn(enemySpawnNum[0], enemySpawnNum[1], enemySpawnNum[2]);
-        
-        // Increase wave number
-        wave++;
+        get { return m_waveIndex; }
+        private set { m_waveIndex = Mathf.Clamp(value, 0, waves.Length); }
+    }
+    //~ prop
 
-        // Heal players by 5 HP
-        PlayerShip.GetPlayer1.healthEntity.Heal(5);
-        PlayerShip.GetPlayer2.healthEntity.Heal(5);
+
+
+    // Methods
+
+    public void OnEnemySpanwed(EnemyScript enemy)
+    {
+        AliveEnemiesCount++;
     }
 
-	void Update()
-	{
-		if (wave == 0)
-        {
-            // Set spawn numbers
-            enemySpawnNum[0] = 1;
-            enemySpawnNum[1] = 0;
-            enemySpawnNum[2] = 0;
+    public void OnEnemyDestroyed(EnemyScript enemy)
+    {
+        AliveEnemiesCount--;
+    }
 
-            // Run wave
-            Waves();
-		}
-		else if (wave == 1 && FindObjectOfType<EnemyManager>().enemyCount == 0)
-        {
-            // Set spawn numbers
-            enemySpawnNum[0] = 2;
 
-            // Run wave
-            Waves();
+
+    // Inspector Fields
+
+    public bool useWaves = true;
+    public EnemyPrefabCollection enemies1 = new EnemyPrefabCollection();
+    public EnemyPrefabCollection enemies2 = new EnemyPrefabCollection();
+
+    [SerializeField]
+    private int m_waveIndex = 0;
+
+    public UnityEvent onNoEnemiesLeft = new UnityEvent();
+
+
+
+    #endregion Public
+    #region Private
+
+
+
+    // Unity Event Methods
+
+    void Awake()
+    {
+        // Initialise enemy counts for each wave.
+        waves = new Wave[100];
+        waves[0] = new Wave { bombCount = 1, fighterCount = 0, swiftCount = 0 };
+        waves[1] = new Wave { bombCount = 2, fighterCount = 0, swiftCount = 0 };
+        waves[2] = new Wave { bombCount = 0, fighterCount = 0, swiftCount = 1 };
+        waves[3] = new Wave { bombCount = 0, fighterCount = 1, swiftCount = 0 };
+        waves[4] = new Wave { bombCount = 1, fighterCount = 0, swiftCount = 1 };
+        waves[5] = new Wave { bombCount = 2, fighterCount = 0, swiftCount = 1 };
+        waves[6] = new Wave { bombCount = 0, fighterCount = 1, swiftCount = 1 };
+        waves[7] = new Wave { bombCount = 1, fighterCount = 1, swiftCount = 1 };
+        waves[8] = new Wave { bombCount = 4, fighterCount = 0, swiftCount = 0 };
+        waves[9] = new Wave { bombCount = 0, fighterCount = 1, swiftCount = 4 };
+        for (int i = 10; i <= 14; i++) { waves[i] = new Wave { bombCount = 3, fighterCount = 1, swiftCount = 2 }; }
+        for (int i = 15; i <= 19; i++) { waves[i] = new Wave { bombCount = 4, fighterCount = 1, swiftCount = 2 }; }
+        for (int i = 20; i <= 24; i++) { waves[i] = new Wave { bombCount = 1, fighterCount = 3, swiftCount = 1 }; }
+        for (int i = 25; i <= 39; i++) { waves[i] = new Wave { bombCount = Random.Range(1, 5), fighterCount = Random.Range(0, 5), swiftCount = Random.Range(0, 5) }; }
+        for (int i = 40; i <= 69; i++) { waves[i] = new Wave { bombCount = Random.Range(1, 10), fighterCount = Random.Range(1, 10), swiftCount = Random.Range(1, 10) }; }
+        for (int i = 70; i <= 98; i++) { waves[i] = new Wave { bombCount = Random.Range(1, 20), fighterCount = Random.Range(1, 20), swiftCount = Random.Range(1, 20) }; }
+        waves[99] = new Wave { bombCount = 20, fighterCount = 20, swiftCount = 20 };
+
+        // Validate that all elements have been initialized.
+        if (waves.Any(x => x == null))
+        {
+            Debug.LogError("Not all waves have been initialized.");
+            for (int i = 0; i < waves.Length; i++)
+            {
+                if (waves[i] == null)
+                {
+                    waves[i] = new Wave { bombCount = 1 };
+                }
+            }
         }
-		else if (wave == 2 && FindObjectOfType<EnemyManager>().enemyCount == 0)
-        {
-            // Set spawn numbers
-            enemySpawnNum[0] = 0;
-            enemySpawnNum[2] = 1;
 
-            // Run wave
-            Waves();
-        }
-		else if (wave == 3 && FindObjectOfType<EnemyManager>().enemyCount == 0)
+        // Validate that all waves spawn at least one enemy.
+        if (waves.Any(x => x.bombCount == 0 && x.fighterCount == 0 && x.swiftCount == 0))
         {
-            // Set spawn numbers
-            enemySpawnNum[0] = 0;
-            enemySpawnNum[1] = 1;
-            enemySpawnNum[2] = 0;
-
-            // Run wave
-            Waves();
-        }
-		else if (wave == 4 && FindObjectOfType<EnemyManager>().enemyCount == 0)
-        {
-            // Set spawn numbers
-            enemySpawnNum[0] = 1;
-            enemySpawnNum[1] = 0;
-            enemySpawnNum[2] = 1;
-
-            // Run wave
-            Waves();
-        }
-		else if (wave == 5 && FindObjectOfType<EnemyManager>().enemyCount == 0)
-        {
-            // Set spawn numbers
-            enemySpawnNum[0] = 2;
-
-            // Run wave
-            Waves();
-        }
-		else if (wave == 6 && FindObjectOfType<EnemyManager>().enemyCount == 0)
-        {
-            // Set spawn numbers
-            enemySpawnNum[0] = 0;
-            enemySpawnNum[1] = 1;
-            enemySpawnNum[2] = 1;
-
-            // Run wave
-            Waves();
-        }
-		else if (wave == 7 && FindObjectOfType<EnemyManager>().enemyCount == 0)
-        {
-            // Set spawn numbers
-            enemySpawnNum[0] = 1;
-            
-            // Run wave
-            Waves();
-        }
-		else if (wave == 8 && FindObjectOfType<EnemyManager>().enemyCount == 0)
-        {
-            // Set spawn numbers
-            enemySpawnNum[0] = 4;
-            enemySpawnNum[1] = 0;
-            enemySpawnNum[2] = 0;
-
-            // Run wave
-            Waves();
-        }
-		else if (wave == 9 && FindObjectOfType<EnemyManager>().enemyCount == 0)
-        {
-            // Set spawn numbers
-            enemySpawnNum[0] = 0;
-            enemySpawnNum[1] = 1;
-            enemySpawnNum[2] = 4;
-
-            // Run wave
-            Waves();
-        }
-		else if (wave >= 10 && wave < 15 && FindObjectOfType<EnemyManager>().enemyCount == 0)
-        {
-            // Set spawn numbers
-            enemySpawnNum[0] = 3;
-            enemySpawnNum[2] = 2;
-
-            // Run wave
-            Waves();
-        }
-        else if (wave >= 15 && wave < 20 && FindObjectOfType<EnemyManager>().enemyCount == 0)
-        {
-            // Set spawn numbers
-            enemySpawnNum[0] = 4;
-
-            // Run wave
-            Waves();
-        }
-        else if (wave >= 20 && wave < 25 && FindObjectOfType<EnemyManager>().enemyCount == 0)
-        {
-            // Set spawn numbers
-            enemySpawnNum[2] = 3;
-
-            // Run wave
-            Waves();
-        }
-        else if (wave >= 25 && wave < 30 && FindObjectOfType<EnemyManager>().enemyCount == 0)
-        {
-            // Set spawn numbers
-            enemySpawnNum[1] = 2;
-
-            // Run wave
-            Waves();
-        }
-        else if (wave >= 30 && wave < 40 && FindObjectOfType<EnemyManager>().enemyCount == 0)
-        {
-            // Set spawn numbers
-            enemySpawnNum[1] = 3;
-
-            // Run wave
-            Waves();
-        }
-        else if (wave >= 40 && wave < 50 && FindObjectOfType<EnemyManager>().enemyCount == 0)
-        {
-            // Set spawn numbers
-            enemySpawnNum[0] = 6;
-
-            // Run wave
-            Waves();
-        }
-        else if (wave >= 50 && wave < 60 && FindObjectOfType<EnemyManager>().enemyCount == 0)
-        {
-            // Set spawn numbers
-            enemySpawnNum[1] = 4;
-            enemySpawnNum[2] = 4;
-
-            // Run wave
-            Waves();
-        }
-        else if (wave >= 60 && wave < 80 && FindObjectOfType<EnemyManager>().enemyCount == 0)
-        {
-            // Set spawn numbers
-            enemySpawnNum[0] = 8;
-
-            // Run wave
-            Waves();
-        }
-        else if (wave >= 80 && wave < 100 && FindObjectOfType<EnemyManager>().enemyCount == 0)
-        {
-            // Set spawn numbers
-            enemySpawnNum[0] = 10;
-
-            // Run wave
-            Waves();
-        }
-        else if (wave >= 100 && FindObjectOfType<EnemyManager>().enemyCount == 0)
-        {
-            // Set spawn numbers
-            enemySpawnNum[1] = 5;
-            enemySpawnNum[2] = 5;
-
-            // Run wave
-            Waves();
+            Debug.LogError("Not all waves spawn enemies.");
         }
     }
     //~ fn
 
-    void SpawnChange()
+    void Start()
+    {
+        if (useWaves)
+        {
+            StartNextWave();
+        }
+    }
+    //~ fn
+
+
+
+    // Private Methods
+
+    private void ChangeLocation()
     {
         // Check position change
         if (xChange == true)
         {
             // Change the spawn location
-            xLocation = -xLocation;
+            location.x = -location.x;
 
             // Change to Y change
             xChange = false;
@@ -261,80 +175,124 @@ public class EnemyManager : MonoBehaviour
         else
         {
             // Check position change
-            yLocation = -yLocation;
+            location.y = -location.y;
 
             // Change to X change
             xChange = true;
         }
     }
-
-    EnemyScript SpawnSingleEnemy(GameObject prefab, Vector2 position, int playerIndexToFollow)
-    {
-        GameObject go = Instantiate(prefab, position, Quaternion.identity);
-        EnemyScript enemy = go.GetComponent<EnemyScript>();
-        enemy.playerIndexToFollow = playerIndexToFollow;
-        return enemy;
-    }
-
-	void Spawn(int bomber, int swift, int fighter)
-	{
-		// Bomber's spawning
-		for (int i = 0; i < bomber; i++)
-		{
-            // Initialise an enemy
-            SpawnSingleEnemy(enemiesA[0], new Vector2(xLocation, yLocation), 2);
-            SpawnSingleEnemy(enemiesB[0], new Vector2(xLocation, yLocation), 1);
-
-            // Change the spawn position
-            SpawnChange();
-
-            // Increase the enemy count
-            enemyCount += 2;
-
-			// Send console message
-			Debug.Log("Confirmed bombers spawned");
-		}
-		//~ for
-
-		// Swift ship's spawning
-		for (int i = 0; i < swift; i++)
-		{
-            // Initialise an enemy
-            SpawnSingleEnemy(enemiesA[1], new Vector2(xLocation, yLocation), 2);
-            SpawnSingleEnemy(enemiesB[1], new Vector2(xLocation, yLocation), 1);
-
-            // Change the spawn position
-            SpawnChange();
-
-            // Increase the enemy count
-            enemyCount += 2;
-
-			// Send console message
-			Debug.Log("Confirmed swift ships spawned");
-		}
-		//~ for
-
-		// Fighter's spawning
-		for (int i = 0; i < fighter; i++)
-        {
-            // Initialise an enemy
-            SpawnSingleEnemy(enemiesA[2], new Vector2(xLocation, yLocation), 2);
-            SpawnSingleEnemy(enemiesB[2], new Vector2(xLocation, yLocation), 1);
-
-            // Change the spawn position
-            SpawnChange();
-
-            // Increase the enemy count
-            enemyCount += 2;
-
-			// Send console message
-			Debug.Log("Confirmed swift ships spawned");
-		}
-		//~ for
-	}
     //~ fn
 
-        
+    private EnemyScript SpawnSingleEnemy(EnemyScript prefab, Vector2 position)
+    {
+        return Instantiate(prefab, position, Quaternion.identity);
+    }
+    //~ fn
+
+    private void Spawn(Wave wave)
+    {
+        // Bomber's spawning
+        for (int i = 0; i < wave.bombCount; i++)
+        {
+            // Initialise an enemy
+            SpawnSingleEnemy(enemies1.bombPrefab, location);
+            SpawnSingleEnemy(enemies2.bombPrefab, location);
+
+            // Change the spawn position
+            ChangeLocation();
+        }
+        //~ for
+
+        // Swift ship's spawning
+        for (int i = 0; i < wave.swiftCount; i++)
+        {
+            // Initialise an enemy
+            SpawnSingleEnemy(enemies1.swiftPrefab, location);
+            SpawnSingleEnemy(enemies2.swiftPrefab, location);
+
+            // Change the spawn position
+            ChangeLocation();
+        }
+        //~ for
+
+        // Fighter's spawning
+        for (int i = 0; i < wave.fighterCount; i++)
+        {
+            // Initialise an enemy
+            SpawnSingleEnemy(enemies1.fighterPrefab, location);
+            SpawnSingleEnemy(enemies2.fighterPrefab, location);
+
+            // Change the spawn position
+            ChangeLocation();
+        }
+        //~ for
+    }
+    //~ fn
+
+    private void SpawnNextWaveNow()
+    {
+        // Heal players by 5 HP
+        PlayerShip ship1 = PlayerShip.GetPlayer1;
+        if (ship1 && ship1.healthEntity)
+            ship1.healthEntity.Heal(5);
+
+        PlayerShip ship2 = PlayerShip.GetPlayer2;
+        if (ship2 && ship2.healthEntity)
+            ship2.healthEntity.Heal(5);
+
+        // Spawn enemies
+        Spawn(waves[WaveIndex]);
+
+        // Increase wave number
+        WaveIndex++;
+    }
+    //~ fn
+
+    // Finnicky function to wait one frame before spawning.
+    // This is stopped if this GameObject is destroyed between frames.
+    private IEnumerator StartNextWaveWait()
+    {
+        yield return null;
+        SpawnNextWaveNow();
+    }
+    //~ fn
+
+    private void StartNextWave()
+    {
+        StartCoroutine(StartNextWaveWait());
+    }
+    //~ fn
+
+
+
+    // Private Properties
+
+    private int AliveEnemiesCount
+    {
+        get { return m_aliveEnemiesCount; }
+        set
+        {
+            // Clamp value to at least 0
+            m_aliveEnemiesCount = value < 0 ? 0 : value;
+
+            // If no more enemies alive, invoke the event.
+            if (m_aliveEnemiesCount <= 0)
+            {
+                if (useWaves)
+                {
+                    StartNextWave();
+                }
+
+                if (onNoEnemiesLeft != null)
+                {
+                    onNoEnemiesLeft.Invoke();
+                }
+            }
+        }
+    }
+    //~ prop
+
+
 
     // Private Static Fields
 
@@ -343,11 +301,12 @@ public class EnemyManager : MonoBehaviour
 
 
     // Private Fields
+    
+    private Wave[] waves;
+    private int m_aliveEnemiesCount = 0;
 
-    private float xLocation = -44.5f;
-	private float yLocation = 22f;
+    private Vector2 location = new Vector2(-44.5f, 22f);
     private bool xChange = true;
-    private int[] enemySpawnNum = new int[3];
     
 
 
