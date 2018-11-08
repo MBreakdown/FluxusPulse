@@ -34,14 +34,18 @@ public class EnemyScript : MonoBehaviour
     [Range(1, 2)]
     public int playerIndexToFollow = 1;
 	public BulletScript bulletPrefab;
+    public GameObject minePrefab;
 	public float speed;
 	public float maxSpeed;
 	public float damage;
 	public float reward;
 	public bool ranged;
-	private float time = 0;
-    public float maxTime = 0.75f;
     public bool selfDestruct;
+    public bool bomb;
+    private float bulletTime = 0;
+    public float maxBulletTime = 0.75f;
+    private float mineTime = 0;
+    private float maxMineTime = 8f;
 
 
 
@@ -71,7 +75,8 @@ public class EnemyScript : MonoBehaviour
 	// Use Rigidbody stuff here.
 	void FixedUpdate()
     {
-        time = Mathf.Clamp(time + Time.fixedDeltaTime, 0, maxTime);
+        bulletTime = Mathf.Clamp(bulletTime + Time.fixedDeltaTime, 0, maxBulletTime);
+        mineTime = Mathf.Clamp(mineTime + Time.fixedDeltaTime, 0, maxMineTime);
 
         if (GameController.IsGameInProgress == false)
             return;
@@ -89,9 +94,9 @@ public class EnemyScript : MonoBehaviour
 			// Stop movement
 			rb.velocity = Vector2.zero;
 
-            if (time >= maxTime)
+            if (bulletTime >= maxBulletTime)
             {
-                time = 0;
+                bulletTime = 0;
 
                 // Fire bullet
                 BulletScript bullet = Instantiate(
@@ -107,6 +112,24 @@ public class EnemyScript : MonoBehaviour
 		{
 			// Fly towards the player
 			rb.AddForce(vectorToPlayer.normalized * speed);
+
+            // Check to spawn bombs
+            if (bomb)
+            {
+                if (mineTime >= maxMineTime)
+                {
+                    mineTime = 0;
+
+                    // Spawn mine
+                    GameObject mine = Instantiate(
+                        minePrefab,
+                        new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y),
+                        Quaternion.LookRotation(Vector3.forward, vectorToPlayer)
+                    );
+                    mine.gameObject.GetComponent<MineScript>().playerToHurt = PlayerShip.GetPlayer(playerIndexToFollow).gameObject;
+                    mine.name = minePrefab.name;
+                }
+            }
 		}
 		
 		// Ensure max speed
