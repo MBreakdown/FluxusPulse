@@ -115,7 +115,7 @@ public class EnemyScript : MonoBehaviour
             if (selfDestruct == true)
             {
                 // Damage self
-                this.healthEntity.Kill();
+                this.healthEntity.Hurt(1);
             }
 		}
 	}
