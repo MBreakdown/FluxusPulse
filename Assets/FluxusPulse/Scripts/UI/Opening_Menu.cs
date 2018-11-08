@@ -20,7 +20,7 @@ public class Opening_Menu : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown (KeyCode.Escape)) {
-			Application.Quit ();
+            QuitUtility.Quit();
 			Debug.Log ("I have quit");
 		}
 	}
