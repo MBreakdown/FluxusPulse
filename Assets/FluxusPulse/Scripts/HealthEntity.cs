@@ -151,7 +151,7 @@ public class HealthEntity : MonoBehaviour
 		// Increase the players' score
 		else
 		{
-			GameController.Instance.score += this.GetComponent<EnemyScript>().reward;
+			GameController.Instance.Score += this.GetComponent<EnemyScript>().reward;
 		}
 
 		// Invoke the death
