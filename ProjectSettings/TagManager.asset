@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FlingPivot
   - Music
+  - Platform
   layers:
   - Default
   - TransparentFX

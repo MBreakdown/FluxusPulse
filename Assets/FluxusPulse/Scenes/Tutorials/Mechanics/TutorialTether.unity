@@ -3858,7 +3858,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 378234359}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 433, y: 243.5, z: 0}
+  m_LocalPosition: {x: 574, y: 270.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1581497683}
@@ -4037,8 +4037,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 480959769}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -36.4, y: 25.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -36.71, y: 25.56, z: 0}
+  m_LocalScale: {x: 0.4, y: 1, z: 1}
   m_Children:
   - {fileID: 1785957136}
   - {fileID: 700757226}
@@ -4430,8 +4430,9 @@ MonoBehaviour:
   boostRotateSpeed: 300
   boostTime: 2
   boostCooldown: 3
-  flingingSpeed: 30
-  flungSpeed: 30
+  flingSpeed: 30
+  flingAndBoostSpeed: 40
+  flungAndBoostRotateSpeed: 100
   flungRotateSpeed: 100
   flungTime: 2
   flingingCooldown: 3
@@ -4864,7 +4865,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 702210744}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 381, y: 118.5, z: 0}
+  m_LocalPosition: {x: 240, y: 145.5, z: 0}
   m_LocalScale: {x: -1, y: -1, z: 1}
   m_Children:
   - {fileID: 1681098517}
@@ -11853,7 +11854,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1188109318}
   m_FillRect: {fileID: 675528444}
   m_HandleRect: {fileID: 1188109317}
@@ -15545,7 +15546,7 @@ SpriteRenderer:
   m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!1 &1075496471
 GameObject:
@@ -19086,8 +19087,9 @@ MonoBehaviour:
   boostRotateSpeed: 300
   boostTime: 2
   boostCooldown: 3
-  flingingSpeed: 30
-  flungSpeed: 30
+  flingSpeed: 30
+  flingAndBoostSpeed: 40
+  flungAndBoostRotateSpeed: 100
   flungRotateSpeed: 100
   flungTime: 2
   flingingCooldown: 3
@@ -19950,7 +19952,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1581497682}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -372, y: 218.5, z: 0}
+  m_LocalPosition: {x: -513, y: 245.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 552748247}
@@ -20181,7 +20183,7 @@ SpriteRenderer:
   m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!1 &1694817792
 GameObject:
