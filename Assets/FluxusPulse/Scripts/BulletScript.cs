@@ -17,14 +17,22 @@ public class BulletScript : MonoBehaviour
 {
 	#region Public
 
+
+
 	// Inspector Fields
 
-	public float speed;
-	public float damage;
+	public float speed = 1;
+	public float damage = 5;
+
+    [HideInInspector]
 	public GameObject playerFired;
+
+
 
 	#endregion Public
 	#region Private
+
+
 
 	// Unity Event Methods
 
@@ -34,45 +42,40 @@ public class BulletScript : MonoBehaviour
 		Rigidbody2D rb = GetComponent<Rigidbody2D>();
 
 		rb.velocity = transform.up * speed;
-	}
-	//~ fn
-	
-	// Fixed update is called once every physics frame
-	void FixedUpdate()
-	{
 
-	}
-	//~ fn
-
-	// Update is called once per frame
-	void Update()
-	{
-
+        Destroy(gameObject, 30f);
 	}
 	//~ fn
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.gameObject.GetComponent<PlayerShip>() != null)
-		{
-			// Damage player
-			col.gameObject.GetComponent<HealthEntity>().Hurt(damage);
+        PlayerShip player = col.GetComponent<PlayerShip>();
+        if (player != null)
+        {
+            // Damage player
+            player.healthEntity.Hurt(damage);
 
-			// Self destruct
-			Destroy(this.gameObject);
-		}
-		else if (col.gameObject.GetComponent<EnemyScript>().gameObject == playerFired)
-		{
-			// Do nothing if collision with an enemy or bullet
-		}
-		else
-		{
-			// Self destruct
-			Destroy(this.gameObject);
-		}
+            // Self destruct
+            Destroy(gameObject);
+        }
+        else
+        {
+            EnemyScript enemy = col.GetComponent<EnemyScript>();
+            if (enemy == playerFired)
+            {
+                // Do nothing if collision with an enemy or bullet
+            }
+            else
+            {
+                // Self destruct
+                Destroy(gameObject);
+            }
+        }
 	}
 	//~ fn
     
+
+
 	#endregion Private
 }
 //~ class

@@ -47,11 +47,12 @@ public enum FlingState
 }
 //~ enum
 
-
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(HealthEntity))]
 public class PlayerShip : MonoBehaviour
 {
     #region Public
+
 
 
     // Public Static Methods
@@ -104,8 +105,9 @@ public class PlayerShip : MonoBehaviour
 	// Public Auto Properties
 
 	public Rigidbody2D rb { get; private set; }
+    public HealthEntity healthEntity { get; private set; }
 
-	public BoostState BoostState { get; private set; } = BoostState.None;
+    public BoostState BoostState { get; private set; } = BoostState.None;
 
 	public FlingState FlingState { get; private set; } = FlingState.None;
 	public Transform FlingPivot { get; private set; } = null;
@@ -172,7 +174,8 @@ public class PlayerShip : MonoBehaviour
 	void Awake()
 	{
 		rb = GetComponent<Rigidbody2D>();
-	}
+        healthEntity = GetComponent<HealthEntity>();
+    }
 	//~ fn
 
 	void Update()
@@ -309,7 +312,7 @@ public class PlayerShip : MonoBehaviour
 	void OnCollisionEnter2D(Collision2D col)
 	{
 		EnemyScript enemy = col.gameObject.GetComponent<EnemyScript>();
-		if (enemy && enemy.playerToAvoid == this.transform)
+		if (enemy && enemy.playerIndexToFollow != this.PlayerIndex)
 		{
 			Debug.Log("Hurt() has been called");
 			enemy.GetComponent<HealthEntity>().Hurt(damage);
@@ -365,7 +368,7 @@ public class PlayerShip : MonoBehaviour
 		// Fire bullet
 		GameObject bomb = Instantiate(referenceBomb, new Vector2(transform.position.x, transform.position.y), Quaternion.LookRotation(Vector3.forward, Vector3.forward));
 	}*/
-
+    
 
 
 	// Coroutines
