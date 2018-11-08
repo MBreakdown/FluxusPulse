@@ -342,13 +342,13 @@ MonoBehaviour:
   boostSpeed: 20
   boostRotateSpeed: 200
   boostTime: 2
-  boostCooldown: 3
+  boostCooldown: 4
   flingSpeed: 30
   flingAndBoostSpeed: 40
   flungAndBoostRotateSpeed: 200
   flungRotateSpeed: 200
   flungTime: 2
-  flingingCooldown: 3
+  flingingCooldown: 0.2
   referenceBomb: {fileID: 0}
   BombOffCooldown: 1
   damage: 100
