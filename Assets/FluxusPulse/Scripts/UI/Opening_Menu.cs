@@ -1,14 +1,34 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Opening_Menu : MonoBehaviour
 {
 	[SerializeField]
 	private string nextScene;
 
+	Scene currentScene;
+
+	private string currentName;
+
+	[SerializeField]
+	private GameObject popUp;
+
+	void Start(){
+		Scene currentScene = SceneManager.GetActiveScene();
+
+		currentName = currentScene.name;
+
+		popUp.SetActive(false);
+	}
+
     public void LoadNextScene()
     {
-        SceneManager.LoadScene(nextScene);
+		if (currentName == "OpeningScreen") {
+			popUp.SetActive(true);
+		} else {
+			SceneManager.LoadScene (nextScene);
+		}
     }
     //~ fn
 
