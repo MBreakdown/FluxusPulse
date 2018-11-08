@@ -119,8 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  playerToHurt: {fileID: 1174560565353182, guid: ab2874140e5fc4c44b9c621b970390a9,
-    type: 2}
+  playerToHurt: {fileID: 0}
 --- !u!212 &212003550998204052
 SpriteRenderer:
   m_ObjectHideFlags: 1
