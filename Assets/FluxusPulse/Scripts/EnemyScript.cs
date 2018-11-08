@@ -118,7 +118,7 @@ public class EnemyScript : MonoBehaviour
             if (selfDestruct == true)
             {
                 // Damage self
-                this.gameObject.GetComponent<HealthEntity>().Hurt(damage * 100);
+                this.gameObject.GetComponent<HealthEntity>().Hurt(1);
             }
 		}
 	}
