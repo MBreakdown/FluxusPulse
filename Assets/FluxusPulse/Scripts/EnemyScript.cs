@@ -45,21 +45,22 @@ public class EnemyScript : MonoBehaviour
     private float bulletTime = 0;
     public float maxBulletTime = 0.75f;
     private float mineTime = 0;
-    private float maxMineTime = 8f;
+    private float maxMineTime = 6f;
+
+
+    #endregion Public
+    #region Private
 
 
 
-	#endregion Public
-	#region Private
-
-
-
-	// Unity Event Methods
+    // Unity Event Methods
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         healthEntity = GetComponent<HealthEntity>();
+        
+        maxMineTime = maxMineTime + Random.Range(0f, 6f);
     }
     //~ fn
 
@@ -128,6 +129,9 @@ public class EnemyScript : MonoBehaviour
                     );
                     mine.gameObject.GetComponent<MineScript>().playerToHurt = PlayerShip.GetPlayer(playerIndexToFollow).gameObject;
                     mine.name = minePrefab.name;
+
+                    // Reset random
+                    maxMineTime = maxMineTime + Random.Range(0f, 6f);
                 }
             }
 		}
