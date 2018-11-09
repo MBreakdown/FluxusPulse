@@ -14,6 +14,7 @@ public class Opening_Menu : MonoBehaviour
     {
         if (popUp)
             popUp.SetActive(false);
+        
 	}
     //~ fn
 
@@ -21,9 +22,9 @@ public class Opening_Menu : MonoBehaviour
     {
 		if (SceneManager.GetActiveScene().name == "OpeningScreen")
         {
-			if (popUp)
+            if (popUp)
                 popUp.SetActive(true);
-
+                
 		}
         else
         {
