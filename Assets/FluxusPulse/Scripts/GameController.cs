@@ -25,7 +25,10 @@ public class GameController : MonoBehaviour
 {
     #region Public
 
-
+    public AudioSource explosion;
+    public AudioSource pos;
+    public AudioSource hurt;
+    public AudioSource shoot;
 
     // Public Static Properties
 
