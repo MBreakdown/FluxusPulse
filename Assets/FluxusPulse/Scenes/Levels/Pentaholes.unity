@@ -199,11 +199,7 @@ Prefab:
     - target: {fileID: 224269080928828888, guid: fec112664c16b71439d4f8237a93fca0,
         type: 2}
       propertyPath: m_RootOrder
-<<<<<<< HEAD
       value: 6
-=======
-      value: 5
->>>>>>> c22d4426c5e787f566ca41b8f887144ac27afc39
       objectReference: {fileID: 0}
     - target: {fileID: 224698579837461094, guid: fec112664c16b71439d4f8237a93fca0,
         type: 2}
@@ -918,7 +914,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4256152115811304, guid: 1f2cb58a94d32d44391c1a9403f63d4e,
     type: 2}
   m_PrefabInternal: {fileID: 465958703}
-<<<<<<< HEAD
 --- !u!1001 &486361439
 Prefab:
   m_ObjectHideFlags: 0
@@ -1020,9 +1015,6 @@ Prefab:
   m_ParentPrefab: {fileID: 100100000, guid: 1f2d2abc616facb4cb0383239ca71384, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &515584944
-=======
---- !u!1 &619781250
->>>>>>> c22d4426c5e787f566ca41b8f887144ac27afc39
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
