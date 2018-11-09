@@ -329,7 +329,7 @@ public class PlayerShip : MonoBehaviour
 			enemy.GetComponent<HealthEntity>().Hurt(damage);
 
             // Play explosion
-            explosion.Play();
+            FindObjectOfType<GameController>().pos.Play();
 		}
 	}
 	//~ fn
