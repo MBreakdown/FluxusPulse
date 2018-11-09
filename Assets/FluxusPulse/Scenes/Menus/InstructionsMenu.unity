@@ -195,7 +195,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 33503199}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 475.5, y: 267.5, z: 0}
+  m_LocalPosition: {x: 569, y: 267.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 35495212}
@@ -548,6 +548,7 @@ GameObject:
   - component: {fileID: 66379387}
   - component: {fileID: 66379386}
   - component: {fileID: 66379385}
+  - component: {fileID: 66379388}
   m_Layer: 5
   m_Name: MinesButton
   m_TagString: Untagged
@@ -613,15 +614,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Debris
-        m_Mode: 1
+      - m_Target: {fileID: 66379388}
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: TutorialEnemyMine
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -659,6 +660,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 66379383}
+--- !u!114 &66379388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 66379383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302a4c4254039844098f8e17f8feddca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: 
+  popUp: {fileID: 0}
 --- !u!1 &134136969
 GameObject:
   m_ObjectHideFlags: 0
@@ -825,6 +839,7 @@ GameObject:
   - component: {fileID: 370604695}
   - component: {fileID: 370604694}
   - component: {fileID: 370604693}
+  - component: {fileID: 370604696}
   m_Layer: 5
   m_Name: FightersButton
   m_TagString: Untagged
@@ -890,15 +905,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Infinity
-        m_Mode: 1
+      - m_Target: {fileID: 370604696}
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: TutorialEnemyFighter
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -936,6 +951,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 370604691}
+--- !u!114 &370604696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 370604691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302a4c4254039844098f8e17f8feddca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: 
+  popUp: {fileID: 0}
 --- !u!1 &402795082
 GameObject:
   m_ObjectHideFlags: 0
@@ -1337,6 +1365,7 @@ GameObject:
   - component: {fileID: 905869747}
   - component: {fileID: 905869746}
   - component: {fileID: 905869745}
+  - component: {fileID: 905869748}
   m_Layer: 5
   m_Name: MovementButton
   m_TagString: Untagged
@@ -1402,15 +1431,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: TheHole
-        m_Mode: 1
+      - m_Target: {fileID: 905869748}
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: TutorialMovement
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -1448,6 +1477,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 905869743}
+--- !u!114 &905869748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 905869743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302a4c4254039844098f8e17f8feddca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: 
+  popUp: {fileID: 0}
 --- !u!1001 &1137870622
 Prefab:
   m_ObjectHideFlags: 0
@@ -1942,6 +1984,7 @@ GameObject:
   - component: {fileID: 1526215355}
   - component: {fileID: 1526215354}
   - component: {fileID: 1526215353}
+  - component: {fileID: 1526215356}
   m_Layer: 5
   m_Name: SwiftRocketsButton
   m_TagString: Untagged
@@ -2007,15 +2050,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Chaos
-        m_Mode: 1
+      - m_Target: {fileID: 1526215356}
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: TutorialEnemyRocketSwift
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -2053,6 +2096,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1526215351}
+--- !u!114 &1526215356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1526215351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302a4c4254039844098f8e17f8feddca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: 
+  popUp: {fileID: 0}
 --- !u!1 &1602219646
 GameObject:
   m_ObjectHideFlags: 0
@@ -2064,6 +2120,7 @@ GameObject:
   - component: {fileID: 1602219650}
   - component: {fileID: 1602219649}
   - component: {fileID: 1602219648}
+  - component: {fileID: 1602219651}
   m_Layer: 5
   m_Name: BarriersButton
   m_TagString: Untagged
@@ -2129,15 +2186,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: TheVoid
-        m_Mode: 1
+      - m_Target: {fileID: 1602219651}
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: TutorialBarriers
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -2175,6 +2232,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1602219646}
+--- !u!114 &1602219651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1602219646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302a4c4254039844098f8e17f8feddca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: 
+  popUp: {fileID: 0}
 --- !u!1 &1762552138
 GameObject:
   m_ObjectHideFlags: 0
@@ -2248,6 +2318,7 @@ GameObject:
   - component: {fileID: 1764323694}
   - component: {fileID: 1764323693}
   - component: {fileID: 1764323692}
+  - component: {fileID: 1764323695}
   m_Layer: 5
   m_Name: RocketsButton
   m_TagString: Untagged
@@ -2313,15 +2384,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Infinity
-        m_Mode: 1
+      - m_Target: {fileID: 1764323695}
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: TutorialEnemyRocket
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -2359,6 +2430,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1764323690}
+--- !u!114 &1764323695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1764323690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302a4c4254039844098f8e17f8feddca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: 
+  popUp: {fileID: 0}
 --- !u!1 &1929688164
 GameObject:
   m_ObjectHideFlags: 0
@@ -2370,6 +2454,7 @@ GameObject:
   - component: {fileID: 1929688168}
   - component: {fileID: 1929688167}
   - component: {fileID: 1929688166}
+  - component: {fileID: 1929688169}
   m_Layer: 5
   m_Name: BlackHolesButton
   m_TagString: Untagged
@@ -2435,15 +2520,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Pentaholes
-        m_Mode: 1
+      - m_Target: {fileID: 1929688169}
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: TutorialBlackHole
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -2481,6 +2566,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1929688164}
+--- !u!114 &1929688169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1929688164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302a4c4254039844098f8e17f8feddca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: 
+  popUp: {fileID: 0}
 --- !u!1 &1969841084
 GameObject:
   m_ObjectHideFlags: 0

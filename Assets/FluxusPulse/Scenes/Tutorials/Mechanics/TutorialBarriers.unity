@@ -10475,8 +10475,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 133918191}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 574, y: 272, z: 0}
-  m_LocalScale: {x: 0.59791666, y: 0.59791666, z: 0.59791666}
+  m_LocalPosition: {x: 569, y: 267.5, z: 0}
+  m_LocalScale: {x: 0.59270835, y: 0.59270835, z: 0.59270835}
   m_Children:
   - {fileID: 2013771258}
   - {fileID: 1172928513}
@@ -14882,6 +14882,7 @@ MonoBehaviour:
   damage: 100
   time: 0
   explosion: {fileID: 0}
+  greenPart: {fileID: 0}
 --- !u!114 &643494131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15146,6 +15147,7 @@ MonoBehaviour:
   damage: 100
   time: 0
   explosion: {fileID: 0}
+  greenPart: {fileID: 0}
 --- !u!114 &684266577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19646,8 +19648,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1101570154}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 574, y: 272, z: 0}
-  m_LocalScale: {x: 0.59791666, y: 0.59791666, z: 0.59791666}
+  m_LocalPosition: {x: 569, y: 267.5, z: 0}
+  m_LocalScale: {x: 0.59270835, y: 0.59270835, z: 0.59270835}
   m_Children:
   - {fileID: 1026549250}
   m_Father: {fileID: 0}
@@ -30039,7 +30041,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1165400932}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -880, y: 354.9129, z: 0}
+  m_LocalPosition: {x: -880, y: 351.31808, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 251022327}
@@ -30134,6 +30136,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c21dda28c8c1f7140bcdd16258d36de1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 0}
+  pos: {fileID: 0}
+  hurt: {fileID: 0}
+  shoot: {fileID: 0}
+  deploy: {fileID: 0}
   PauseMenu: {fileID: 1366251969}
   onScoreChanged:
     m_PersistentCalls:
@@ -30218,7 +30225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildIndex: 1
-  increment: 0
+  increment: 1
   delay: 8
 --- !u!114 &1177693601
 MonoBehaviour:
@@ -34207,7 +34214,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1587324243}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 880, y: 354.9129, z: 0}
+  m_LocalPosition: {x: 880, y: 351.31808, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 484471613}

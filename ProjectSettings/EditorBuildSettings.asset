@@ -53,9 +53,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/FluxusPulse/Scenes/Levels/Chaos.unity
     guid: 62daf258a98c1d3419eac6028a421e53
-  - enabled: 0
-    path: Assets/__DELETED_GUID_Trash/135b2c8a6ef86af4297e3a8bc54905af
-    guid: 135b2c8a6ef86af4297e3a8bc54905af
   - enabled: 1
     path: Assets/FluxusPulse/Scenes/Tutorials/Mechanics/TutorialBarriers.unity
     guid: 16ba00f8b0e60be4e8f9ffab23081acd
@@ -74,3 +71,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/FluxusPulse/Scenes/Menus/OpeningScreen.unity
     guid: aefa01a3d6bd57d4eb37aaf3f339cea0
+  - enabled: 1
+    path: Assets/FluxusPulse/Scenes/Levels/Claustrophobia.unity
+    guid: f1deaaa64923e724993c25fbf8545cd7
+  - enabled: 1
+    path: Assets/FluxusPulse/Scenes/Levels/Thirds.unity
+    guid: 09e47eb324ba59e47be2a35ad70dc43c
+  - enabled: 1
+    path: Assets/FluxusPulse/Scenes/Tutorials/Mechanics/TutorialBlackHole.unity
+    guid: 82985876a087bd547812c2d984860452
+  - enabled: 1
+    path: Assets/FluxusPulse/Scenes/Tutorials/Mechanics/TutorialMovement.unity
+    guid: 3a57f7010a3d91548b4c77b9b349c809
