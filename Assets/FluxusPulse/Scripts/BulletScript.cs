@@ -57,7 +57,7 @@ public class BulletScript : MonoBehaviour
         if (player != null)
         {
             // Play hurt sound
-            hurt.Play();
+            FindObjectOfType<GameController>().hurt.Play();
 
             // Damage player
             player.healthEntity.Hurt(damage);
