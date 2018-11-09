@@ -306,6 +306,36 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 0.17
       objectReference: {fileID: 0}
+    - target: {fileID: 224286216611231450, guid: fec112664c16b71439d4f8237a93fca0,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -9.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 224286216611231450, guid: fec112664c16b71439d4f8237a93fca0,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -9.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 224333570668944490, guid: fec112664c16b71439d4f8237a93fca0,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2.2999992
+      objectReference: {fileID: 0}
+    - target: {fileID: 224333570668944490, guid: fec112664c16b71439d4f8237a93fca0,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.290001
+      objectReference: {fileID: 0}
+    - target: {fileID: 224333570668944490, guid: fec112664c16b71439d4f8237a93fca0,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 224333570668944490, guid: fec112664c16b71439d4f8237a93fca0,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.29
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fec112664c16b71439d4f8237a93fca0, type: 2}
   m_IsPrefabParent: 0
@@ -849,7 +879,7 @@ Transform:
   m_Children:
   - {fileID: 923608987}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &378543187
 Prefab:
@@ -921,7 +951,7 @@ Transform:
   - {fileID: 25104699}
   - {fileID: 1604562651}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &465958703
 Prefab:
@@ -2231,7 +2261,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1604562651 stripped
 Transform:
