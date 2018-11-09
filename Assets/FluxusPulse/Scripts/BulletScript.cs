@@ -23,6 +23,7 @@ public class BulletScript : MonoBehaviour
 
 	public float speed = 1;
 	public float damage = 5;
+    public AudioSource hurt;
 
     [HideInInspector]
 	public EnemyScript originEnemy;
@@ -56,7 +57,7 @@ public class BulletScript : MonoBehaviour
         if (player != null)
         {
             // Play hurt sound
-            FindObjectOfType<GameController>().hurt.Play();
+            hurt.Play();
 
             // Damage player
             player.healthEntity.Hurt(damage);

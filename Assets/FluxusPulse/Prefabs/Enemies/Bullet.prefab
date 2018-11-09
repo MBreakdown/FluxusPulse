@@ -201,7 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   damage: 5
-  hurt: {fileID: 82931618716796272}
+  hurt: {fileID: 0}
   originEnemy: {fileID: 0}
 --- !u!212 &212003550998204052
 SpriteRenderer:
