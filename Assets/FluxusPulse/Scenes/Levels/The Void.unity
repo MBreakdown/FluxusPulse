@@ -279,6 +279,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
+<<<<<<< HEAD
   m_Size: {x: 1.3751984, y: 5.9723387}
   m_EdgeRadius: 0
 --- !u!50 &165152394
@@ -576,6 +577,10 @@ Prefab:
   m_ParentPrefab: {fileID: 100100000, guid: 8d1e1db8f49a74f43acf76e73191d675, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &304031007
+=======
+  m_Radius: 3
+--- !u!1 &231975181
+>>>>>>> c22d4426c5e787f566ca41b8f887144ac27afc39
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -1817,6 +1822,11 @@ Prefab:
     - target: {fileID: 4455130343064328, guid: 8d1e1db8f49a74f43acf76e73191d675, type: 2}
       propertyPath: m_LocalScale.x
       value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 224495126742333218, guid: fec112664c16b71439d4f8237a93fca0,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8d1e1db8f49a74f43acf76e73191d675, type: 2}
