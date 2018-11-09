@@ -46,6 +46,9 @@ public class EnemyScript : MonoBehaviour
     public float maxBulletTime = 0.75f;
     private float mineTime = 0;
     private float maxMineTime = 6f;
+    public AudioSource explosion;
+    public AudioSource hurt;
+    public AudioSource shoot;
 
 
     #endregion Public
@@ -107,6 +110,9 @@ public class EnemyScript : MonoBehaviour
                 );
                 bullet.name = bulletPrefab.name;
 				bullet.originEnemy = this;
+
+                // Play shoot sound
+                shoot.Play();
 			}
 		}
 		else
@@ -157,11 +163,21 @@ public class EnemyScript : MonoBehaviour
         PlayerShip player = col.gameObject.GetComponent<PlayerShip>();
         if (player && player.PlayerIndex == playerIndexToFollow)
 		{
+            // Play hurt sound
+            hurt.Play();
+
             // Damage player
             player.healthEntity.Hurt(damage);
 
             if (selfDestruct == true && !player.healthEntity.Invincible)
             {
+                // Check if the enemy is about to die
+                if (this.healthEntity.Health == 1)
+                {
+                    // Play explosion sound
+                    explosion.Play();
+                }
+
                 // Damage self
                 this.healthEntity.Hurt(1);
             }

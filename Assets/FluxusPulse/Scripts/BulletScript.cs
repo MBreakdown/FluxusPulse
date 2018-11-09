@@ -23,6 +23,7 @@ public class BulletScript : MonoBehaviour
 
 	public float speed = 1;
 	public float damage = 5;
+    public AudioSource hurt;
 
     [HideInInspector]
 	public EnemyScript originEnemy;
@@ -55,6 +56,9 @@ public class BulletScript : MonoBehaviour
         PlayerShip player = col.GetComponent<PlayerShip>();
         if (player != null)
         {
+            // Play hurt sound
+            hurt.Play();
+
             // Damage player
             player.healthEntity.Hurt(damage);
 
