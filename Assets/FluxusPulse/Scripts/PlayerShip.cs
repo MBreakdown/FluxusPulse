@@ -161,6 +161,7 @@ public class PlayerShip : MonoBehaviour
 
 	public float damage = 1;
 	public float time = 0;
+    public AudioSource explosion;
 
 
 
@@ -326,6 +327,9 @@ public class PlayerShip : MonoBehaviour
 		if (enemy && enemy.playerIndexToFollow != this.PlayerIndex)
 		{
 			enemy.GetComponent<HealthEntity>().Hurt(damage);
+
+            // Play explosion
+            explosion.Play();
 		}
 	}
 	//~ fn
