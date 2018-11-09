@@ -384,6 +384,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerIndex: 2
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
   normal:
     moveSpeed: 10
     rotateSpeed: 300
@@ -414,6 +417,7 @@ MonoBehaviour:
   bombPrefab: {fileID: 0}
   damage: 100
   explosion: {fileID: 0}
+  greenPart: {fileID: 1402581830195438, guid: 2f0d6d733451e9b43b1dbdbc343eacb5, type: 2}
 --- !u!114 &114582422915170836
 MonoBehaviour:
   m_ObjectHideFlags: 1
