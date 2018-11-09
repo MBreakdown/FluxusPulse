@@ -224,6 +224,7 @@ public class PlayerShip : MonoBehaviour
         switch (FlingState)
         {
             case FlingState.None:
+            case FlingState.Flung:
                 {
                     // If player presses tether button and a tether is in range,
                     if (GetTetherButton && m_TetherColliders.Count > 0)
@@ -252,7 +253,6 @@ public class PlayerShip : MonoBehaviour
                     }
                 }
                 break;
-            case FlingState.Flung:
             default:
                 break;
         }
