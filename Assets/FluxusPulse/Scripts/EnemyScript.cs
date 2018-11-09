@@ -50,6 +50,10 @@ public class EnemyScript : MonoBehaviour
     public AudioSource hurt;
     public AudioSource shoot;
 
+	[Header("Effects")]
+	public GameObject pinkPart;
+	public GameObject redPart;
+	public GameObject greenPart;
 
     #endregion Public
     #region Private
@@ -169,6 +173,7 @@ public class EnemyScript : MonoBehaviour
             // Play hurt sound, unless invincible
             if (!player.healthEntity.Invincible)
                 FindObjectOfType<GameController>().hurt.Play();
+			Instantiate (redPart, this.transform.position, this.transform.rotation);
 
             // Damage player
             player.healthEntity.Hurt(damage);
