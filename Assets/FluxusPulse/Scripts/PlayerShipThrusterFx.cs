@@ -67,7 +67,6 @@ public class PlayerShipThrusterFx : MonoBehaviour
 	private void Update()
     {
         SetEmmisionEnabled(boostfx, player.IsBoosting);
-        Debug.Log(player.name + " " + player.IsFlingingOrFlung);
         SetEmmisionEnabled(flingfx, player.IsFlingingOrFlung);
         SetEmmisionEnabled(movefx, player.rb.velocity.sqrMagnitude > speedThreshold * speedThreshold);
 	}
@@ -81,6 +80,9 @@ public class PlayerShipThrusterFx : MonoBehaviour
     {
         foreach (ParticleSystem ps in fx)
         {
+            if (!ps)
+                continue;
+
             var emission = ps.emission;
             if (emission.enabled != enable)
             {
