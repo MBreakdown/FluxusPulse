@@ -430,6 +430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: 
+  popUp: {fileID: 0}
 --- !u!1 &1425625357
 GameObject:
   m_ObjectHideFlags: 0
