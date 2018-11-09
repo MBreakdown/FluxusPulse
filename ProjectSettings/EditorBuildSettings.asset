@@ -6,35 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/FluxusPulse/Scenes/Menus/MenuScene.unity
-    guid: 141354d53b69dc741812cee1c4314291
+    path: Assets/FluxusPulse/Scenes/Menus/OpeningScreen.unity
+    guid: aefa01a3d6bd57d4eb37aaf3f339cea0
   - enabled: 1
     path: Assets/FluxusPulse/Scenes/Menus/InstructionsMenu.unity
     guid: 21f47011bd7097f41b29eb2760f4848b
   - enabled: 1
-    path: Assets/FluxusPulse/Scenes/Menus/OptionsMenu.unity
-    guid: e670011c543038b44b3ee3e4c0b0c165
-  - enabled: 1
-    path: Assets/FluxusPulse/Scenes/Menus/HighscoresMenu.unity
-    guid: ac7ef6d2f50f6f44d8a80e6b45ce21dd
-  - enabled: 1
     path: Assets/FluxusPulse/Scenes/Menus/CreditsMenu.unity
     guid: ff874840b8a72814aa3bf58f1389a391
   - enabled: 1
-    path: Assets/FluxusPulse/Scenes/Menus/QuitMenu.unity
-    guid: fb12ecf169e79ec4491d11f1370fc64a
-  - enabled: 1
     path: Assets/FluxusPulse/Scenes/Menus/LevelMenu.unity
     guid: 732924c2760e2e74db725ac84072a675
-  - enabled: 1
-    path: Assets/FluxusPulse/Scenes/Menus/CharacterMenu.unity
-    guid: 40f61f69aeac0d348be64421793db2ae
-  - enabled: 1
-    path: Assets/FluxusPulse/Scenes/Menus/GameConfirm.unity
-    guid: 6ad8d3b36742fab4f950b8e03581f2d4
-  - enabled: 1
-    path: Assets/FluxusPulse/Scenes/Menus/GameOver.unity
-    guid: bd6e4c0cd6aeb134dbef1501cca0cbb0
   - enabled: 1
     path: Assets/FluxusPulse/Scenes/Levels/The Hole.unity
     guid: 3077ec691debac84aac4dafb84a9e3f2
@@ -53,24 +35,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/FluxusPulse/Scenes/Levels/Chaos.unity
     guid: 62daf258a98c1d3419eac6028a421e53
-  - enabled: 1
+  - enabled: 0
     path: Assets/FluxusPulse/Scenes/Tutorials/Mechanics/TutorialBarriers.unity
     guid: 16ba00f8b0e60be4e8f9ffab23081acd
-  - enabled: 1
+  - enabled: 0
     path: Assets/FluxusPulse/Scenes/Tutorials/Enemy Levels/TutorialEnemyMine.unity
     guid: 7aa7e3abc06d1644ea5eddf1c236d5f6
-  - enabled: 1
+  - enabled: 0
     path: Assets/FluxusPulse/Scenes/Tutorials/Enemy Levels/TutorialEnemyFighter.unity
     guid: 519771a82f24a514db02e71e56c69da3
-  - enabled: 1
+  - enabled: 0
     path: Assets/FluxusPulse/Scenes/Tutorials/Enemy Levels/TutorialEnemyRocket.unity
     guid: aa5d533862ffdce498200bc8de66e0b4
-  - enabled: 1
+  - enabled: 0
     path: Assets/FluxusPulse/Scenes/Tutorials/Enemy Levels/TutorialEnemyRocketSwift.unity
     guid: 29ca41e21eb290042ac087568efd7683
-  - enabled: 1
-    path: Assets/FluxusPulse/Scenes/Menus/OpeningScreen.unity
-    guid: aefa01a3d6bd57d4eb37aaf3f339cea0
   - enabled: 1
     path: Assets/FluxusPulse/Scenes/Levels/Claustrophobia.unity
     guid: f1deaaa64923e724993c25fbf8545cd7
