@@ -771,6 +771,24 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114454092864436492, guid: ab2874140e5fc4c44b9c621b970390a9,
+        type: 2}
+      propertyPath: bluePart
+      value: 
+      objectReference: {fileID: 1731365173609984, guid: 40289782a77e45c4f9a942f38493f0be,
+        type: 2}
+    - target: {fileID: 114454092864436492, guid: ab2874140e5fc4c44b9c621b970390a9,
+        type: 2}
+      propertyPath: greenPart
+      value: 
+      objectReference: {fileID: 1402581830195438, guid: 2f0d6d733451e9b43b1dbdbc343eacb5,
+        type: 2}
+    - target: {fileID: 114454092864436492, guid: ab2874140e5fc4c44b9c621b970390a9,
+        type: 2}
+      propertyPath: redPart
+      value: 
+      objectReference: {fileID: 1556320545928256, guid: e44e8ee56422ed34daf2c6148783508f,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab2874140e5fc4c44b9c621b970390a9, type: 2}
   m_IsPrefabParent: 0
@@ -1448,7 +1466,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4105954965497472, guid: fec112664c16b71439d4f8237a93fca0, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 224942139507662116, guid: fec112664c16b71439d4f8237a93fca0,
         type: 2}
@@ -1884,6 +1902,24 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114725773506824180, guid: d8830cd15695ebf4ba1898dc3f4b6036,
+        type: 2}
+      propertyPath: bluePart
+      value: 
+      objectReference: {fileID: 1731365173609984, guid: 40289782a77e45c4f9a942f38493f0be,
+        type: 2}
+    - target: {fileID: 114725773506824180, guid: d8830cd15695ebf4ba1898dc3f4b6036,
+        type: 2}
+      propertyPath: greenPart
+      value: 
+      objectReference: {fileID: 1402581830195438, guid: 2f0d6d733451e9b43b1dbdbc343eacb5,
+        type: 2}
+    - target: {fileID: 114725773506824180, guid: d8830cd15695ebf4ba1898dc3f4b6036,
+        type: 2}
+      propertyPath: redPart
+      value: 
+      objectReference: {fileID: 1556320545928256, guid: e44e8ee56422ed34daf2c6148783508f,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d8830cd15695ebf4ba1898dc3f4b6036, type: 2}
   m_IsPrefabParent: 0
@@ -2759,7 +2795,7 @@ Transform:
   m_Children:
   - {fileID: 1706136489}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &2147460930
 GameObject:
