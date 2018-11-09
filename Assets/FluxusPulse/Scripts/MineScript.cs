@@ -24,7 +24,10 @@ public class MineScript : MonoBehaviour
     public float damage = 5;
     public GameObject playerToHurt;
 
-
+	[Header("Effects")]
+	public GameObject pinkPart;
+	public GameObject redPart;
+	public GameObject greenPart;
 
     #endregion Public
     #region Private
@@ -61,6 +64,7 @@ public class MineScript : MonoBehaviour
             }
 
             // Self destruct
+			Instantiate (redPart, this.transform.position, this.transform.rotation);
             Destroy(gameObject);
         }
     }

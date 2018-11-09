@@ -174,7 +174,8 @@ public class PlayerShip : MonoBehaviour
 	public float damage = 100;
     public AudioSource explosion;
 
-
+	[Header("Effects")]
+	public GameObject greenPart;
 
 	#endregion Public
 	#region Private
@@ -398,8 +399,12 @@ public class PlayerShip : MonoBehaviour
 			enemy.GetComponent<HealthEntity>().Hurt(damage);
 
             // Play explosion
-            explosion.Play();
-		}
+            FindObjectOfType<GameController>().pos.Play();
+			Instantiate (greenPart, this.transform.position, this.transform.rotation);
+
+            // Give the player score for defeating the enemy
+            FindObjectOfType<GameController>().Score += col.gameObject.GetComponent<EnemyScript>().reward;
+        }
 	}
 	//~ fn
 

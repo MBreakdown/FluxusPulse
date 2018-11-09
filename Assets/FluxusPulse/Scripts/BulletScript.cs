@@ -28,7 +28,10 @@ public class BulletScript : MonoBehaviour
     [HideInInspector]
 	public EnemyScript originEnemy;
 
-
+	[Header("Effects")]
+	public GameObject pinkPart;
+	public GameObject redPart;
+	public GameObject greenPart;
 
 	#endregion Public
 	#region Private
@@ -57,7 +60,9 @@ public class BulletScript : MonoBehaviour
         if (player != null)
         {
             // Play hurt sound
-            hurt.Play();
+            FindObjectOfType<GameController>().hurt.Play();
+			Instantiate (pinkPart, this.transform.position, this.transform.rotation);
+
 
             // Damage player
             player.healthEntity.Hurt(damage);
