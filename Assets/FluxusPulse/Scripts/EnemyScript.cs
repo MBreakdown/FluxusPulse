@@ -112,7 +112,7 @@ public class EnemyScript : MonoBehaviour
 				bullet.originEnemy = this;
 
                 // Play shoot sound
-                shoot.Play();
+                FindObjectOfType<GameController>().shoot.Play();
 			}
 		}
 		else
@@ -163,8 +163,9 @@ public class EnemyScript : MonoBehaviour
         PlayerShip player = col.gameObject.GetComponent<PlayerShip>();
         if (player && player.PlayerIndex == playerIndexToFollow)
 		{
-            // Play hurt sound
-            hurt.Play();
+            // Play hurt sound, unless invincible
+            if (!player.healthEntity.Invincible)
+                FindObjectOfType<GameController>().hurt.Play();
 
             // Damage player
             player.healthEntity.Hurt(damage);
@@ -175,7 +176,7 @@ public class EnemyScript : MonoBehaviour
                 if (this.healthEntity.Health == 1)
                 {
                     // Play explosion sound
-                    explosion.Play();
+                    FindObjectOfType<GameController>().explosion.Play();
                 }
 
                 // Damage self
