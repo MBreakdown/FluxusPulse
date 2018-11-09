@@ -858,6 +858,7 @@ MonoBehaviour:
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   m_Navigation:
     m_Mode: 3
     m_SelectOnUp: {fileID: 0}
@@ -933,6 +934,11 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 900447960}
 --- !u!1 &1096863411
+=======
+  nextScene: 
+  popUp: {fileID: 0}
+--- !u!1 &1425625357
+>>>>>>> dc8d9b64b2c6183ca79e0da02658ecff4b5b35f5
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
