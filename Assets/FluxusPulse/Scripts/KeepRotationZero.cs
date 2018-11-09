@@ -13,29 +13,8 @@
 ***********************************************************************/
 using UnityEngine;
 
-public class PlayerHud : MonoBehaviour
+public class KeepRotationZero : MonoBehaviour
 {
-    // Public Properties
-
-    public PlayerShip Player { get; private set; }
-
-
-
-    // Inspector Fields
-
-    public 
-
-
-
-    // Unity Event Methods
-
-    void Awake()
-    {
-        Player = GetComponentInParent<PlayerShip>();
-        if (!Player)
-            Debug.LogError("Player not found.");
-    }
-
     void LateUpdate()
     {
         transform.rotation = Quaternion.identity;

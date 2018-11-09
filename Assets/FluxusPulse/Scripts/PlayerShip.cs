@@ -14,11 +14,19 @@
 *	Mail		:	elijah.sha7979@mediadesign.school.nz
 ***********************************************************************/
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 // Types
+
+[Serializable]
+public class SpeedBlock
+{
+    public float moveSpeed = 10;
+    public float rotateSpeed = 200;
+}
+//~ class
 
 public enum BoostState
 {
@@ -99,12 +107,13 @@ public class PlayerShip : MonoBehaviour
 
 	public bool IsFlinging { get { return FlingState == FlingState.Flinging; } }
 	public bool IsFlung { get { return FlingState == FlingState.Flung; } }
+    public bool IsFlingingOrFlung { get { return IsFlinging || IsFlung; } }
 
 
 
-	// Public Auto Properties
+    // Public Auto Properties
 
-	public Rigidbody2D rb { get; private set; }
+    public Rigidbody2D rb { get; private set; }
     public HealthEntity healthEntity { get; private set; }
 
     public BoostState BoostState { get; private set; } = BoostState.None;
@@ -126,41 +135,43 @@ public class PlayerShip : MonoBehaviour
 	[Range(1, 2)]
 	public int PlayerIndex = 1;
 
-
-	[Header("Core Movement")]
-
-	public float speed = 12f;
-	public float rotateSpeed = 300f;
+    public LayerMask collisionMask = -1;
 
 
-	[Header("Boost")]
+    [Header("Movement")]
 
-	public float boostSpeed = 20f;
-	public float boostRotateSpeed = 200f;
-	public float boostTime = 2f;
-	public float boostCooldown = 4f;
+    public SpeedBlock normal = new SpeedBlock { moveSpeed = 10, rotateSpeed = 300 };
+    public SpeedBlock boost = new SpeedBlock { moveSpeed = 20, rotateSpeed = 300 };
+    public SpeedBlock fling = new SpeedBlock { moveSpeed = 30, rotateSpeed = 300 };
+    public SpeedBlock flingAndBoost = new SpeedBlock { moveSpeed = 40, rotateSpeed = 300 };
 
 
-	[Header("Flinging")]
+    [Header("Timers")]
+    
+    [Tooltip("Duration of ability.")]
+    public Timer boostTimer = new Timer(2);
 
-	public float flingSpeed = 30f;
-    public float flingAndBoostSpeed = 40f;
-    public float flungAndBoostRotateSpeed = 100f;
-    public float flungRotateSpeed = 100f;
-	public float flungTime = 2f;
-	public float flingingCooldown = 0.2f;
+    [Tooltip("Time between ability finished and able to be used again.")]
+    public Timer boostCooldown = new Timer(4);
+
+    [Tooltip("Duration of bonuses after releasing tether.")]
+    public Timer flungTimer = new Timer(2);
+
+    [Tooltip("Time between ability finished and able to be used again.")]
+    public Timer flingCooldown = new Timer(0);
+
+    [Tooltip("Time between ability finished and able to be used again.")]
+    public Timer bombCooldown = new Timer(4);
 
 
 	[Header("Bomb")]
 
-	public GameObject referenceBomb;
-	public bool BombOffCooldown = true;
+	public GameObject bombPrefab;
 
 
-	[Header("Stuff")]
+	[Header("Other")]
 
-	public float damage = 1;
-	public float time = 0;
+	public float damage = 100;
     public AudioSource explosion;
 
 	[Header("Effects")]
@@ -182,76 +193,137 @@ public class PlayerShip : MonoBehaviour
 
 	void Update()
 	{
-		// DEBUG display input axes values
-		//Debug.LogFormat(this,
-		//	"P: {0}, H: {1}, V: {2}, F1: {3}, F2: {4}, F3: {5}",
-		//	PlayerIndex, GetHorizontalAxis,
-		//	GetVerticalAxis,
-		//	GetBoostButton,
-		//	GetTetherButton,
-		//	GetBombButton
-		//	);
+        switch (BoostState)
+        {
+            case BoostState.None:
+                {
+                    // If player presses boost button,
+                    if (GetBoostButton)
+                    {
+                        // Start boosting.
+                        StartBoost();
+                    }
+                }
+                break;
+            case BoostState.Cooldown:
+                {
+                    // If cooldown is finished,
+                    if (boostCooldown.UpdateTimer(Time.deltaTime))
+                    {
+                        // Ability is available.
+                        BoostState = BoostState.None;
+                    }
+                }
+                break;
+            case BoostState.Boosting:
+            default:
+                break;
+        }
+        //~ switch
+        
+        switch (FlingState)
+        {
+            case FlingState.None:
+                {
+                    // If player presses tether button and a tether is in range,
+                    if (GetTetherButton && m_TetherColliders.Count > 0)
+                    {
+                        StartFlinging();
+                    }
+                }
+                break;
+            case FlingState.Flinging:
+                {
+                    // If tether button is released,
+                    if (!GetTetherButton)
+                    {
+                        // Stop flinging around pivot and start flying forwards.
+                        FinishFlinging();
+                    }
+                }
+                break;
+            case FlingState.Cooldown:
+                {
+                    // If cooldown is finished,
+                    if (flingCooldown.UpdateTimer(Time.deltaTime))
+                    {
+                        // Ability is available.
+                        FinishFlingCooldown();
+                    }
+                }
+                break;
+            case FlingState.Flung:
+            default:
+                break;
+        }
+        //~ switch
 
-		// Boost Ability
-		if (GetBoostButton
-			&& BoostState == BoostState.None)
-		{
-			BoostState = BoostState.Boosting;
-			StartCoroutine(BoostCoroutine());
-		}
-
-		// Flinging
-
-		if (FlingState == FlingState.Flinging)
-		{
-			if (!GetTetherButton)
-			{
-				// Stop flinging around pivot and start flying forwards.
-				FinishFlinging();
-			}
-		}
+        // DEBUG display input axes values
+        //Debug.LogFormat(this,
+        //	"P: {0}, H: {1}, V: {2}, F1: {3}, F2: {4}, F3: {5}",
+        //	PlayerIndex, GetHorizontalAxis,
+        //	GetVerticalAxis,
+        //	GetBoostButton,
+        //	GetTetherButton,
+        //	GetBombButton
+        //	);
 
 		// Gravity Bomb
-		if (GetBombButton && BombOffCooldown)
+		if (GetBombButton && bombCooldown.IsFinished)
 		{
-			// Set the cooldown to be on
-			BombOffCooldown = false;
-            
-			/*
-			// Run function
-			gravityBomb();
-			*/
+            bombCooldown.ResetTimer();
+			SpawnGravityBomb();
 		}
-	}
-	//~ fn
+    }
+    //~ fn
 
-	void FixedUpdate()
+    void FixedUpdate()
     {
-        // Check the bomb's cooldown
-        if (!BombOffCooldown)
-		{
-			// Use time
-			time += Time.fixedDeltaTime;
+        switch (BoostState)
+        {
+            case BoostState.Boosting:
+                {
+                    // If bonuses have run its course,
+                    if (boostTimer.UpdateTimer(Time.fixedDeltaTime))
+                    {
+                        // Start cooldown.
+                        FinishBoost();
+                    }
+                }
+                break;
+            case BoostState.Cooldown:
+            case BoostState.None:
+            default:
+                break;
+        }
+        //~ switch
 
-			// Reactivate after 5 seconds
-			if (time > 5)
-			{
-				// Set the bomb cooldown to active
-				BombOffCooldown = true;
+        switch (FlingState)
+        {
+            case FlingState.Flung:
+                {
+                    // If bonuses have run its course,
+                    if (flungTimer.UpdateTimer(Time.deltaTime))
+                    {
+                        // Start cooldown.
+                        FinishFlung();
+                    }
+                }
+                break;
+            case FlingState.Cooldown:
+            case FlingState.Flinging:
+            case FlingState.None:
+            default:
+                break;
+        }
+        //~ switch
 
-				// Reset the timer
-				time = 0;
-			}
-		}
-		
-		if (FlingState == FlingState.Flinging)
+        if (FlingState == FlingState.Flinging)
 		{
 			// Fling around the pivot at a fixed radius.
-			Vector2 fromPivot = transform.position - FlingPivot.position;
+			Vector2 fromPivot = rb.position - (Vector2)FlingPivot.position;
 
-            float speed = IsBoosting
-                ? flingAndBoostSpeed
-                : flingSpeed;
+            float speed = IsBoosting ? flingAndBoost.moveSpeed : fling.moveSpeed;
 			
 			float angle = Vector2Utilities.CalculateArcAngle(fromPivot.magnitude, speed * Time.fixedDeltaTime);
 			if (IsFlingDirectionClockwise)
@@ -259,6 +331,25 @@ public class PlayerShip : MonoBehaviour
 
 			Vector2 rotatedVector = Vector2Utilities.Rotate(fromPivot, angle);
 			Vector2 newPos = (Vector2)FlingPivot.position + rotatedVector;
+
+            // Check if it would hit anything
+            //RaycastHit hit;
+            //Ray ray = new Ray(rb.position, newPos - rb.position);
+            //if (GetComponent<CircleCollider2D>().Cast() Physics2D.Raycast(ray, out hit, ray.direction.magnitude, collisionMask, QueryTriggerInteraction.Ignore))
+            //{
+            //    Debug.Log("hit!");
+            //    float radius = 0.5f;
+            //    if (hit.distance > radius)
+            //    {
+            //        newPos = ray.GetPoint(hit.distance - radius);
+            //    }
+            //    else
+            //    {
+            //        newPos = rb.position;
+            //    }
+            //}
+
+            // Move to new position
 			rb.MovePosition(newPos);
 
 			// Update rotation.
@@ -276,46 +367,24 @@ public class PlayerShip : MonoBehaviour
 		else
 		{
 			// Core Movement
-			float move = GetVerticalAxis;
-			float rot = -GetHorizontalAxis;
-
-			if (IsFlung)
+            SpeedBlock movement;
+			if (FlingState == FlingState.Flinging || FlingState == FlingState.Flung)
 			{
-                if (IsBoosting)
-                {
-                    move *= flingAndBoostSpeed;
-                    rot *= flungAndBoostRotateSpeed;
-
-                    // Set invisiblity
-                    this.gameObject.GetComponent<HealthEntity>().Invincible = true;
-                }
-                else
-                {
-                    move *= flingSpeed;
-                    rot *= flungRotateSpeed;
-
-                    // Set invisiblity
-                    this.gameObject.GetComponent<HealthEntity>().Invincible = true;
-                }
-			}
-			else if (IsBoosting)
+                movement = IsBoosting ? flingAndBoost : fling;
+            }
+			else if (BoostState == BoostState.Boosting)
 			{
-				move *= boostSpeed;
-				rot *= boostRotateSpeed;
-
-                // Set invisiblity
-                this.gameObject.GetComponent<HealthEntity>().Invincible = true;
-			}
+                movement = boost;
+            }
 			else
 			{
-				move *= speed;
-				rot *= rotateSpeed;
-
-                // Set invisiblity
-                this.gameObject.GetComponent<HealthEntity>().Invincible = false;
+                movement = normal;
             }
-			
-			rb.velocity = transform.up * move;
+
+            float move = GetVerticalAxis * movement.moveSpeed;
+            float rot = -GetHorizontalAxis * movement.rotateSpeed;
+
+            rb.velocity = transform.up * move;
 			rb.angularVelocity = rot;
 		}
 		//~ else
@@ -339,76 +408,102 @@ public class PlayerShip : MonoBehaviour
 	}
 	//~ fn
 
-	void OnTriggerStay2D(Collider2D other)
+	void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == FlingPivotTag)
 		{
-			if (GetTetherButton
-				&& FlingState == FlingState.None)
-			{
-				// Start flinging around pivot.
-				FlingState = FlingState.Flinging;
-				rb.isKinematic = true;
-				FlingPivot = other.transform;
-
-				Vector2 toPivot = transform.position - FlingPivot.position;
-				Vector2 clockwiseForwards = Vector2Utilities.Rotate(toPivot, 90);
-
-				IsFlingDirectionClockwise = (Vector2.Dot(transform.up, clockwiseForwards) < 0);
-			}
+            m_TetherColliders.Add(other);
 		}
 	}
-	//~ fn
+    //~ fn
 
-	void OnTriggerExit2D(Collider2D other)
+    void OnTriggerExit2D(Collider2D other)
     {
-        if (FlingState == FlingState.Flinging)
-		{
-			FinishFlinging();
-		}
-	}
-	//~ fn
+        if (other.tag == FlingPivotTag)
+        {
+            m_TetherColliders.Remove(other);
+        }
+    }
+    //~ fn
 
 
 
-	// Private Methods
+    // Private Methods
 
-	private void FinishFlinging()
+    private void StartBoost()
+    {
+        BoostState = BoostState.Boosting;
+        boostTimer.ResetTimer();
+        healthEntity.Invincible = true;
+    }
+    //~ fn
+
+    private void FinishBoost()
+    {
+        BoostState = BoostState.Cooldown;
+        boostCooldown.ResetTimer();
+        healthEntity.Invincible = false;
+    }
+    //~ fn
+
+    private void FinishBoostCooldown()
+    {
+        BoostState = BoostState.None;
+    }
+    //~ fn
+
+
+    private void StartFlinging()
+    {
+        if (m_TetherColliders.Count <= 0)
+            throw new InvalidOperationException("Not close to a fling pivot.");
+
+        // Start flinging around pivot.
+        FlingState = FlingState.Flinging;
+        rb.isKinematic = true;
+        FlingPivot = m_TetherColliders
+            .OrderBy(x => Vector3.Distance(x.transform.position, this.transform.position))
+            .First()
+            .transform;
+
+        Vector2 toPivot = transform.position - FlingPivot.position;
+        Vector2 clockwiseForwards = Vector2Utilities.Rotate(toPivot, 90);
+
+        IsFlingDirectionClockwise = (Vector2.Dot(transform.up, clockwiseForwards) < 0);
+    }
+    //~ fn
+
+    private void FinishFlinging()
 	{
 		FlingState = FlingState.Flung;
 		rb.isKinematic = false;
 		FlingPivot = null;
-		StartCoroutine(FlungCoroutine());
+        flungTimer.ResetTimer();
 	}
 	//~ fn
 
-	/*private void gravityBomb()
-	{
-		// Fire bullet
-		GameObject bomb = Instantiate(referenceBomb, new Vector2(transform.position.x, transform.position.y), Quaternion.LookRotation(Vector3.forward, Vector3.forward));
-	}*/
+    private void FinishFlung()
+    {
+        FlingState = FlingState.Cooldown;
+        flingCooldown.ResetTimer();
+    }
+    //~ fn
+
+    private void FinishFlingCooldown()
+    {
+        FlingState = FlingState.None;
+    }
+    //~ fn
     
 
-
-	// Coroutines
-
-	private IEnumerator BoostCoroutine()
+    private void SpawnGravityBomb()
 	{
-		yield return new WaitForSeconds(boostTime);
-		BoostState = BoostState.Cooldown;
+        if (!bombPrefab)
+            return;
 
-		yield return new WaitForSeconds(boostCooldown);
-		BoostState = BoostState.None;
-	}
-	//~ fn
-
-	private IEnumerator FlungCoroutine()
-	{
-		yield return new WaitForSeconds(flungTime);
-		FlingState = FlingState.Cooldown;
-
-		yield return new WaitForSeconds(flingingCooldown);
-		FlingState = FlingState.None;
+        Vector3 pos = transform.position;
+        pos.z += 10;
+		Instantiate(bombPrefab, pos, transform.rotation);
 	}
     //~ fn
 
@@ -417,6 +512,8 @@ public class PlayerShip : MonoBehaviour
     // Private Static Fields
 
     private static readonly PlayerShip[] s_Players = new PlayerShip[2];
+
+    private HashSet<Collider2D> m_TetherColliders = new HashSet<Collider2D>();
 
 
 
