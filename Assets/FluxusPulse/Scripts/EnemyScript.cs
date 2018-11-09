@@ -138,6 +138,9 @@ public class EnemyScript : MonoBehaviour
 
                     // Reset random
                     maxMineTime = maxMineTime + Random.Range(0f, 6f);
+
+                    // Play deploy sound
+                    FindObjectOfType<GameController>().deploy.Play();
                 }
             }
 		}
