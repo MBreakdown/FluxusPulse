@@ -295,6 +295,9 @@ MonoBehaviour:
   explosion: {fileID: 82161481865587138}
   hurt: {fileID: 82677977422161898}
   shoot: {fileID: 0}
+  pinkPart: {fileID: 1731365173609984, guid: 40289782a77e45c4f9a942f38493f0be, type: 2}
+  redPart: {fileID: 1556320545928256, guid: e44e8ee56422ed34daf2c6148783508f, type: 2}
+  greenPart: {fileID: 1402581830195438, guid: 2f0d6d733451e9b43b1dbdbc343eacb5, type: 2}
 --- !u!114 &114797736180453926
 MonoBehaviour:
   m_ObjectHideFlags: 1
