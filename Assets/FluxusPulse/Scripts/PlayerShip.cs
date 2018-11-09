@@ -161,6 +161,7 @@ public class PlayerShip : MonoBehaviour
 
 	public float damage = 1;
 	public float time = 0;
+    public AudioSource explosion;
 
 
 
@@ -328,7 +329,7 @@ public class PlayerShip : MonoBehaviour
 			enemy.GetComponent<HealthEntity>().Hurt(damage);
 
             // Play explosion
-            FindObjectOfType<GameController>().pos.Play();
+            explosion.Play();
 		}
 	}
 	//~ fn
