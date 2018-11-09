@@ -14,6 +14,7 @@
 *	Mail		:	elijah.sha7979@mediadesign.school.nz
 ***********************************************************************/
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerShipThrusterFx : MonoBehaviour
@@ -31,15 +32,17 @@ public class PlayerShipThrusterFx : MonoBehaviour
 		public float speedThresholdMax = 1000;
 		public ParticleSystem fx;
 	}
+    //~ class
 
 
 
 	// Inspector Fields
 
 	public PlayerShip player;
-	public SpeedFx[] speedFxGroups;
-	public ParticleSystem boostFx;
-	public ParticleSystem flingFx;
+    public float speedThreshold = 3;
+    public ParticleSystem[] movefx;
+    public ParticleSystem[] boostfx;
+    public ParticleSystem[] flingfx;
 
 
 
@@ -50,38 +53,42 @@ public class PlayerShipThrusterFx : MonoBehaviour
 
 	// Unity Event Methods
 
+    private void Awake()
+    {
+        if (!player)
+        {
+            player = GetComponentInParent<PlayerShip>();
+            if (!player)
+                Debug.LogError("Could not find player in hierarchy.", this);
+        }
+    }
+    //~ fn
+
 	private void Update()
-	{
-		// Decide which effects should be active.
-		bool enableBoost = player.IsBoosting;
-		var boostEmission = boostFx.emission;
-		if (boostEmission.enabled != enableBoost)
-		{
-			boostEmission.enabled = enableBoost;
-		}
-
-		bool enableFling = player.IsFlinging || player.IsFlung;
-		var flingEmission = flingFx.emission;
-		if (flingEmission.enabled != enableFling)
-		{
-			flingEmission.enabled = enableFling;
-		}
-
-		// Speed Fx Groups
-		float speed = player.rb.velocity.magnitude;
-		foreach (var speedFx in speedFxGroups)
-		{
-			bool enableFx = (speed >= speedFx.speedThresholdMin
-				&& speed <= speedFx.speedThresholdMax);
-			
-			var emission = speedFx.fx.emission;
-			if (emission.enabled != enableFx)
-			{
-				emission.enabled = enableFx;
-			}
-		}
+    {
+        SetEmmisionEnabled(boostfx, player.IsBoosting);
+        Debug.Log(player.name + " " + player.IsFlingingOrFlung);
+        SetEmmisionEnabled(flingfx, player.IsFlingingOrFlung);
+        SetEmmisionEnabled(movefx, player.rb.velocity.sqrMagnitude > speedThreshold * speedThreshold);
 	}
 	//~ fn
+
+
+
+    // Private Methods
+
+    void SetEmmisionEnabled(IEnumerable<ParticleSystem> fx, bool enable)
+    {
+        foreach (ParticleSystem ps in fx)
+        {
+            var emission = ps.emission;
+            if (emission.enabled != enable)
+            {
+                emission.enabled = enable;
+            }
+        }
+    }
+    //~ fn
 
 
 
