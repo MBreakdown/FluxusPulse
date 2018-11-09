@@ -330,7 +330,10 @@ public class PlayerShip : MonoBehaviour
 
             // Play explosion
             FindObjectOfType<GameController>().pos.Play();
-		}
+
+            // Give the player score for defeating the enemy
+            FindObjectOfType<GameController>().Score += col.gameObject.GetComponent<EnemyScript>().reward;
+        }
 	}
 	//~ fn
 
