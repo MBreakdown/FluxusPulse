@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -195,12 +195,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 33503199}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-<<<<<<< HEAD
-  m_LocalPosition: {x: 569, y: 267.5, z: 0}
-=======
-  m_LocalPosition: {x: 960, y: 540, z: 0}
->>>>>>> ef4dedea57faeb06cf872ec3b720237c548a324b
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 333, y: 187.5, z: 0}
+  m_LocalScale: {x: 0.8325, y: 0.8325, z: 0.8325}
   m_Children:
   - {fileID: 35495212}
   - {fileID: 905869744}
@@ -552,7 +548,6 @@ GameObject:
   - component: {fileID: 66379387}
   - component: {fileID: 66379386}
   - component: {fileID: 66379385}
-  - component: {fileID: 66379388}
   m_Layer: 5
   m_Name: MinesButton
   m_TagString: Untagged
@@ -618,7 +613,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 66379388}
+      - m_Target: {fileID: 0}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -664,9 +659,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 66379383}
-<<<<<<< HEAD
---- !u!114 &66379388
-=======
 --- !u!1 &125282585
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,21 +677,10 @@ GameObject:
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &125282586
->>>>>>> ef4dedea57faeb06cf872ec3b720237c548a324b
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 66379383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 302a4c4254039844098f8e17f8feddca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextScene: 
-  popUp: {fileID: 0}
-=======
   m_GameObject: {fileID: 125282585}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -799,7 +780,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> ef4dedea57faeb06cf872ec3b720237c548a324b
 --- !u!1 &134136969
 GameObject:
   m_ObjectHideFlags: 0
@@ -981,7 +961,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 370604691}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.934387, y: -204.99998, z: 0}
+  m_LocalPosition: {x: 6.934387, y: -162.01805, z: 0}
   m_LocalScale: {x: 0.49532, y: 0.49532, z: 0.49532}
   m_Children:
   - {fileID: 790617286}
@@ -990,7 +970,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.934387, y: -205}
+  m_AnchoredPosition: {x: 6.934387, y: -162.01805}
   m_SizeDelta: {x: 571.8, y: 154.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &370604693
@@ -1632,7 +1612,7 @@ Prefab:
     - target: {fileID: 224082315781869254, guid: f62fcb500fe97ee4d8e7ad521a1a28c1,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -204.99998
+      value: -159
       objectReference: {fileID: 0}
     - target: {fileID: 224082315781869254, guid: f62fcb500fe97ee4d8e7ad521a1a28c1,
         type: 2}
@@ -1672,7 +1652,7 @@ Prefab:
     - target: {fileID: 224082315781869254, guid: f62fcb500fe97ee4d8e7ad521a1a28c1,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -205
+      value: -159
       objectReference: {fileID: 0}
     - target: {fileID: 224082315781869254, guid: f62fcb500fe97ee4d8e7ad521a1a28c1,
         type: 2}
@@ -2418,7 +2398,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 905869743}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
 --- !u!4 &1762552141
@@ -2765,7 +2745,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 0.5
+  m_padding: 0
   m_canvasRenderer: {fileID: 1969841087}
   m_TextComponent: {fileID: 1439002483}
   m_materialReferenceIndex: 1
