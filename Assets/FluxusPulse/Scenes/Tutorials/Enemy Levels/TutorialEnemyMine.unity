@@ -525,7 +525,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 02d525452b4ec35488c89555a9ff829f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3074b9a6d3b1f474ca634a80c1f92c5a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -22534,7 +22534,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 788004547}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 574, y: 272, z: 0}
+  m_LocalPosition: {x: 574, y: 270.5, z: 0}
   m_LocalScale: {x: 0.59791666, y: 0.59791666, z: 0.59791666}
   m_Children:
   - {fileID: 1038995593}
@@ -23397,7 +23397,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1058536893}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 574, y: 272, z: 0}
+  m_LocalPosition: {x: 574, y: 270.5, z: 0}
   m_LocalScale: {x: 0.59791666, y: 0.59791666, z: 0.59791666}
   m_Children:
   - {fileID: 1519254734}
@@ -23466,7 +23466,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 8dbd4389521fb4746bec9aebc6e8bfe8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6c4b9e38b97f32349b6fecf1b2d0b22a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -23610,7 +23610,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 8dbd4389521fb4746bec9aebc6e8bfe8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6c4b9e38b97f32349b6fecf1b2d0b22a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -24081,7 +24081,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1259380484}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -880, y: 354.9129, z: 0}
+  m_LocalPosition: {x: -880, y: 352.40417, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 612714735}
@@ -27866,23 +27866,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerIndex: 2
-  speed: 10
-  rotateSpeed: 200
-  boostSpeed: 20
-  boostRotateSpeed: 200
-  boostTime: 2
-  boostCooldown: 3
-  flingSpeed: 30
-  flingAndBoostSpeed: 40
-  flungAndBoostRotateSpeed: 100
-  flungRotateSpeed: 200
-  flungTime: 2
-  flingingCooldown: 3
-  referenceBomb: {fileID: 0}
-  BombOffCooldown: 1
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  normal:
+    moveSpeed: 10
+    rotateSpeed: 300
+  boost:
+    moveSpeed: 20
+    rotateSpeed: 300
+  fling:
+    moveSpeed: 30
+    rotateSpeed: 300
+  flingAndBoost:
+    moveSpeed: 40
+    rotateSpeed: 300
+  boostTimer:
+    m_maxTime: 2
+    m_currentTime: 0
+  boostCooldown:
+    m_maxTime: 4
+    m_currentTime: 0
+  flungTimer:
+    m_maxTime: 2
+    m_currentTime: 0
+  flingCooldown:
+    m_maxTime: 0
+    m_currentTime: 0
+  bombCooldown:
+    m_maxTime: 4
+    m_currentTime: 0
+  bombPrefab: {fileID: 0}
   damage: 100
-  time: 0
   explosion: {fileID: 0}
+  greenPart: {fileID: 0}
 --- !u!114 &1468137203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31482,7 +31499,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1569347330}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 880, y: 354.9129, z: 0}
+  m_LocalPosition: {x: 880, y: 352.40417, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 1253698833}
@@ -31559,18 +31576,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1677099104}
-  speedFxGroups:
-  - speedThresholdMin: 15
-    speedThresholdMax: 25
-    fx: {fileID: 1991039037}
-  - speedThresholdMin: 25
-    speedThresholdMax: 1000
-    fx: {fileID: 771937655}
-  - speedThresholdMin: 0.01
-    speedThresholdMax: 1000
-    fx: {fileID: 127228803}
-  boostFx: {fileID: 707355747}
-  flingFx: {fileID: 1499792829}
+  speedThreshold: 3
+  movefx: []
+  boostfx: []
+  flingfx: []
 --- !u!1 &1632783779
 GameObject:
   m_ObjectHideFlags: 0
@@ -31621,18 +31630,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1468137202}
-  speedFxGroups:
-  - speedThresholdMin: 15
-    speedThresholdMax: 25
-    fx: {fileID: 161241748}
-  - speedThresholdMin: 25
-    speedThresholdMax: 1000
-    fx: {fileID: 1921034953}
-  - speedThresholdMin: 0.01
-    speedThresholdMax: 1000
-    fx: {fileID: 1319264768}
-  boostFx: {fileID: 689844989}
-  flingFx: {fileID: 1785049999}
+  speedThreshold: 3
+  movefx: []
+  boostfx: []
+  flingfx: []
 --- !u!1001 &1648680705
 Prefab:
   m_ObjectHideFlags: 0
@@ -31734,23 +31735,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerIndex: 1
-  speed: 10
-  rotateSpeed: 200
-  boostSpeed: 20
-  boostRotateSpeed: 200
-  boostTime: 2
-  boostCooldown: 3
-  flingSpeed: 30
-  flingAndBoostSpeed: 40
-  flungAndBoostRotateSpeed: 100
-  flungRotateSpeed: 200
-  flungTime: 2
-  flingingCooldown: 3
-  referenceBomb: {fileID: 0}
-  BombOffCooldown: 1
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  normal:
+    moveSpeed: 10
+    rotateSpeed: 300
+  boost:
+    moveSpeed: 20
+    rotateSpeed: 300
+  fling:
+    moveSpeed: 30
+    rotateSpeed: 300
+  flingAndBoost:
+    moveSpeed: 40
+    rotateSpeed: 300
+  boostTimer:
+    m_maxTime: 2
+    m_currentTime: 0
+  boostCooldown:
+    m_maxTime: 4
+    m_currentTime: 0
+  flungTimer:
+    m_maxTime: 2
+    m_currentTime: 0
+  flingCooldown:
+    m_maxTime: 0
+    m_currentTime: 0
+  bombCooldown:
+    m_maxTime: 4
+    m_currentTime: 0
+  bombPrefab: {fileID: 0}
   damage: 100
-  time: 0
   explosion: {fileID: 0}
+  greenPart: {fileID: 0}
 --- !u!114 &1677099105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31875,6 +31893,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c21dda28c8c1f7140bcdd16258d36de1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 0}
+  pos: {fileID: 0}
+  hurt: {fileID: 0}
+  shoot: {fileID: 0}
+  deploy: {fileID: 0}
   PauseMenu: {fileID: 2105517475}
   onScoreChanged:
     m_PersistentCalls:
@@ -46339,7 +46362,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2122267369}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 574, y: 272, z: 0}
+  m_LocalPosition: {x: 574, y: 270.5, z: 0}
   m_LocalScale: {x: 0.59791666, y: 0.59791666, z: 0.59791666}
   m_Children:
   - {fileID: 680132631}

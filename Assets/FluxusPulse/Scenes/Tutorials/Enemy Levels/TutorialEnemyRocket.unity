@@ -24545,8 +24545,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 866979178}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 485.5, y: 273, z: 0}
-  m_LocalScale: {x: 0.50572914, y: 0.50572914, z: 0.50572914}
+  m_LocalPosition: {x: 574, y: 270.5, z: 0}
+  m_LocalScale: {x: 0.59791666, y: 0.59791666, z: 0.59791666}
   m_Children:
   - {fileID: 1152234653}
   m_Father: {fileID: 0}
@@ -24706,7 +24706,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 02d525452b4ec35488c89555a9ff829f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b4990a311ee885443875be8e380183b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -28227,18 +28227,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2022847710}
-  speedFxGroups:
-  - speedThresholdMin: 15
-    speedThresholdMax: 25
-    fx: {fileID: 1109957223}
-  - speedThresholdMin: 25
-    speedThresholdMax: 1000
-    fx: {fileID: 654216865}
-  - speedThresholdMin: 0.01
-    speedThresholdMax: 1000
-    fx: {fileID: 1906946288}
-  boostFx: {fileID: 350140005}
-  flingFx: {fileID: 347402463}
+  speedThreshold: 3
+  movefx: []
+  boostfx: []
+  flingfx: []
 --- !u!1001 &1132099221
 Prefab:
   m_ObjectHideFlags: 0
@@ -35780,17 +35772,17 @@ Prefab:
     - target: {fileID: 224269080928828888, guid: fec112664c16b71439d4f8237a93fca0,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 389.81464
+      value: 302.40417
       objectReference: {fileID: 0}
     - target: {fileID: 224695684074145988, guid: fec112664c16b71439d4f8237a93fca0,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 485.5
+      value: 574
       objectReference: {fileID: 0}
     - target: {fileID: 224695684074145988, guid: fec112664c16b71439d4f8237a93fca0,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 273
+      value: 270.5
       objectReference: {fileID: 0}
     - target: {fileID: 224972953672932690, guid: fec112664c16b71439d4f8237a93fca0,
         type: 2}
@@ -35805,27 +35797,27 @@ Prefab:
     - target: {fileID: 224271192708469982, guid: fec112664c16b71439d4f8237a93fca0,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 439.81464
+      value: 352.40417
       objectReference: {fileID: 0}
     - target: {fileID: 224085553843171952, guid: fec112664c16b71439d4f8237a93fca0,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: -37.85273
+      value: -37.543556
       objectReference: {fileID: 0}
     - target: {fileID: 224497776262576414, guid: fec112664c16b71439d4f8237a93fca0,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 83.33161
+      value: 81.864105
       objectReference: {fileID: 0}
     - target: {fileID: 224698579837461094, guid: fec112664c16b71439d4f8237a93fca0,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: -37.85273
+      value: -37.54355
       objectReference: {fileID: 0}
     - target: {fileID: 224326961314833914, guid: fec112664c16b71439d4f8237a93fca0,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 96.18436
+      value: 94.40767
       objectReference: {fileID: 0}
     - target: {fileID: 224497776262576414, guid: fec112664c16b71439d4f8237a93fca0,
         type: 2}
@@ -36119,18 +36111,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1802551593}
-  speedFxGroups:
-  - speedThresholdMin: 15
-    speedThresholdMax: 25
-    fx: {fileID: 1185166252}
-  - speedThresholdMin: 25
-    speedThresholdMax: 1000
-    fx: {fileID: 804898401}
-  - speedThresholdMin: 0.01
-    speedThresholdMax: 1000
-    fx: {fileID: 611847860}
-  boostFx: {fileID: 1843923467}
-  flingFx: {fileID: 1134830426}
+  speedThreshold: 3
+  movefx: []
+  boostfx: []
+  flingfx: []
 --- !u!1 &1802551591
 GameObject:
   m_ObjectHideFlags: 0
@@ -36181,23 +36165,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerIndex: 1
-  speed: 10
-  rotateSpeed: 200
-  boostSpeed: 20
-  boostRotateSpeed: 200
-  boostTime: 2
-  boostCooldown: 3
-  flingSpeed: 30
-  flingAndBoostSpeed: 40
-  flungAndBoostRotateSpeed: 100
-  flungRotateSpeed: 200
-  flungTime: 2
-  flingingCooldown: 3
-  referenceBomb: {fileID: 0}
-  BombOffCooldown: 1
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  normal:
+    moveSpeed: 10
+    rotateSpeed: 300
+  boost:
+    moveSpeed: 20
+    rotateSpeed: 300
+  fling:
+    moveSpeed: 30
+    rotateSpeed: 300
+  flingAndBoost:
+    moveSpeed: 40
+    rotateSpeed: 300
+  boostTimer:
+    m_maxTime: 2
+    m_currentTime: 0
+  boostCooldown:
+    m_maxTime: 4
+    m_currentTime: 0
+  flungTimer:
+    m_maxTime: 2
+    m_currentTime: 0
+  flingCooldown:
+    m_maxTime: 0
+    m_currentTime: 0
+  bombCooldown:
+    m_maxTime: 4
+    m_currentTime: 0
+  bombPrefab: {fileID: 0}
   damage: 100
-  time: 0
   explosion: {fileID: 0}
+  greenPart: {fileID: 0}
 --- !u!114 &1802551594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43391,23 +43392,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerIndex: 2
-  speed: 10
-  rotateSpeed: 200
-  boostSpeed: 20
-  boostRotateSpeed: 200
-  boostTime: 2
-  boostCooldown: 3
-  flingSpeed: 30
-  flingAndBoostSpeed: 40
-  flungAndBoostRotateSpeed: 100
-  flungRotateSpeed: 200
-  flungTime: 2
-  flingingCooldown: 3
-  referenceBomb: {fileID: 0}
-  BombOffCooldown: 1
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  normal:
+    moveSpeed: 10
+    rotateSpeed: 300
+  boost:
+    moveSpeed: 20
+    rotateSpeed: 300
+  fling:
+    moveSpeed: 30
+    rotateSpeed: 300
+  flingAndBoost:
+    moveSpeed: 40
+    rotateSpeed: 300
+  boostTimer:
+    m_maxTime: 2
+    m_currentTime: 0
+  boostCooldown:
+    m_maxTime: 4
+    m_currentTime: 0
+  flungTimer:
+    m_maxTime: 2
+    m_currentTime: 0
+  flingCooldown:
+    m_maxTime: 0
+    m_currentTime: 0
+  bombCooldown:
+    m_maxTime: 4
+    m_currentTime: 0
+  bombPrefab: {fileID: 0}
   damage: 100
-  time: 0
   explosion: {fileID: 0}
+  greenPart: {fileID: 0}
 --- !u!114 &2022847711
 MonoBehaviour:
   m_ObjectHideFlags: 0

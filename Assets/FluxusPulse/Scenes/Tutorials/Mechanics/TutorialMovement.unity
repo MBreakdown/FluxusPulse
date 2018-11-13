@@ -3729,8 +3729,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 133306927}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 569, y: 267.5, z: 0}
-  m_LocalScale: {x: 0.59270835, y: 0.59270835, z: 0.59270835}
+  m_LocalPosition: {x: 574, y: 270.5, z: 0}
+  m_LocalScale: {x: 0.59791666, y: 0.59791666, z: 0.59791666}
   m_Children:
   - {fileID: 2083728139}
   m_Father: {fileID: 0}
@@ -3823,8 +3823,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 148089986}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 569, y: 267.5, z: 0}
-  m_LocalScale: {x: 0.59270835, y: 0.59270835, z: 0.59270835}
+  m_LocalPosition: {x: 574, y: 270.5, z: 0}
+  m_LocalScale: {x: 0.59791666, y: 0.59791666, z: 0.59791666}
   m_Children:
   - {fileID: 1226910376}
   m_Father: {fileID: 0}
@@ -3860,7 +3860,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 161155870}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -880, y: 351.31808, z: 0}
+  m_LocalPosition: {x: -880, y: 352.40417, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 1819101445}
@@ -7545,7 +7545,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 8dbd4389521fb4746bec9aebc6e8bfe8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6c4b9e38b97f32349b6fecf1b2d0b22a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15571,18 +15571,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1982194302}
-  speedFxGroups:
-  - speedThresholdMin: 15
-    speedThresholdMax: 25
-    fx: {fileID: 793107010}
-  - speedThresholdMin: 25
-    speedThresholdMax: 1000
-    fx: {fileID: 1302199468}
-  - speedThresholdMin: 0.01
-    speedThresholdMax: 1000
-    fx: {fileID: 340263024}
-  boostFx: {fileID: 904137092}
-  flingFx: {fileID: 2084106710}
+  speedThreshold: 3
+  movefx: []
+  boostfx: []
+  flingfx: []
 --- !u!1 &597813506
 GameObject:
   m_ObjectHideFlags: 0
@@ -15608,7 +15600,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 597813506}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -880, y: 351.31808, z: 0}
+  m_LocalPosition: {x: -880, y: 352.40417, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 913764079}
@@ -19310,8 +19302,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 659773383}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 569, y: 267.5, z: 0}
-  m_LocalScale: {x: 0.59270835, y: 0.59270835, z: 0.59270835}
+  m_LocalPosition: {x: 574, y: 270.5, z: 0}
+  m_LocalScale: {x: 0.59791666, y: 0.59791666, z: 0.59791666}
   m_Children:
   - {fileID: 1644297099}
   - {fileID: 850323259}
@@ -19844,7 +19836,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 739145137}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 880, y: 351.31808, z: 0}
+  m_LocalPosition: {x: 880, y: 352.40417, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 423504393}
@@ -23945,8 +23937,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 894345616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 569, y: 267.5, z: 0}
-  m_LocalScale: {x: 0.59270835, y: 0.59270835, z: 0.59270835}
+  m_LocalPosition: {x: 574, y: 270.5, z: 0}
+  m_LocalScale: {x: 0.59791666, y: 0.59791666, z: 0.59791666}
   m_Children:
   - {fileID: 726708944}
   m_Father: {fileID: 0}
@@ -27482,8 +27474,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 921619635}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 569, y: 267.5, z: 0}
-  m_LocalScale: {x: 0.59270835, y: 0.59270835, z: 0.59270835}
+  m_LocalPosition: {x: 574, y: 270.5, z: 0}
+  m_LocalScale: {x: 0.59791666, y: 0.59791666, z: 0.59791666}
   m_Children:
   - {fileID: 2093709864}
   m_Father: {fileID: 0}
@@ -28254,8 +28246,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1205727231}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 569, y: 267.5, z: 0}
-  m_LocalScale: {x: 0.59270835, y: 0.59270835, z: 0.59270835}
+  m_LocalPosition: {x: 574, y: 270.5, z: 0}
+  m_LocalScale: {x: 0.59791666, y: 0.59791666, z: 0.59791666}
   m_Children:
   - {fileID: 439754892}
   m_Father: {fileID: 0}
@@ -35521,7 +35513,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 02d525452b4ec35488c89555a9ff829f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3074b9a6d3b1f474ca634a80c1f92c5a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -35704,7 +35696,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1560156675}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 569, y: 267.5, z: 0}
+  m_LocalPosition: {x: 574, y: 270.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -39537,8 +39529,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1738360307}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 569, y: 267.5, z: 0}
-  m_LocalScale: {x: 0.59270835, y: 0.59270835, z: 0.59270835}
+  m_LocalPosition: {x: 574, y: 270.5, z: 0}
+  m_LocalScale: {x: 0.59791666, y: 0.59791666, z: 0.59791666}
   m_Children:
   - {fileID: 39178767}
   - {fileID: 178345404}
@@ -39849,8 +39841,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1788200864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 569, y: 267.5, z: 0}
-  m_LocalScale: {x: 0.59270835, y: 0.59270835, z: 0.59270835}
+  m_LocalPosition: {x: 574, y: 270.5, z: 0}
+  m_LocalScale: {x: 0.59791666, y: 0.59791666, z: 0.59791666}
   m_Children:
   - {fileID: 671673270}
   m_Father: {fileID: 0}
@@ -39902,7 +39894,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1801366009}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 880, y: 351.31808, z: 0}
+  m_LocalPosition: {x: 880, y: 352.40417, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 373086453}
@@ -40011,8 +40003,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1805350978}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 569, y: 267.5, z: 0}
-  m_LocalScale: {x: 0.59270835, y: 0.59270835, z: 0.59270835}
+  m_LocalPosition: {x: 574, y: 270.5, z: 0}
+  m_LocalScale: {x: 0.59791666, y: 0.59791666, z: 0.59791666}
   m_Children:
   - {fileID: 1285963093}
   m_Father: {fileID: 0}
@@ -40151,18 +40143,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2048066849}
-  speedFxGroups:
-  - speedThresholdMin: 15
-    speedThresholdMax: 25
-    fx: {fileID: 629447294}
-  - speedThresholdMin: 25
-    speedThresholdMax: 1000
-    fx: {fileID: 261268052}
-  - speedThresholdMin: 0.01
-    speedThresholdMax: 1000
-    fx: {fileID: 1292608354}
-  boostFx: {fileID: 478420391}
-  flingFx: {fileID: 1630612177}
+  speedThreshold: 3
+  movefx: []
+  boostfx: []
+  flingfx: []
 --- !u!1 &1819101444
 GameObject:
   m_ObjectHideFlags: 0
@@ -40531,8 +40515,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1895592832}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 569, y: 267.5, z: 0}
-  m_LocalScale: {x: 0.59270835, y: 0.59270835, z: 0.59270835}
+  m_LocalPosition: {x: 574, y: 270.5, z: 0}
+  m_LocalScale: {x: 0.59791666, y: 0.59791666, z: 0.59791666}
   m_Children:
   - {fileID: 1097849601}
   m_Father: {fileID: 0}
@@ -44051,8 +44035,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1918754962}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 569, y: 267.5, z: 0}
-  m_LocalScale: {x: 0.59270835, y: 0.59270835, z: 0.59270835}
+  m_LocalPosition: {x: 574, y: 270.5, z: 0}
+  m_LocalScale: {x: 0.59791666, y: 0.59791666, z: 0.59791666}
   m_Children:
   - {fileID: 2078280529}
   m_Father: {fileID: 0}
@@ -44169,22 +44153,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerIndex: 2
-  speed: 10
-  rotateSpeed: 200
-  boostSpeed: 20
-  boostRotateSpeed: 200
-  boostTime: 2
-  boostCooldown: 4
-  flingSpeed: 30
-  flingAndBoostSpeed: 40
-  flungAndBoostRotateSpeed: 200
-  flungRotateSpeed: 200
-  flungTime: 2
-  flingingCooldown: 0.2
-  referenceBomb: {fileID: 0}
-  BombOffCooldown: 1
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  normal:
+    moveSpeed: 10
+    rotateSpeed: 300
+  boost:
+    moveSpeed: 20
+    rotateSpeed: 300
+  fling:
+    moveSpeed: 30
+    rotateSpeed: 300
+  flingAndBoost:
+    moveSpeed: 40
+    rotateSpeed: 300
+  boostTimer:
+    m_maxTime: 2
+    m_currentTime: 0
+  boostCooldown:
+    m_maxTime: 4
+    m_currentTime: 0
+  flungTimer:
+    m_maxTime: 2
+    m_currentTime: 0
+  flingCooldown:
+    m_maxTime: 0
+    m_currentTime: 0
+  bombCooldown:
+    m_maxTime: 4
+    m_currentTime: 0
+  bombPrefab: {fileID: 0}
   damage: 100
-  time: 0
   explosion: {fileID: 0}
   greenPart: {fileID: 0}
 --- !u!114 &1982194303
@@ -44540,22 +44540,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerIndex: 1
-  speed: 10
-  rotateSpeed: 200
-  boostSpeed: 20
-  boostRotateSpeed: 200
-  boostTime: 2
-  boostCooldown: 4
-  flingSpeed: 30
-  flingAndBoostSpeed: 40
-  flungAndBoostRotateSpeed: 200
-  flungRotateSpeed: 200
-  flungTime: 2
-  flingingCooldown: 0.2
-  referenceBomb: {fileID: 0}
-  BombOffCooldown: 1
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  normal:
+    moveSpeed: 10
+    rotateSpeed: 300
+  boost:
+    moveSpeed: 20
+    rotateSpeed: 300
+  fling:
+    moveSpeed: 30
+    rotateSpeed: 300
+  flingAndBoost:
+    moveSpeed: 40
+    rotateSpeed: 300
+  boostTimer:
+    m_maxTime: 2
+    m_currentTime: 0
+  boostCooldown:
+    m_maxTime: 4
+    m_currentTime: 0
+  flungTimer:
+    m_maxTime: 2
+    m_currentTime: 0
+  flingCooldown:
+    m_maxTime: 0
+    m_currentTime: 0
+  bombCooldown:
+    m_maxTime: 4
+    m_currentTime: 0
+  bombPrefab: {fileID: 0}
   damage: 100
-  time: 0
   explosion: {fileID: 0}
   greenPart: {fileID: 0}
 --- !u!114 &2048066850
